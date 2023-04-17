@@ -79,7 +79,13 @@
         \end{minipage}
     \end{center}
 
-    \vskip 3em
+    \vskip 1.5em
+
+    \begin{center}
+        \includegraphics[width=1.5in]{cmu-seal-k}
+    \end{center}
+
+    \vskip 2em
 
 
     \begin{center}
