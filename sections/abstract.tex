@@ -1,29 +1,16 @@
 
 \begin{abstract}
-    Domain-specific modeling priors and specialized components are
-    becoming increasingly important to the machine learning field.
-    These components integrate specialized knowledge that we have
-    as humans into model.
-    We argue in this thesis that optimization methods provide an
-    expressive set of operations that should be part of the
-    machine learning practitioner's modeling toolbox.
+    Modern vision models typically rely on fine-tuning general-purpose models pre-trained on large, static datasets. These general-purpose models only capture the knowledge within their pre-training datasets, which are tiny, out-of-date snapshots of the Internet---where \emph{billions} of images are uploaded
+    % each day. 
+    daily.
+    
+    We suggest in this thesis an alternate approach: rather than hoping our static datasets transfer to our desired tasks after large-scale pre-training, we propose dynamically utilizing the Internet to quickly train a small-scale model that does extremely well on the task at hand.
+    Our approach, called \intexp, explores the web in a self-supervised manner to progressively find relevant examples that improve performance on a desired target dataset. It cycles between searching for images on the Internet with text queries, self-supervised training on downloaded images, determining which images were useful, and prioritizing what to search for next.
+    
+    We evaluate \intexp\ across several datasets and show that it outperforms or matches CLIP oracle performance by using just a single GPU desktop to actively query the Internet for 30--40 hours.
 
-    We present two foundational approaches for optimization-based modeling:
-    1) the \emph{OptNet} architecture that integrates
-    optimization problems as individual layers in larger end-to-end
-    trainable deep networks, and
-    2) the \emph{input-convex neural network (ICNN)}
-    architecture that helps make inference and learning in deep
-    energy-based models and structured prediction more tractable.
+    \vspace{2em}
 
-    We then show how to use the OptNet approach
-    1) as a way of combining model-free and model-based reinforcement
-    learning and
-    2) for top-$k$ learning problems.
-    We conclude by showing how to differentiate cone programs
-    and turn the \cvxpy domain specific language into
-    a differentiable optimization layer that enables rapid prototyping of
-    the approaches in this thesis. \\
 
     \noindent
     The source code for this thesis document is available in open source form at:
