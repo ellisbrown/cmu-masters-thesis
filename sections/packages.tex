@@ -88,8 +88,11 @@
 
 \definecolor{lightgray}{gray}{0.95} % 10%
 
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+
 \usepackage{hyperref}
-\newcommand{\theHalgorithm}{\arabic{algorithm}}
+\renewcommand{\theHalgorithm}{\arabic{algorithm}}
 
 
 \usepackage{easytable}
@@ -98,8 +101,7 @@
 
 \usepackage{stmaryrd}
 
-\usepackage{algorithm}
-\usepackage{algorithmicx}
+
 \usepackage{algpseudocode}
 \algnewcommand{\LeftComment}[1]{\Statex \(\triangleright\) #1}
 
