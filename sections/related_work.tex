@@ -1,0 +1,24 @@
+\chapter{Related Work}
+
+% \paragraph{Self-supervised Learning}
+% Contrastive SSL approaches pull together positive pairs (usually obtained by augmenting the same image twice) and push apart negative pairs~\cite{chen2020simple,he2020momentum,misra2020self,henaff2019data,oord2018representation,henaff2020data, chen2021empirical}. Non-contrastive methods do not explicitly push apart negative pairs, but implicitly do so using self-distillation~\cite{grill2020bootstrap,caron2021emerging,chen2021exploring} or feature correlation~\cite{zbontar2021barlow,bardes2021vicreg}. Finally, masking-based approaches train models to predict masked portions of the input~\cite{he2022masked,baevski2022data2vec,bao2021beit,assran2022masked}. Internet Explorer is agnostic to the choice of SSL algorithm and can be used with any of these approaches, as long as there are low-dimensional representations to compute our image reward. 
+
+% \paragraph{Directed Training and Exploration}
+% Active learning~\cite{settles2009active} is a technique for label-efficient supervised learning. It starts with a fixed, unlabeled dataset and selectively queries an oracle for the labels of the examples that are most informative. In contrast, Internet Explorer is a self-supervised method that starts with a small, unlabeled dataset that searches the Internet for more unlabeled data for SSL. 
+
+% Efficient unsupervised training using a fixed dataset has been heavily explored. Hard negative mining oversamples informative examples and has been shown to speed up training and improve performance in metric learning\cite{schroff2015facenet,oh2016deep,harwood2017smart,wu2017sampling,ge2018deep} and contrastive learning~\cite{robinson2020contrastive}. However, very little work has been done on actively expanding the training set with the most relevant examples.~\cite{jiang2021improving} selectively choose examples from a larger corpus that are relevant for a seed dataset, but this still restricts the potential training data of the model.~\cite{du2021curious} train a reinforcement learning agent to navigate an environment to find images with high contrastive loss, but is also restricted in what data it can obtain. 
+
+% \vspace{-0.1in}
+%     \item WebGPT method that can search the internet
+% \paragraph{Learning from Uncurated Internet Data} 
+% Several prior papers viewed the Internet as an unlimited source of potential training data. 
+Many papers use self-supervised or weakly-supervised learning on large-scale static datasets collected from the Internet, such as YFCC-100M~\cite{thomee2015yfcc100m}, Instagram-1B~\cite{mahajan2018exploring}, or LAION-400M~\cite{schuhmann2021laion}. However, these are usually impractically expensive since they attempt to train on all of the data, not just the subset relevant for a target dataset. Another line of work continuously interacts with the Internet to find useful data, instead of using fixed-size scraping. NELL~\cite{carlson2010toward,mitchell2018never} extracts text from web pages to learn candidate beliefs, and NEIL~\cite{chen2013neil} uses images downloaded from Google Image Search to learn visual concepts.
+However, both methods are undirected (i.e., they do not modify their exploration behavior to prioritize specific data), which means that learning proceeds slowly.\@ \citet{kamath2022webly} improves a visual question-answering model using a set of predetermined Bing queries. In contrast to these works, Internet Explorer uses targeted exploration on the open web to find data for self-supervised training. 
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "../thesis"
+%%% End:

@@ -8,6 +8,7 @@
 
 \input{sections/packages}
 \input{sections/macros}
+\input{sections/defs}
 
 \draftstamp{\today}{DRAFT}
 
@@ -16,7 +17,7 @@
 
 \pagestyle{empty}
 
-\title{{\bf Online Representation Learning on the Open Web}}
+\title{{\bf Online Representation Learning\\ on the Open Web}}
 \author{Ellis L. Brown, II}
 \date{May 2023}
 \Year{2023}
@@ -63,17 +64,11 @@
 \mainmatter
 
 \include{sections/intro}
-\include{sections/background}
-
-\part{Foundations}
-\include{sections/optnet}
-\include{sections/icnn}
-
-\part{Extensions and Applications}
-\include{sections/cvxpyth}
-
-\part{Conclusions and Future Directions}
+\include{sections/method}
+\include{sections/experiments}
+\include{sections/results}
 \include{sections/conclusions}
+\include{sections/appendix}
 
 \chapter*{Bibliography}
 \addcontentsline{toc}{chapter}{Bibliography}

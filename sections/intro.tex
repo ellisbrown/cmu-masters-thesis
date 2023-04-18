@@ -1,250 +1,71 @@
 \chapter{Introduction}
-The field of machine learning has grown rapidly over the past few
-years and has a growing set of well-defined and
-well-understood operations and paradigms that allow
-a practitioner to inject domain
-knowledge into the modeling procedure.
-These operations include linear maps, convolutions,
-activation functions, random sampling, and
-simple projections (e.g.~onto the simplex or Birkhoff polytope).
-In addition to these layers, the practitioner can also
-inject domain knowledge at a higher-level of
-how modeling components interact.
-Paradigms are becoming well-established for modeling
-images, videos, audio, sequences, permutations, and graphs,
-among others.
-This thesis proposes a new set of primitive operations and
-paradigms based on optimization that allow the practitioner
-to inject specialized domain knowledge into the modeling procedure.
 
-Optimization plays a large role in machine learning for
-parameter optimization or architecture search.
-In this thesis, we argue that optimization should have a third
-role in machine learning separate from these two,
-that it can be used as a modeling tool inside of
-the inference procedure.
-Optimization is a powerful modeling tool and as we show in
-\cref{sec:bg:existing}, many of the standard operations such
-as the ReLU, sigmoid, and softmax can all be interpreted
-as explicit closed-form solutions to constrained convex
-optimization problems.
-We also highlight in \cref{sec:bg:ff-energy} that the standard
-feedforward supervised learning setup can be captured
-by an energy-based optimization problem.
-Thus these techniques are captured as special cases of the
-general optimization-based modeling methods we study in
-this thesis that don't necessarily have explicit
-closed-form solutions.
-This generalization adds new modeling capabilities that
-were not possible before and enables new ways that
-practitioners can inject domain knowledge into the models.
+Suppose you have a small dataset and need to train a model for some task, say classification.
+% How would you go about doing it?
+A pipeline that has become standard today is to download the latest pre-trained deep network and fine-tune it on your own small dataset. This pre-trained model used to be ImageNet-based~\cite{deng2009imagenet,he2016deep} and now would probably be CLIP~\cite{radford2021learning}. The implicit goal set by the community for such pre-trained models is that they should transfer well to any kind of downstream task not known in advance. This has led to a race to build ultra-large-scale models in terms of computation, model size, and dataset size. But is this goal of building an ``omniscient'' pre-trained model that can work on any future downstream task even feasible? Perhaps not because our world is continually changing.
+Although the size of the pretraining datasets has grown from 1.2M~~\cite{deng2009imagenet} to 400M~\cite{schuhmann2021laion} images, what has not changed at all is their nature: these datasets are curated, and, more importantly, \textit{\textbf{static}}. For instance, the portion of ImageNet curated before 2007 has no idea what an iPhone is.
+% "static": Jason, to me, this is the most important part of the motivation. size of the dataset is not that important since we already have such big datasets that we only train 1-2 epochs on. the main issue with these datasets is that they are fixed in time. ontologies change rapidly (eg new products come out), category meanings might change (eg what a smartphone looks like is different in 2023 vs 2013), new words may even develop (eg slay). I think the focus should be on training a static dataset by design will produce an outdated model. this isn't really mentioned until paragraph 2 and stays kinda vague
+Furthermore, although a few hundred million images represent a staggering quantity of visual data, they are minuscule compared to the entire Internet, where billions of new photos are uploaded every day.
+% , continuously updating with an incredible diversity of real-world objects and scenes.
+Thus, current static datasets, however big they become,
+% , are minuscule compared to the entire Internet, where billions of new photos are uploaded every day. They
+fail to capture the richness and dynamic nature of the data available on the Internet.
+% Not to mention the issue that the bigger we make our static pre-training datasets, the more compute burden they entail.
+% that the compute scales with the size of the dataset as well.
+Moreover, as our static datasets grow, they require increasingly inaccessible amounts of compute.
 
-From an optimization viewpoint, the techniques we propose
-in this thesis can be used for partial modeling of
-optimization problems.
-Traditionally a modeler needs to have a complete analytic view
-of their system if they want to use optimization to solve
-their problem, such as in many control, planning, and scheduling tasks.
-The techniques in this thesis lets the practitioner
-leave latent parts in their optimization-based modeling
-procedure that can then be learned from data.
+% So the ``big data'' in machine learning is easily dwarfed by the data generated collectively by the world. Furthermore, the bigger we make our static pre-training datasets, the more compute burden they entail: e.g., CLIP is trained on 256 GPUs for 12 days. 
+% This begs the question: \textit{are static datasets, as big as they are, ever going to truly scale to capture the richness and dynamic nature of the data available on the Internet? }
+% This begs the question: \textit{will static datasets, however big they become, ever truly scale to capture the richness and dynamic nature of the data available on the Internet? }
+% We suspect that the answer is no, so what could be the alternative? % want to remove this sentence
 
-\section{Summary of research contributions}
-The first portion of this thesis presents foundational
-modeling techniques that use optimization-based modeling:
-\begin{itemize}
-\item \cref{sec:optnet} presents the \emph{OptNet} architecture
-  that shows how to use constrained convex optimization
-  as a layer in an end-to-end architecture.
-  \begin{itemize}
-  \item \cref{sec:optnet:formulation} presents the
-    formulation of these architectures and shows how
-    backpropagation can be done in them by
-    implicitly differentiating the KKT conditions.
-  \item \cref{sec:optnet:rep-power} studies the
-    representational power of these architectures and proves
-    how they can represent any piecewise linear function
-    including the ReLU.
-  \item \cref{sec:optnet:qp-solver} presents our
-    efficient QP solver for these layers and
-    \cref{sec:optnet:qp-solver-grads}
-    shows how we can compute the backwards pass with
-    almost no computational overhead.
-  \item \cref{sec:icnn:exp} shows empirical results
-    that uses OptNet for a synthetic denoising task
-    and to learn the rules of the Sudoku game.
-  \end{itemize}
-\item \cref{sec:icnn} presents the \emph{input-convex neural
-  network} architecture.
-  \begin{itemize}
-  \item \cref{sec:icnn:inf} discusses efficient inference
-    techniques for these architectures.
-    We propose a new inference technique called the Bundle-Entropy
-    method in \cref{sec:icnn:inf:be}.
-  \item \cref{sec:icnn:learning} discusses efficient
-    learning techniques for these architecture.
-  \item \cref{sec:icnn:exps} shows empirical results applying
-    ICNNs to structured prediction, data imputation, and
-    continuous-action Q learning.
-  \end{itemize}
-\end{itemize}
+\begin{figure}[t]
+    \centering
+    % \includegraphics{figures/fig1-cvpr-2022v3.pdf}
+    \includegraphics[width=0.8\linewidth]{figures/teaser2.pdf}
+    % \includegraphics[width=\linewidth]{figures/alex.pdf}
+    \caption{Given unlabeled data for a target task, our approach, Internet Explorer, searches the Internet to progressively find more and more relevant training data via self-supervised exploration.}
+    \label{fig:teaser}
+    % \vspace{-0.1in}
+    \vspace{-0.15in}
+\end{figure}
 
-\vspace{4mm}
-The remaining portions discuss applications and
-extensions of OptNet.
-\begin{itemize}
-\item \cref{sec:empc} presents our
-  \emph{differentiable model predictive control} (MPC) work
-  as a step towards leveraging MPC as a differentiable
-  policy class for reinforcement learning in continuous
-  state-action spaces.
-  \begin{itemize}
-  \item \cref{sec:empc:diff-lqr} shows how to efficiently
-    differentiate through the Linear Quadratic Regulator (LQR)
-    by solving another LQR problem.
-    This result comes from implicitly differentiating the KKT
-    conditions of LQR and interpreting the resulting system
-    as solving another LQR problem.
-  \item \cref{sec:empc:diff-mpc} shows how to differentiate
-    through non-convex MPC problems by differentiating through the
-    fixed point obtained when solving the MPC problem with
-    sequential quadratic programming (SQP).
-  \item \cref{sec:empc:exps} shows our empirical results
-    using imitation learning in the pendulum and cartpole
-    environments.
-    Notably, we show why doing end-to-end learning with
-    a controller is important in tasks when the expert
-    is non-realizable.
-  \end{itemize}
-  \newpage
-\item \cref{sec:lml} presents the Limited Multi-Layer Projection
-  (LML) layer for top-$k$ learning problems.
-  \begin{itemize}
-  \item \cref{sec:lml:lml} introduces the LML projection problem
-    that we study.
-  \item \cref{sec:lml:lml:efficient} shows how to efficiently
-    solve the LML projection problem by solving the dual
-    with a parallel bracketed root-finding method.
-  \item \cref{sec:lml:topk} presents how to maximize
-    the top-$k$ recall with the LML layer.
-  \item \cref{sec:lml:ex} shows our empirical results on
-    top-$k$ image classification and scene graph generation.
-  \end{itemize}
-\item \cref{sec:cvxpyth} shows how to make differentiable
-  \cvxpy optimization layers by differentiating through
-  the internal transformations and internal cone program solver.
-  This enables rapid prototyping of all of the convex
-  optimization-based modeling methods we consider in this thesis.
-  \begin{itemize}
-  \item \cref{sec:cvxpyth:diff-cp} shows how to differentiate
-    cone programs (including non-polyhedral cone programs)
-    by implicitly differentiating the residual map of
-    Minty's parameterization of the homogeneous
-    self-dual embedding.
-  \item \cref{sec:cvxpyth:examples} shows examples of using our
-    package to implement optimization layers for
-    the ReLU, sigmoid, softmax; projections onto polyhedral
-    and ellipsoidal sets; and the OptNet QP.
-  \end{itemize}
-\end{itemize}
+In this thesis, we rethink the idea of a \textit{\textbf{generic}} large-scale pretrained model and propose an alternate paradigm of training a rather small-scale but up-to-date model geared towards the \textit{\textbf{specific}} downstream task of interest. To train such a model, we go beyond static datasets and \textit{treat the Internet itself as a dynamic, open-ended dataset}. Unlike conventional datasets, which are expensive to increase and grow stale with time,
+%are prone to bias, and yield suboptimal transfer performance when they contain little relevant data to the downstream task. 
+the Internet is dynamic, rich, grows automatically, and is always up to date.
+Its continuously evolving nature also means we cannot hope to ever download it or train a model, whether large or small, on all of it.
+% But thinking pragmatically, do we even need to do so? Perhaps not.
 
-\newpage
-\section{Summary of open source contributions}
-The code and experiments developed for this thesis
-are free and open-source:
+We propose that the Internet can be treated as a special kind of dataset---one that exists out there, ready to be queried as needed to quickly train a customized model for a desired task.
+% However, the issue is that the Internet is too big, and finding relevant images that help improve performance on a target dataset is a challenging endeavor.
+We draw an analogy to reinforcement learning, where even though the task is known, finding a policy that can generate the desired behavior is non-trivial due to the high complexity of the state space. Hence, most approaches rely on some form of exploration to figure out what actions the agent should take so that it quickly finds high-reward states. Inspired by this analogy, we formulate a disembodied, online agent we call {\em Internet Explorer}, that actively searches the Internet using standard search engines to find relevant visual data that improve feature quality on a target dataset (see \cref{fig:teaser}). The agent's actions are text queries made to search engines, and the observations are the data obtained from the search.
 
-\begin{itemize}
-\item \url{https://github.com/locuslab/icnn}:
-  TensorFlow experiments for the input-convex neural networks
-  work presented in \cref{sec:icnn}.
-\item \url{https://locuslab.github.io/qpth/} and
-  \url{https://github.com/locuslab/qpth}:
-  A stand-alone PyTorch library for the OptNet QP layers presented
-  in \cref{sec:optnet}.
-\item \url{https://github.com/locuslab/optnet}:
-  PyTorch experiments for the OptNet work
-  presented in \cref{sec:optnet}.
-\item \url{https://locuslab.github.io/mpc.pytorch}
-  and \url{https://github.com/locuslab/mpc.pytorch}:
-  A stand-alone PyTorch library for the differentiable
-  model predictive control approach presented in
-  \cref{sec:empc}.
-\item \url{https://github.com/locuslab/differentiable-mpc}:
-  PyTorch experiments for the differentiable MPC work
-  presented in \cref{sec:empc}.
-\end{itemize}
+The queries made by Internet Explorer improve over time. It cycles between searching for images on the Internet with text queries, self-supervised training on downloaded images, determining which images are relevant to the target dataset, and prioritizing what to search for next (see \cref{fig:method}). We also bootstrap Internet Explorer using existing pre-trained models such as MoCov3~\cite{he2020momentum} and obtain a significant boost on the target datasets.
 
-\vspace{5mm}
-\noindent
-I have also created the following open source
-projects during my Ph.D.:
-\begin{itemize}
-\item \url{https://github.com/bamos/block}:
-  An intelligent block matrix library for numpy, PyTorch, and beyond.
-\item \url{https://github.com/bamos/dcgan-completion.tensorflow}:
-  Image Completion with Deep Learning in TensorFlow.
-\item \url{https://github.com/cmusatyalab/openface}:
-  Face recognition with deep neural networks.
-\item \url{https://github.com/bamos/densenet.pytorch}:
-  A PyTorch implementation of DenseNet.
-\end{itemize}
+Our setting is different from active learning~\cite{settles2009active}, where the goal is to selectively obtain labels for data points from a fixed dataset. In contrast, Internet Explorer continually expands the size of its dataset and requires no labels for training, even from the target dataset.
+% However, we also show results in settings when the label set of the target dataset (not individual labels) are known.
+Some prior works have also discussed ways to leverage the Internet as an additional source of data. NELL~\cite{carlson2010toward} proposed a way to continually scrape web pages to learn new concepts and relationships, which are periodically curated by a human in the loop. NEIL~\cite{chen2013neil} builds on the dictionary developed by NELL to search visual data to develop visual relationships. Both are semi-supervised methods to gather general ``common-sense'' knowledge from the Internet. In contrast, we perform an actively improving \textit{directed} search to perform well on target data, in a fully self-supervised manner. Recent work~\cite{jiang2021improving} follows a similar setting but searches a static dataset and not the Internet.
 
-\newpage
-\section{Summary of publications}
-\newcommand{\fcite}[1]{
-  \begin{leftbar}
-  \begin{quote}%
-    \citep{#1} \fullcite{#1}
-  \end{quote}
-  \end{leftbar}}
+We evaluate Internet Explorer across 5 datasets, including 4 fine-grained datasets and PASCAL VOC.
+% For simplicity, the search engine used is Google, but the method itself can work by searching on just image tags/captions as well.
+We search for relevant images using Google; however, the method is compatible with any text-based search engine or even a static dataset (see \cref{subsec:search_engine_main}).
+% \todo{prev sentence is out of date. mention laion / flickr}
+We compare against several strong baselines, including CLIP, on downstream tasks. Note that CLIP acts as an oracle for our approach because it has likely already seen all or more queries that Internet Explorer makes.
+In most scenarios, Internet Explorer either outperforms or matches CLIP oracle using only a single 3090 GPU desktop machine that runs for 30--40 hours, makes over 10K progressively improving queries, and downloads over 1M relevant Internet images for each target dataset.
 
-\noindent The content of \cref{sec:optnet} appears in:
-\fcite{amos2017optnet}
-\vspace{5mm}
 
-\noindent The content of \cref{sec:icnn} appears in:
-\fcite{amos2017input}
-\vspace{5mm}
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.85\linewidth]{figures/method_fig2.pdf}
+    \caption{\textbf{Overview of Internet Explorer.} Our goal is to efficiently search the Internet for images that improve our performance on a target dataset.
+        % In each iteration, we generate text queries by combining a concept sampled from a learned distribution with a GPT-generated descriptor. We query Google Images with the resulting phrase and download the top 100 image results. We add these images to the set of previously downloaded images and perform self-supervised learning on the combined dataset. 
+        % Finally, we evaluate the relevance of the new images and increase the likelihood of the query and other related queries if the new images are similar to the target dataset.
+        In each iteration, we first generate text queries by combining a concept sampled from a learned distribution with a GPT-generated descriptor (\S\ref{subsec:text_query_generation}, \ref{subsec:tiering}). Next, we query search engines with the resulting phrase and download the top 100 image results (\S\ref{subsec:text_to_image_search}, \ref{subsec:search_engine_main}). We add these images to the set of previously downloaded images and perform self-supervised training on the combined dataset (\S\ref{subsec:ssl}). Finally, we evaluate the relevance of the new images and update our concept distribution to increase the likelihood of similar queries if their images were similar to the target dataset (\S\ref{subsec:image_rel_reward},~\ref{subsec:unseen_reward}).
+    }
+    \label{fig:method}
+    \vspace{-1em}
+\end{figure}
 
-\noindent The content of \cref{sec:empc} appears in:
-\fcite{amos2018differentiable}
-\vspace{5mm}
-
-\noindent
-\textbf{Non-thesis research:}
-I have also pursued the following research
-directions during my Ph.D.~studies.
-These are excluded from the remainder of this thesis.
-
-\begin{leftbar}
-\begin{quote}%
-  \citep{amos2018learning} \fullcite{amos2018learning} \\[5mm]
-  \citep{amos2016openface} \fullcite{amos2016openface} \\
-  \textbf{Available online at:}
-  \url{https://cmusatyalab.github.io/openface} \\
-\end{quote}
-\end{leftbar}
-
-\vspace{7mm}
-\noindent
-I have also contributed to the following
-publications as a non-primary author.
-
-\begin{leftbar}
-\begin{quote}%
-  \fullcite{donti2017task} \\[5mm]
-  \fullcite{zhao2016collapsed} \\[5mm]
-  \fullcite{chen2017empirical} \\[5mm]
-  \fullcite{chen2015early} \\[5mm]
-  \fullcite{davies2016privacy} \\[5mm]
-  \fullcite{wang2017scalable} \\[5mm]
-  \fullcite{hu2014case} \\[5mm]
-  \fullcite{satyanarayanan2015edge} \\[5mm]
-  \fullcite{gao2015cloudlets} \\[5mm]
-  \fullcite{ha2017you} \\[5mm]
-  \fullcite{hu2016quantifying}
-\end{quote}
-\end{leftbar}
 
 %%% Local Variables:
 %%% coding: utf-8

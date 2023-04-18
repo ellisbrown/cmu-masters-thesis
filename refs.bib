@@ -1,8 +1,1537 @@
+% SSL methods  
+% context encoder, cpc, simclr, moco, byol, simsiam, vicreg, barlow twins
+@string{ICCV="ICCV"}
+@string{CVPR="CVPR"}
+@string{NIPS="NeurIPS"}
+@string{WACV="WACV"}
+@string{ECCV="ECCV"}
+@string{ICML="ICML"}
+@string{ICLR="ICLR"}
+@string{ICASSP="ICASSP"}
+@string{AISTATS="AISTATS"}
+@string{IJCV="IJCV"}
+@string{CIVR="CIVR"}
+
+@article{chen2020unsupervised,
+  title   = {Unsupervised Image Classification for Deep Representation Learning},
+  author  = {Chen, Weijie and Pu, Shiliang and Xie, Di and Yang, Shicai and Guo, Yilu and Lin, Luojun},
+  journal = {arXiv preprint arXiv:2006.11480},
+  year    = {2020}
+}
+
+@article{bromley1993signature,
+  title   = {Signature verification using a" siamese" time delay neural network},
+  author  = {Bromley, Jane and Guyon, Isabelle and LeCun, Yann and S{\"a}ckinger, Eduard and Shah, Roopak},
+  journal = {Advances in neural information processing systems},
+  volume  = {6},
+  year    = {1993}
+}
+
+@article{shen2021s2,
+  title   = {S2-BNN: Bridging the Gap Between Self-Supervised Real and 1-bit Neural Networks via Guided Distribution Calibration},
+  author  = {Shen, Zhiqiang and Liu, Zechun and Qin, Jie and Huang, Lei and Cheng, Kwang-Ting and Savvides, Marios},
+  journal = {arXiv preprint arXiv:2102.08946},
+  year    = {2021}
+}
+
+@inproceedings{gidaris2020learning,
+  title     = {Learning representations by predicting bags of visual words},
+  author    = {Gidaris, Spyros and Bursuc, Andrei and Komodakis, Nikos and P{\'e}rez, Patrick and Cord, Matthieu},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@article{junnan2021prototypical,
+  title   = {Prototypical Contrastive Learning of Unsupervised Representations},
+  author  = {Junnan Li and Pan Zhou and Caiming Xiong and Steven C.H. Hoi},
+  journal = ICLR,
+  year    = {2021}
+}
+
+@inproceedings{noroozi2018boosting,
+  title     = {Boosting self-supervised learning via knowledge transfer},
+  author    = {Noroozi, Mehdi and Vinjimoor, Ananth and Favaro, Paolo and Pirsiavash, Hamed},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@inproceedings{fang2021seed,
+  title   = {SEED: Self-supervised Distillation For Visual Representation},
+  author  = {Fang, Zhiyuan and Wang, Jianfeng and Wang, Lijuan and Zhang, Lei and Yang, Yezhou and Liu, Zicheng},
+  journal = ICLR,
+  year    = {2021}
+}
+
+@article{xu2021seed,
+  title   = {Seed the Views: Hierarchical Semantic Alignment for Contrastive Representation Learning},
+  author  = {Xu, Haohang and Zhang, Xiaopeng and Li, Hao and Xie, Lingxi and Xiong, Hongkai and Tian, Qi},
+  journal = {arXiv preprint arXiv:2012.02733},
+  year    = {2021}
+}
+
+@article{radenovic2018fine,
+  title   = {Fine-tuning CNN image retrieval with no human annotation},
+  author  = {Radenovi{\'c}, Filip and Tolias, Giorgos and Chum, Ond{\v{r}}ej},
+  journal = {IEEE transactions on pattern analysis and machine intelligence},
+  year    = {2018}
+}
+
+@article{gidaris2020obow,
+  title   = {Online Bag-of-Visual-Words Generation for Unsupervised Representation Learning},
+  author  = {Gidaris, Spyros and Bursuc, Andrei and Puy, Gilles and Komodakis, Nikos and Cord, Matthieu and P{\'e}rez, Patrick},
+  journal = {arXiv preprint arXiv:2012.11552},
+  year    = {2020}
+}
+
+@article{berman2019multigrain,
+  title   = {{{MultiGrain}: a unified image embedding for classes and instances}},
+  author  = {Berman, Maxim and J{\'e}gou, Herv{\'e} and Vedaldi Andrea and Kokkinos, Iasonas and Douze, Matthijs},
+  journal = {arXiv preprint arXiv:1902.05509},
+  year    = {2019}
+}
+
+@article{thomee2015yfcc100m,
+  title   = {YFCC100M: The new data in multimedia research},
+  author  = {Thomee, Bart and Shamma, David A and Friedland, Gerald and Elizalde, Benjamin and Ni, Karl and Poland, Douglas and Borth, Damian and Li, Li-Jia},
+  journal = {arXiv preprint arXiv:1503.01817},
+  year    = {2015}
+}
+
+@inproceedings{douze2009evaluation,
+  title     = {Evaluation of gist descriptors for web-scale image search},
+  author    = {Douze, Matthijs and J{\'e}gou, Herv{\'e} and Sandhawalia, Harsimrat and Amsaleg, Laurent and Schmid, Cordelia},
+  booktitle = CIVR,
+  year      = {2009}
+}
+
+@article{sariyildiz2020concept,
+  title   = {Concept generalization in visual representation learning},
+  author  = {Sariyildiz, Mert Bulent and Kalantidis, Yannis and Larlus, Diane and Alahari, Karteek},
+  journal = {arXiv preprint arXiv:2012.05649},
+  year    = {2020}
+}
+
+@article{tolias2015particular,
+  title   = {Particular object retrieval with integral max-pooling of CNN activations},
+  author  = {Tolias, Giorgos and Sicre, Ronan and J{\'e}gou, Herv{\'e}},
+  journal = {arXiv preprint arXiv:1511.05879},
+  year    = {2015}
+}
+
+@inproceedings{revaud2019learning,
+  title     = {Learning with average precision: Training image retrieval with a listwise loss},
+  author    = {Revaud, Jerome and Almaz{\'a}n, Jon and Rezende, Rafael S and Souza, Cesar Roberto de},
+  booktitle = ICCV,
+  year      = {2019}
+}
+
+@article{weyand2020google,
+  title     = {Google landmarks dataset v2-a large-scale benchmark for instance-level recognition and retrieval},
+  author    = {Weyand, Tobias and Araujo, Andre and Cao, Bingyi and Sim, Jack},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{philbin2008lost,
+  title     = {Lost in quantization: Improving particular object retrieval in large scale image databases},
+  author    = {Philbin, James and Chum, Ondrej and Isard, Michael and Sivic, Josef and Zisserman, Andrew},
+  booktitle = CVPR,
+  year      = {2008}
+}
+
+@article{radenovic2018revisiting,
+  title     = {Revisiting oxford and paris: Large-scale image retrieval benchmarking},
+  author    = {Radenovi{\'c}, Filip and Iscen, Ahmet and Tolias, Giorgos and Avrithis, Yannis and Chum, Ond{\v{r}}ej},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@article{pinheiro2020unsupervised,
+  title     = {Unsupervised Learning of Dense Visual Representations},
+  author    = {Pinheiro, Pedro O and Almahairi, Amjad and Benmaleck, Ryan Y and Golemo, Florian and Courville, Aaron},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@article{jabri2020space,
+  title     = {Space-time correspondence as a contrastive random walk},
+  author    = {Jabri, Allan and Owens, Andrew and Efros, Alexei A},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@article{polyak1992acceleration,
+  title     = {Acceleration of stochastic approximation by averaging},
+  author    = {Polyak, Boris T and Juditsky, Anatoli B},
+  journal   = {SIAM journal on control and optimization},
+  volume    = {30},
+  number    = {4},
+  pages     = {838--855},
+  year      = {1992},
+  publisher = {SIAM}
+}
+
+@inproceedings{asano2019self,
+  title     = {Self-labelling via simultaneous clustering and representation learning},
+  author    = {Asano, Yuki Markus and Rupprecht, Christian and Vedaldi, Andrea},
+  booktitle = ICLR,
+  year      = {2020}
+}
+
+@inproceedings{caron2018deep,
+  title     = {Deep clustering for unsupervised learning of visual features},
+  author    = {Caron, Mathilde and Bojanowski, Piotr and Joulin, Armand and Douze, Matthijs},
+  booktitle = ECCV,
+  year      = {2018}
+}
+
+@inproceedings{wang2015unsupervised,
+  title     = {Unsupervised learning of visual representations using videos},
+  author    = {Wang, Xiaolong and Gupta, Abhinav},
+  booktitle = {Proceedings of the IEEE international conference on computer vision},
+  pages     = {2794--2802},
+  year      = {2015}
+}
+
+@inproceedings{wu2018unsupervised,
+  title     = {Unsupervised feature learning via non-parametric instance discrimination},
+  author    = {Wu, Zhirong and Xiong, Yuanjun and Yu, Stella X and Lin, Dahua},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@inproceedings{caron2019unsupervised,
+  title     = {Unsupervised pre-training of image features on non-curated data},
+  author    = {Caron, Mathilde and Bojanowski, Piotr and Mairal, Julien and Joulin, Armand},
+  booktitle = ICCV,
+  year      = {2019}
+}
+
+@inproceedings{lin2014microsoft,
+  title     = {Microsoft coco: Common objects in context},
+  author    = {Lin, Tsung-Yi and Maire, Michael and Belongie, Serge and Hays, James and Perona, Pietro and Ramanan, Deva and Doll{\'a}r, Piotr and Zitnick, C Lawrence},
+  booktitle = ECCV,
+  year      = {2014}
+}
+
+@inproceedings{he2017mask,
+  title     = {Mask r-cnn},
+  author    = {He, Kaiming and Gkioxari, Georgia and Doll{\'a}r, Piotr and Girshick, Ross},
+  booktitle = ICCV,
+  year      = {2017}
+}
+
+@article{you2017large,
+  title   = {Large Batch Training of Convolutional Networks},
+  author  = {Yang You and Igor Gitman and Boris Ginsburg},
+  journal = {preprint arXiv:1708.03888},
+  year    = {2017}
+}
+
+@article{mairal2019cyanure,
+  title   = {Cyanure: An Open-Source Toolbox for Empirical Risk Minimization for Python, C++, and soon more},
+  author  = {Julien Mairal},
+  journal = {preprint arXiv:1912.08165},
+  year    = {2019}
+}
+
+@inproceedings{touvron2019fixing,
+  title     = {Fixing the train-test resolution discrepancy},
+  author    = {Touvron, Hugo and Vedaldi, Andrea and Douze, Matthijs and J{\'e}gou, Herv{\'e}},
+  booktitle = NIPS,
+  year      = {2019}
+}
+
+
+@inproceedings{he2020momentum,
+  title     = {Momentum contrast for unsupervised visual representation learning},
+  author    = {He, Kaiming and Fan, Haoqi and Wu, Yuxin and Xie, Saining and Girshick, Ross},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{misra2020self,
+  title     = {Self-supervised learning of pretext-invariant representations},
+  author    = {Misra, Ishan and Maaten, Laurens van der},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{miech2020end,
+  title     = {End-to-end learning of visual representations from uncurated instructional videos},
+  author    = {Miech, Antoine and Alayrac, Jean-Baptiste and Smaira, Lucas and Laptev, Ivan and Sivic, Josef and Zisserman, Andrew},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{yan2020clusterfit,
+  title     = {ClusterFit: Improving Generalization of Visual Representations},
+  author    = {Yan, Xueting and Misra, Ishan and Gupta, Abhinav and Ghadiyaram, Deepti and Mahajan, Dhruv},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{mahajan2018exploring,
+  title     = {Exploring the limits of weakly supervised pretraining},
+  author    = {Mahajan, Dhruv and Girshick, Ross and Ramanathan, Vignesh and He, Kaiming and Paluri, Manohar and Li, Yixuan and Bharambe, Ashwin and van der Maaten, Laurens},
+  booktitle = ECCV,
+  year      = {2018}
+}
+
+@inproceedings{joulin2016learning,
+  title     = {Learning visual features from large weakly supervised data},
+  author    = {Joulin, Armand and Van Der Maaten, Laurens and Jabri, Allan and Vasilache, Nicolas},
+  booktitle = ECCV,
+  year      = {2016}
+}
+
+@article{chen2020simple,
+  title   = {A simple framework for contrastive learning of visual representations},
+  author  = {Chen, Ting and Kornblith, Simon and Norouzi, Mohammad and Hinton, Geoffrey},
+  journal = {preprint arXiv:2002.05709},
+  year    = {2020}
+}
+
+@inproceedings{grill2020bootstrap,
+  title     = {Bootstrap your own latent: A new approach to self-supervised learning},
+  author    = {Grill, Jean-Bastien and Strub, Florian and Altch{\'e}, Florent and Tallec, Corentin and Richemond, Pierre H and Buchatskaya, Elena and Doersch, Carl and Pires, Bernardo Avila and Guo, Zhaohan Daniel and Azar, Mohammad Gheshlaghi and Piot, Bilal and Kavukcuoglu, Koray and Munos, Rémi and Valko, Michal},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@inproceedings{caron2020unsupervised,
+  title     = {Unsupervised learning of visual features by contrasting cluster assignments},
+  author    = {Caron, Mathilde and Misra, Ishan and Mairal, Julien and Goyal, Priya and Bojanowski, Piotr and Joulin, Armand},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@inproceedings{oyallon2017scaling,
+  title     = {Scaling the scattering transform: Deep hybrid networks},
+  author    = {Oyallon, Edouard and Belilovsky, Eugene and Zagoruyko, Sergey},
+  booktitle = ICCV,
+  year      = {2017}
+}
+
+@inproceedings{bojanowski2017unsupervised,
+  title     = {Unsupervised learning by predicting Noise},
+  author    = {Bojanowski, Piotr and Joulin, Armand},
+  booktitle = ICML,
+  year      = {2017}
+}
+
+@article{radford2019language,
+  title  = {Language models are unsupervised multitask learners},
+  author = {Radford, Alec and Wu, Jeffrey and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya}
+}
+
+@article{devlin2018bert,
+  title   = {Bert: Pre-training of deep bidirectional transformers for language understanding},
+  author  = {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
+  journal = {preprint arXiv:1810.04805},
+  year    = {2018}
+}
+
+@article{schneider2019wav2vec,
+  title   = {wav2vec: Unsupervised pre-training for speech recognition},
+  author  = {Schneider, Steffen and Baevski, Alexei and Collobert, Ronan and Auli, Michael},
+  journal = {preprint arXiv:1904.05862},
+  year    = {2019}
+}
+
+@inproceedings{riviere2020unsupervised,
+  title     = {Unsupervised pretraining transfers well across languages},
+  author    = {Rivi{\`e}re, Morgane and Joulin, Armand and Mazar{\'e}, Pierre-Emmanuel and Dupoux, Emmanuel},
+  booktitle = ICASSP,
+  year      = {2020}
+}
+
+@inproceedings{baevski2020wav2vec,
+  title     = {wav2vec 2.0: A framework for self-supervised learning of speech representations},
+  author    = {Baevski, Alexei and Zhou, Henry and Mohamed, Abdelrahman and Auli, Michael},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@inproceedings{kahn2020libri,
+  title     = {Libri-light: A benchmark for asr with limited or no supervision},
+  author    = {Kahn, Jacob and Rivi{\`e}re, Morgane and Zheng, Weiyi and Kharitonov, Evgeny and Xu, Qiantong and Mazar{\'e}, Pierre-Emmanuel and Karadayi, Julien and Liptchinsky, Vitaliy and Collobert, Ronan and Fuegen, Christian and others},
+  booktitle = ICASSP,
+  year      = {2020}
+}
+
+@inproceedings{pathak2017learning,
+  title     = {Learning features by watching objects move},
+  author    = {Pathak, Deepak and Girshick, Ross and Doll{\'a}r, Piotr and Darrell, Trevor and Hariharan, Bharath},
+  booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages     = {2701--2710},
+  year      = {2017}
+}
+
+@inproceedings{noroozi2016unsupervised,
+  title        = {Unsupervised learning of visual representations by solving jigsaw puzzles},
+  author       = {Noroozi, Mehdi and Favaro, Paolo},
+  booktitle    = {European conference on computer vision},
+  pages        = {69--84},
+  year         = {2016},
+  organization = {Springer}
+}
+
+@article{he2021masked,
+  title   = {Masked autoencoders are scalable vision learners},
+  author  = {He, Kaiming and Chen, Xinlei and Xie, Saining and Li, Yanghao and Doll{\'a}r, Piotr and Girshick, Ross},
+  journal = {arXiv preprint arXiv:2111.06377},
+  year    = {2021}
+}
+
+@article{brown2020language,
+  title   = {Language models are few-shot learners},
+  author  = {Brown, Tom B and Mann, Benjamin and Ryder, Nick and Subbiah, Melanie and Kaplan, Jared and Dhariwal, Prafulla and Neelakantan, Arvind and Shyam, Pranav and Sastry, Girish and Askell, Amanda and others},
+  journal = {preprint arXiv:2005.14165},
+  year    = {2020}
+}
+
+@article{raffel2019exploring,
+  title   = {Exploring the limits of transfer learning with a unified text-to-text transformer},
+  author  = {Raffel, Colin and Shazeer, Noam and Roberts, Adam and Lee, Katherine and Narang, Sharan and Matena, Michael and Zhou, Yanqi and Li, Wei and Liu, Peter J},
+  journal = {preprint arXiv:1910.10683},
+  year    = {2019}
+}
+
+@article{henaff2019data,
+  title   = {Data-efficient image recognition with contrastive predictive coding},
+  author  = {H{\'e}naff, Olivier J and Srinivas, Aravind and De Fauw, Jeffrey and Razavi, Ali and Doersch, Carl and Eslami, SM and Oord, Aaron van den},
+  journal = {preprint arXiv:1905.09272},
+  year    = {2019}
+}
+
+@inproceedings{kolesnikov2019big,
+  title     = {Big transfer (BiT): General visual representation learning},
+  author    = {Kolesnikov, Alexander and Beyer, Lucas and Zhai, Xiaohua and Puigcerver, Joan and Yung, Jessica and Gelly, Sylvain and Houlsby, Neil},
+  booktitle = ECCV,
+  year      = {2020}
+}
+
+@inproceedings{kolesnikov2019revisiting,
+  title     = {Revisiting self-supervised visual representation learning},
+  author    = {Kolesnikov, Alexander and Zhai, Xiaohua and Beyer, Lucas},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+@inproceedings{he2016deep,
+  title     = {Deep residual learning for image recognition},
+  author    = {He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle = CVPR,
+  year      = {2016}
+}
+
+@article{tan2019efficientnet,
+  title   = {Efficientnet: Rethinking model scaling for convolutional neural networks},
+  author  = {Tan, Mingxing and Le, Quoc V},
+  journal = {preprint arXiv:1905.11946},
+  year    = {2019}
+}
+
+@article{touvron2020fixing,
+  title   = {Fixing the train-test resolution discrepancy: FixEfficientNet},
+  author  = {Touvron, Hugo and Vedaldi, Andrea and Douze, Matthijs and J{\'e}gou, Herv{\'e}},
+  journal = {preprint arXiv:2003.08237},
+  year    = {2020}
+}
+
+@inproceedings{xie2017aggregated,
+  title     = {Aggregated residual transformations for deep neural networks},
+  author    = {Xie, Saining and Girshick, Ross and Doll{\'a}r, Piotr and Tu, Zhuowen and He, Kaiming},
+  booktitle = CVPR,
+  year      = {2017}
+}
+
+@inproceedings{xie2016unsupervised,
+  title     = {Unsupervised deep embedding for clustering analysis},
+  author    = {Xie, Junyuan and Girshick, Ross and Farhadi, Ali},
+  booktitle = ICML,
+  year      = {2016}
+}
+
+@inproceedings{yang2016joint,
+  title     = {Joint unsupervised learning of deep representations and image clusters},
+  author    = {Yang, Jianwei and Parikh, Devi and Batra, Dhruv},
+  booktitle = CVPR,
+  year      = {2016}
+}
+
+
+@inproceedings{doersch2015unsupervised,
+  title     = {Unsupervised visual representation learning by context prediction},
+  author    = {Doersch, Carl and Gupta, Abhinav and Efros, Alexei A},
+  booktitle = ICCV,
+  year      = {2015}
+}
+
+@inproceedings{vincent2008extracting,
+  author    = {P. Vincent and H. Larochelle and Y. Bengio and P.-A. Manzagol},
+  title     = {Extracting and composing robust features with denoising autoencoders},
+  booktitle = ICML,
+  year      = {2008}
+}
+
+@inproceedings{ranzato2007unsupervised,
+  author    = {Marc’Aurelio Ranzato and Fu-Jie Huang and Y-Lan Boureau and Yann LeCun},
+  title     = {Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition},
+  booktitle = CVPR,
+  year      = {2007}
+}
+
+@inproceedings{hadsell2006dimensionality,
+  title     = {Dimensionality reduction by learning an invariant mapping},
+  author    = {Hadsell, Raia and Chopra, Sumit and LeCun, Yann},
+  booktitle = CVPR,
+  year      = {2006}
+}
+
+@article{olshausen1996,
+  author  = {B. A. Olshausen and D. J. Field},
+  title   = {Emergence of simple-cell receptive field properties by learning a sparse code for natural images},
+  journal = {Nature},
+  volume  = {381},
+  number  = {6583},
+  pages   = {607},
+  year    = {1996}
+}
+
+@inproceedings{coates2011analysis,
+  title     = {An analysis of single-layer networks in unsupervised feature learning},
+  author    = {Coates, Adam and Ng, Andrew and Lee, Honglak},
+  booktitle = AISTATS,
+  year      = {2011}
+}
+
+@article{li2020prototypical,
+  title   = {Prototypical Contrastive Learning of Unsupervised Representations},
+  author  = {Li, Junnan and Zhou, Pan and Xiong, Caiming and Socher, Richard and Hoi, Steven CH},
+  journal = {preprint arXiv:2005.04966},
+  year    = {2020}
+}
+
+@article{dosovitskiy2016discriminative,
+  title   = {Discriminative unsupervised feature learning with exemplar convolutional neural networks},
+  author  = {Dosovitskiy, Alexey and Fischer, Philipp and Springenberg, Jost Tobias and Riedmiller, Martin and Brox, Thomas},
+  journal = {TPAMI},
+  year    = {2016}
+}
+
+@article{oord2018representation,
+  title   = {Representation learning with contrastive predictive coding},
+  author  = {Oord, Aaron van den and Li, Yazhe and Vinyals, Oriol},
+  journal = {preprint arXiv:1807.03748},
+  year    = {2018}
+}
+
+@article{goyal2017accurate,
+  title   = {Accurate, large minibatch sgd: Training imagenet in 1 hour},
+  author  = {Goyal, Priya and Doll{\'a}r, Piotr and Girshick, Ross and Noordhuis, Pieter and Wesolowski, Lukasz and Kyrola, Aapo and Tulloch, Andrew and Jia, Yangqing and He, Kaiming},
+  journal = {preprint arXiv:1706.02677},
+  year    = {2017}
+}
+
+@article{russakovsky2015imagenet,
+  title   = {Imagenet large scale visual recognition challenge},
+  author  = {Russakovsky, Olga and Deng, Jia and Su, Hao and Krause, Jonathan and Satheesh, Sanjeev and Ma, Sean and Huang, Zhiheng and Karpathy, Andrej and Khosla, Aditya and Bernstein, Michael and Berg, Alexander C and Fei-Fei, Li },
+  journal = IJCV,
+  year    = {2015}
+}
+
+
+@inproceedings{goyal2019scaling,
+  title     = {Scaling and benchmarking self-supervised visual representation learning},
+  author    = {Goyal, Priya and Mahajan, Dhruv and Gupta, Abhinav and Misra, Ishan},
+  booktitle = ICCV,
+  year      = {2019}
+}
+
+@article{rajbhandari2019zero,
+  author  = {Rajbhandari, Samyam and Rasley, Jeff and Ruwase, Olatunji and He, Yuxiong},
+  title   = {ZeRO: Memory Optimizations Toward Training Trillion Parameter Models},
+  journal = {preprint arXiv:1910.02054},
+  year    = {2019}
+}
+
+@article{chen2016grad,
+  author  = {Tianqi Chen and Bing Xu and Chiyuan Zhang and Carlos Guestrin},
+  title   = {Training Deep Nets with Sublinear Memory Cost},
+  journal = {preprint arXiv:1604.06174},
+  year    = {2016}
+}
+
+@inproceedings{sohn2020fixmatch,
+  title     = {Fixmatch: Simplifying semi-supervised learning with consistency and confidence},
+  author    = {Sohn, Kihyuk and Berthelot, David and Li, Chun-Liang and Zhang, Zizhao and Carlini, Nicholas and Cubuk, Ekin D and Kurakin, Alex and Zhang, Han and Raffel, Colin},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@inproceedings{chen2020big,
+  title     = {Big self-supervised models are strong semi-supervised learners},
+  author    = {Chen, Ting and Kornblith, Simon and Swersky, Kevin and Norouzi, Mohammad and Hinton, Geoffrey},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@article{xu2020self,
+  title   = {Self-training and Pre-training are Complementary for Speech Recognition},
+  author  = {Xu, Qiantong and Baevski, Alexei and Likhomanenko, Tatiana and Tomasello, Paden and Conneau, Alexis and Collobert, Ronan and Synnaeve, Gabriel and Auli, Michael},
+  journal = {preprint arXiv:2010.11430},
+  year    = {2020}
+}
+
+@article{xu2020iterative,
+  title   = {Iterative pseudo-labeling for speech recognition},
+  author  = {Xu, Qiantong and Likhomanenko, Tatiana and Kahn, Jacob and Hannun, Awni and Synnaeve, Gabriel and Collobert, Ronan},
+  journal = {preprint arXiv:2005.09267},
+  year    = {2020}
+}
+
+
+@article{french2020milking,
+  title   = {Milking CowMask for Semi-Supervised Image Classification},
+  author  = {French, Geoff and Oliver, Avital and Salimans, Tim},
+  journal = {preprint arXiv:2003.12022},
+  year    = {2020}
+}
+
+@article{dosovitskiy2020image,
+  title   = {An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale},
+  author  = {Dosovitskiy, Alexey and Beyer, Lucas and Kolesnikov, Alexander and Weissenborn, Dirk and Zhai, Xiaohua and Unterthiner, Thomas and Dehghani, Mostafa and Minderer, Matthias and Heigold, Georg and Gelly, Sylvain and others},
+  journal = {preprint arXiv:2010.11929},
+  year    = {2020}
+}
+
+@inproceedings{sun2017revisiting,
+  title     = {Revisiting unreasonable effectiveness of data in deep learning era},
+  author    = {Sun, Chen and Shrivastava, Abhinav and Singh, Saurabh and Gupta, Abhinav},
+  booktitle = ICCV,
+  year      = {2017}
+}
+
+@inproceedings{hu2018squeeze,
+  title     = {Squeeze-and-excitation networks},
+  author    = {Hu, Jie and Shen, Li and Sun, Gang},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@inproceedings{van2018inaturalist,
+  title     = {The inaturalist species classification and detection dataset},
+  author    = {Van Horn, Grant and Mac Aodha, Oisin and Song, Yang and Cui, Yin and Sun, Chen and Shepard, Alex and Adam, Hartwig and Perona, Pietro and Belongie, Serge},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@article{kuznetsova2018open,
+  title   = {The Open Images Dataset V4: Unified image classification, object detection, and visual relationship detection at scale},
+  author  = {Alina Kuznetsova and Mohamad Hassan Mohamad Rom and Neil Alldrin and Jasper Uijlings and Ivan Krasin and Jordi Pont-Tuset and Shahab Kamali and Stefan Popov and Matteo Malloci and Alexander Kolesnikov and Tom Duerig and Vittorio Ferrari},
+  journal = IJCV,
+  year    = {2020}
+}
+
+
+@inproceedings{zhou2014learning,
+  title     = {Learning deep features for scene recognition using places database},
+  author    = {Zhou, Bolei and Lapedriza, Agata and Xiao, Jianxiong and Torralba, Antonio and Oliva, Aude},
+  booktitle = NIPS,
+  year      = {2014}
+}
+
+@article{everingham2010pascal,
+  title   = {The pascal visual object classes (voc) challenge},
+  author  = {Everingham, Mark and Van Gool, Luc and Williams, Christopher KI and Winn, John and Zisserman, Andrew},
+  journal = IJCV,
+  year    = {2010}
+}
+
+@article{loshchilov2016sgdr,
+  title   = {Sgdr: Stochastic gradient descent with warm restarts},
+  author  = {Loshchilov, Ilya and Hutter, Frank},
+  journal = {preprint arXiv:1608.03983},
+  year    = {2016}
+}
+
+@article{du2020self,
+  title   = {Self-training improves pre-training for natural language understanding},
+  author  = {Du, Jingfei and Grave, Edouard and Gunel, Beliz and Chaudhary, Vishrav and Celebi, Onur and Auli, Michael and Stoyanov, Ves and Conneau, Alexis},
+  journal = {preprint arXiv:2010.02194},
+  year    = {2020}
+}
+
+@article{yalniz2019billion,
+  title   = {Billion-scale semi-supervised learning for image classification},
+  author  = {Yalniz, I Zeki and J{\'e}gou, Herv{\'e} and Chen, Kan and Paluri, Manohar and Mahajan, Dhruv},
+  journal = {preprint arXiv:1905.00546},
+  year    = {2019}
+}
+
+@article{zoph2020rethinking,
+  title   = {Rethinking pre-training and self-training},
+  author  = {Zoph, Barret and Ghiasi, Golnaz and Lin, Tsung-Yi and Cui, Yin and Liu, Hanxiao and Cubuk, Ekin D and Le, Quoc V},
+  journal = {preprint arXiv:2006.06882},
+  year    = {2020}
+}
+
+@article{zhang2020pushing,
+  title   = {Pushing the Limits of Semi-Supervised Learning for Automatic Speech Recognition},
+  author  = {Zhang, Yu and Qin, James and Park, Daniel S and Han, Wei and Chiu, Chung-Cheng and Pang, Ruoming and Le, Quoc V and Wu, Yonghui},
+  journal = {preprint arXiv:2010.10504},
+  year    = {2020}
+}
+
+@article{richemond2020byol,
+  title   = {BYOL works even without batch statistics},
+  author  = {Richemond, Pierre H and Grill, Jean-Bastien and Altch{\'e}, Florent and Tallec, Corentin and Strub, Florian and Brock, Andrew and Smith, Samuel and De, Soham and Pascanu, Razvan and Piot, Bilal and others},
+  journal = {preprint arXiv:2010.10241},
+  year    = {2020}
+}
+
+@inproceedings{bucilua2006model,
+  title     = {Model compression},
+  author    = {Buciluǎ, Cristian and Caruana, Rich and Niculescu-Mizil, Alexandru},
+  booktitle = {SIGKDD},
+  year      = {2006}
+}
+
+@article{hinton2015distilling,
+  title   = {Distilling the knowledge in a neural network},
+  author  = {Hinton, Geoffrey and Vinyals, Oriol and Dean, Jeff},
+  journal = {preprint arXiv:1503.02531},
+  year    = {2015}
+}
+
+@article{tarvainen2017mean,
+  title   = {Mean teachers are better role models: Weight-averaged consistency targets improve semi-supervised deep learning results},
+  author  = {Tarvainen, Antti and Valpola, Harri},
+  journal = {preprint arXiv:1703.01780},
+  year    = {2017}
+}
+
+@article{touvron2020training,
+  title   = {Training data-efficient image transformers \& distillation through attention},
+  author  = {Touvron, Hugo and Cord, Matthieu and Douze, Matthijs and Massa, Francisco and Sablayrolles, Alexandre and J{\'e}gou, Herv{\'e}},
+  journal = {preprint arXiv:2012.12877},
+  year    = {2020}
+}
+
+@article{chen2020exploring,
+  title   = {Exploring Simple Siamese Representation Learning},
+  author  = {Chen, Xinlei and He, Kaiming},
+  journal = {preprint arXiv:2011.10566},
+  year    = {2020}
+}
+
+@article{chen2020improved,
+  title   = {Improved baselines with momentum contrastive learning},
+  author  = {Chen, Xinlei and Fan, Haoqi and Girshick, Ross and He, Kaiming},
+  journal = {preprint arXiv:2003.04297},
+  year    = {2020}
+}
+
+
+@article{bautista2016cliquecnn,
+  title   = {Cliquecnn: Deep unsupervised exemplar learning},
+  author  = {Bautista, Miguel A and Sanakoyeu, Artsiom and Sutter, Ekaterina and Ommer, Bj{\"o}rn},
+  journal = {preprint arXiv:1608.08792},
+  year    = {2016}
+}
+
+@inproceedings{huang2019unsupervised,
+  title     = {Unsupervised deep learning by neighbourhood discovery},
+  author    = {Huang, Jiabo and Dong, Qi and Gong, Shaogang and Zhu, Xiatian},
+  booktitle = ICML,
+  year      = {2019}
+}
+
+@inproceedings{zhuang2019local,
+  title     = {Local aggregation for unsupervised learning of visual embeddings},
+  author    = {Zhuang, Chengxu and Zhai, Alex Lin and Yamins, Daniel},
+  booktitle = ICCV,
+  year      = {2019}
+}
+
+@inproceedings{gutmann2010noise,
+  title     = {Noise-contrastive estimation: A new estimation principle for unnormalized statistical models},
+  author    = {Gutmann, Michael and Hyv{\"a}rinen, Aapo},
+  booktitle = {International Conference on Artificial Intelligence and Statistics},
+  year      = {2010}
+}
+
+@article{ermolov2020whitening,
+  title   = {Whitening for self-supervised representation learning},
+  author  = {Ermolov, Aleksandr and Siarohin, Aliaksandr and Sangineto, Enver and Sebe, Nicu},
+  journal = {preprint arXiv:2007.06346},
+  year    = {2020}
+}
+
+@article{zbontar2021barlow,
+  title   = {Barlow Twins: Self-Supervised Learning via Redundancy Reduction},
+  author  = {Zbontar, Jure and Jing, Li and Misra, Ishan and LeCun, Yann and Deny, St{\'e}phane},
+  journal = {arXiv preprint arXiv:2103.03230},
+  year    = {2021}
+}
+
+@inproceedings{lee2013pseudo,
+  title     = {Pseudo-label: The simple and efficient semi-supervised learning method for deep neural networks},
+  author    = {Lee, Dong-Hyun and others},
+  booktitle = {Workshop on challenges in representation learning, ICML},
+  year      = {2013}
+}
+
+@inproceedings{xie2020self,
+  title     = {Self-training with noisy student improves imagenet classification},
+  author    = {Xie, Qizhe and Luong, Minh-Thang and Hovy, Eduard and Le, Quoc V},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{vaswani2017attention,
+  title     = {Attention is all you need},
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  booktitle = NIPS,
+  year      = {2017}
+}
+
+@inproceedings{zhao2020exploring,
+  title     = {Exploring self-attention for image recognition},
+  author    = {Zhao, Hengshuang and Jia, Jiaya and Koltun, Vladlen},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{parmar2018image,
+  title     = {Image transformer},
+  author    = {Parmar, Niki and Vaswani, Ashish and Uszkoreit, Jakob and Kaiser, Lukasz and Shazeer, Noam and Ku, Alexander and Tran, Dustin},
+  booktitle = ICML,
+  year      = {2018}
+}
+
+@article{child2019generating,
+  title   = {Generating long sequences with sparse transformers},
+  author  = {Child, Rewon and Gray, Scott and Radford, Alec and Sutskever, Ilya},
+  journal = {preprint arXiv:1904.10509},
+  year    = {2019}
+}
+
+@article{hoffer2019mix,
+  title   = {Mix \& Match: training convnets with mixed image sizes for improved accuracy, speed and scale resiliency},
+  author  = {Hoffer, Elad and Weinstein, Berry and Hubara, Itay and Ben-Nun, Tal and Hoefler, Torsten and Soudry, Daniel},
+  journal = {preprint arXiv:1908.08986},
+  year    = {2019}
+}
+
+@article{bahdanau2014neural,
+  title   = {Neural machine translation by jointly learning to align and translate},
+  author  = {Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua},
+  journal = {preprint arXiv:1409.0473},
+  year    = {2014}
+}
+
+@article{klein2017opennmt,
+  title   = {Opennmt: Open-source toolkit for neural machine translation},
+  author  = {Klein, Guillaume and Kim, Yoon and Deng, Yuntian and Senellart, Jean and Rush, Alexander M},
+  journal = {preprint arXiv:1701.02810},
+  year    = {2017}
+}
+
+@article{chen2018best,
+  title   = {The best of both worlds: Combining recent advances in neural machine translation},
+  author  = {Chen, Mia Xu and Firat, Orhan and Bapna, Ankur and Johnson, Melvin and Macherey, Wolfgang and Foster, George and Jones, Llion and Parmar, Niki and Schuster, Mike and Chen, Zhifeng and others},
+  journal = {preprint arXiv:1804.09849},
+  year    = {2018}
+}
+
+@inproceedings{radosavovic2020designing,
+  title     = {Designing network design spaces},
+  author    = {Radosavovic, Ilija and Kosaraju, Raj Prateek and Girshick, Ross and He, Kaiming and Doll{\'a}r, Piotr},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@article{loshchilov2018fixing,
+  title  = {Fixing weight decay regularization in adam},
+  author = {Loshchilov, Ilya and Hutter, Frank},
+  year   = {2018}
+}
+
+@inproceedings{zhang2016colorful,
+  title     = {Colorful image colorization},
+  author    = {Zhang, Richard and Isola, Phillip and Efros, Alexei A},
+  booktitle = ECCV,
+  year      = {2016}
+}
+
+@article{tian2020makes,
+  title   = {What makes for good views for contrastive learning},
+  author  = {Tian, Yonglong and Sun, Chen and Poole, Ben and Krishnan, Dilip and Schmid, Cordelia and Isola, Phillip},
+  journal = NIPS,
+  year    = {2020}
+}
+
+@article{salimans2016weight,
+  title   = {Weight normalization: A simple reparameterization to accelerate training of deep neural networks},
+  author  = {Salimans, Tim and Kingma, Diederik P},
+  journal = NIPS,
+  year    = {2016}
+}
+
+@inproceedings{bach2011non,
+  title     = {Non-asymptotic analysis of stochastic approximation algorithms for machine learning},
+  author    = {Bach, Francis and Moulines, Eric},
+  booktitle = NIPS,
+  year      = {2011}
+}
+
+@techreport{ruppert1988efficient,
+  title  = {Efficient estimations from a slowly convergent Robbins-Monro process},
+  author = {Ruppert, David},
+  year   = {1988}
+}
+
+@article{izmailov2018averaging,
+  title   = {Averaging weights leads to wider optima and better generalization},
+  author  = {Izmailov, Pavel and Podoprikhin, Dmitrii and Garipov, Timur and Vetrov, Dmitry and Wilson, Andrew Gordon},
+  journal = {preprint arXiv:1803.05407},
+  year    = {2018}
+}
+
+@article{jean2014using,
+  title   = {On using very large target vocabulary for neural machine translation},
+  author  = {Jean, S{\'e}bastien and Cho, Kyunghyun and Memisevic, Roland and Bengio, Yoshua},
+  journal = {preprint arXiv:1412.2007},
+  year    = {2014}
+}
+
+@inproceedings{lai2020mast,
+  title     = {MAST: A memory-augmented self-supervised tracker},
+  author    = {Lai, Zihang and Lu, Erika and Xie, Weidi},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{oh2019video,
+  title     = {Video object segmentation using space-time memory networks},
+  author    = {Oh, Seoung Wug and Lee, Joon-Young and Xu, Ning and Kim, Seon Joo},
+  booktitle = ICCV,
+  year      = {2019}
+}
+
+@inproceedings{wang2019learning,
+  title     = {Learning correspondence from the cycle-consistency of time},
+  author    = {Wang, Xiaolong and Jabri, Allan and Efros, Alexei A},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+@article{gur2020visualization,
+  title   = {Visualization of Supervised and Self-Supervised Neural Networks via Attribution Guided Factorization},
+  author  = {Gur, Shir and Ali, Ameen and Wolf, Lior},
+  journal = {preprint arXiv:2012.02166},
+  year    = {2020}
+}
+
+@article{goyal2021self,
+  title   = {Self-supervised Pretraining of Visual Features in the Wild},
+  author  = {Goyal, Priya and Caron, Mathilde and Lefaudeux, Benjamin and Xu, Min and Wang, Pengchao and Pai, Vivek and Singh, Mannat and Liptchinsky, Vitaliy and Misra, Ishan and Joulin, Armand and others},
+  journal = {preprint arXiv:2103.01988},
+  year    = {2021}
+}
+
+@article{el2021training,
+  title   = {Training Vision Transformers for Image Retrieval},
+  author  = {El-Nouby, Alaaeldin and Neverova, Natalia and Laptev, Ivan and J{\'e}gou, Herv{\'e}},
+  journal = {preprint arXiv:2102.05644},
+  year    = {2021}
+}
+
+@article{pont20172017,
+  title   = {The 2017 davis challenge on video object segmentation},
+  author  = {Pont-Tuset, Jordi and Perazzi, Federico and Caelles, Sergi and Arbel{\'a}ez, Pablo and Sorkine-Hornung, Alex and Van Gool, Luc},
+  journal = {preprint arXiv:1704.00675},
+  year    = {2017}
+}
+
+@inproceedings{cuturi2013sinkhorn,
+  title     = {Sinkhorn distances: Lightspeed computation of optimal transport},
+  author    = {Cuturi, Marco},
+  booktitle = NIPS,
+  year      = {2013}
+}
+
+@inproceedings{nilsback2008automated,
+  title     = {Automated flower classification over a large number of classes},
+  author    = {Nilsback, Maria-Elena and Zisserman, Andrew},
+  booktitle = {2008 Sixth Indian Conference on Computer Vision, Graphics \& Image Processing},
+  year      = {2008}
+}
+
+@article{pham2020meta,
+  title   = {Meta pseudo labels},
+  author  = {Pham, Hieu and Xie, Qizhe and Dai, Zihang and Le, Quoc V},
+  journal = {preprint arXiv:2003.10580},
+  year    = {2020}
+}
+
+@article{xie2020unsupervised,
+  title   = {Unsupervised Data Augmentation for Consistency Training},
+  author  = {Xie, Qizhe and Dai, Zihang Dai and Hovy, Eduard and Luong, Minh-Thang and Le, Quoc V.},
+  journal = {preprint arXiv:1904.12848},
+  year    = {2020}
+}
+
+@article{assran2020recovering,
+  title   = {Recovering Petaflops in Contrastive Semi-Supervised Learning of Visual Representations},
+  author  = {Assran, Mahmoud and Ballas, Nicolas and Castrejon, Lluis and Rabbat, Michael},
+  journal = {preprint arXiv:2006.10803},
+  year    = {2020}
+}
+
+@inproceedings{zhang2017split,
+  title     = {Split-brain autoencoders: Unsupervised learning by cross-channel prediction},
+  author    = {Zhang, Richard and Isola, Phillip and Efros, Alexei A},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages     = {1058--1067},
+  year      = {2017}
+}
+
+@inproceedings{chen2019self,
+  title     = {Self-supervised gans via auxiliary rotation loss},
+  author    = {Chen, Ting and Zhai, Xiaohua and Ritter, Marvin and Lucic, Mario and Houlsby, Neil},
+  booktitle = {CVPR},
+  pages     = {12154--12163},
+  year      = {2019}
+}
+
+@article{anil2018large,
+  title   = {Large scale distributed neural network training through online distillation},
+  author  = {Anil, Rohan and Pereyra, Gabriel and Passos, Alexandre and Ormandi, Robert and Dahl, George E and Hinton, Geoffrey E},
+  journal = {arXiv preprint arXiv:1804.03235},
+  year    = {2018}
+}
+
+
+@inproceedings{pathak2016context,
+  title     = {Context encoders: Feature learning by inpainting},
+  author    = {Pathak, Deepak and Krahenbuhl, Philipp and Donahue, Jeff and Darrell, Trevor and Efros, Alexei A},
+  booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages     = {2536--2544},
+  year      = {2016}
+}
+
+@inproceedings{henaff2020data,
+  title        = {Data-efficient image recognition with contrastive predictive coding},
+  author       = {Henaff, Olivier},
+  booktitle    = {International Conference on Machine Learning},
+  pages        = {4182--4192},
+  year         = {2020},
+  organization = {PMLR}
+}
+
+@inproceedings{chen2021exploring,
+  title     = {Exploring simple siamese representation learning},
+  author    = {Chen, Xinlei and He, Kaiming},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages     = {15750--15758},
+  year      = {2021}
+}
+
+@article{bardes2021vicreg,
+  title   = {Vicreg: Variance-invariance-covariance regularization for self-supervised learning},
+  author  = {Bardes, Adrien and Ponce, Jean and LeCun, Yann},
+  journal = {arXiv preprint arXiv:2105.04906},
+  year    = {2021}
+}
+
+% self-supervised learning theory
+% yuandong papers 
+@article{tian2021understanding,
+  title   = {Understanding self-supervised learning dynamics without contrastive pairs},
+  author  = {Tian, Yuandong and Chen, Xinlei and Ganguli, Surya},
+  journal = {arXiv preprint arXiv:2102.06810},
+  year    = {2021}
+}
+@article{jing2021understanding,
+  title   = {Understanding dimensional collapse in contrastive self-supervised learning},
+  author  = {Jing, Li and Vincent, Pascal and LeCun, Yann and Tian, Yuandong},
+  journal = {arXiv preprint arXiv:2110.09348},
+  year    = {2021}
+}
+@article{wang2021towards,
+  title   = {Towards Demystifying Representation Learning with Non-contrastive Self-supervision},
+  author  = {Wang, Xiang and Chen, Xinlei and Du, Simon S and Tian, Yuandong},
+  journal = {arXiv preprint arXiv:2110.04947},
+  year    = {2021}
+}
+
+% MoCo-v3
+@inproceedings{chen2021empirical,
+  title     = {An empirical study of training self-supervised vision transformers},
+  author    = {Chen, Xinlei and Xie, Saining and He, Kaiming},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages     = {9640--9649},
+  year      = {2021}
+}
+
+@article{nakkiran2019deep,
+  title   = {Deep Double Descent: Where Bigger Models and More Data Hurt.(2019)},
+  author  = {Nakkiran, Preetum and Kaplun, Gal and Bansal, Yamini and Yang, Tristan and Barak, Boaz and Sutskever, Ilya},
+  journal = {arXiv preprint arXiv:1912.02292},
+  year    = {2019}
+}
+
+@article{li2018measuring,
+  title   = {Measuring the intrinsic dimension of objective landscapes},
+  author  = {Li, Chunyuan and Farkhoor, Heerad and Liu, Rosanne and Yosinski, Jason},
+  journal = {arXiv preprint arXiv:1804.08838},
+  year    = {2018}
+}
+% cifar-10
+
+@article{Krizhevsky09learningmultiple,
+  title     = {Learning multiple layers of features from tiny images},
+  author    = {Krizhevsky, Alex and Hinton, Geoffrey and others},
+  year      = {2009},
+  publisher = {Citeseer}
+}
+
+@inproceedings{deng2009imagenet,
+  title        = {Imagenet: A large-scale hierarchical image database},
+  author       = {Deng, Jia and Dong, Wei and Socher, Richard and Li, Li-Jia and Li, Kai and Fei-Fei, Li},
+  booktitle    = {2009 IEEE conference on computer vision and pattern recognition},
+  pages        = {248--255},
+  year         = {2009},
+  organization = {Ieee}
+}
+% papers cited by yuandong paper (eg sanjeev)
+
+% continual learning 
+@article{french1999catastrophic,
+  title     = {Catastrophic forgetting in connectionist networks},
+  author    = {French, Robert M},
+  journal   = {Trends in cognitive sciences},
+  volume    = {3},
+  number    = {4},
+  pages     = {128--135},
+  year      = {1999},
+  publisher = {Elsevier}
+}
+@article{kirkpatrick2017overcoming,
+  title     = {Overcoming catastrophic forgetting in neural networks},
+  author    = {Kirkpatrick, James and Pascanu, Razvan and Rabinowitz, Neil and Veness, Joel and Desjardins, Guillaume and Rusu, Andrei A and Milan, Kieran and Quan, John and Ramalho, Tiago and Grabska-Barwinska, Agnieszka and others},
+  journal   = {Proceedings of the national academy of sciences},
+  volume    = {114},
+  number    = {13},
+  pages     = {3521--3526},
+  year      = {2017},
+  publisher = {National Acad Sciences}
+}
+@inproceedings{ioffe2015batch,
+  title        = {Batch normalization: Accelerating deep network training by reducing internal covariate shift},
+  author       = {Ioffe, Sergey and Szegedy, Christian},
+  booktitle    = {International conference on machine learning},
+  pages        = {448--456},
+  year         = {2015},
+  organization = {PMLR}
+}
+@article{deng2021flattening,
+  title   = {Flattening Sharpness for Dynamic Gradient Projection Memory Benefits Continual Learning},
+  author  = {Deng, Danruo and Chen, Guangyong and Hao, Jianye and Wang, Qiong and Heng, Pheng-Ann},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {34},
+  year    = {2021}
+}
+@inproceedings{rebuffi2017icarl,
+  title     = {icarl: Incremental classifier and representation learning},
+  author    = {Rebuffi, Sylvestre-Alvise and Kolesnikov, Alexander and Sperl, Georg and Lampert, Christoph H},
+  booktitle = {Proceedings of the IEEE conference on Computer Vision and Pattern Recognition},
+  pages     = {2001--2010},
+  year      = {2017}
+}
+@article{lopez2017gradient,
+  title   = {Gradient episodic memory for continual learning},
+  author  = {Lopez-Paz, David and Ranzato, Marc'Aurelio},
+  journal = {Advances in neural information processing systems},
+  volume  = {30},
+  year    = {2017}
+}
+@article{purushwalkam2020demystifying,
+  title   = {Demystifying contrastive self-supervised learning: Invariances, augmentations and dataset biases},
+  author  = {Purushwalkam, Senthil and Gupta, Abhinav},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {33},
+  pages   = {3407--3418},
+  year    = {2020}
+}
+@article{tian2022deep,
+  title   = {Deep Contrastive Learning is Provably (almost) Principal Component Analysis},
+  author  = {Tian, Yuandong},
+  journal = {arXiv preprint arXiv:2201.12680},
+  year    = {2022}
+}
+
+@inproceedings{du2021curious,
+  title     = {Curious representation learning for embodied intelligence},
+  author    = {Du, Yilun and Gan, Chuang and Isola, Phillip},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages     = {10408--10417},
+  year      = {2021}
+}
+@article{kontogiannis2021tree,
+  title   = {Tree-based Focused Web Crawling with Reinforcement Learning},
+  author  = {Kontogiannis, Andreas and Kelesis, Dimitrios and Pollatos, Vasilis and Paliouras, Georgios and Giannakopoulos, George},
+  journal = {arXiv preprint arXiv:2112.07620},
+  year    = {2021}
+}
+@inproceedings{chen2013neil,
+  title     = {Neil: Extracting visual knowledge from web data},
+  author    = {Chen, Xinlei and Shrivastava, Abhinav and Gupta, Abhinav},
+  booktitle = {Proceedings of the IEEE international conference on computer vision},
+  pages     = {1409--1416},
+  year      = {2013}
+}
+@inproceedings{carlson2010toward,
+  title     = {Toward an architecture for never-ending language learning},
+  author    = {Carlson, Andrew and Betteridge, Justin and Kisiel, Bryan and Settles, Burr and Hruschka, Estevam R and Mitchell, Tom M},
+  booktitle = {Twenty-Fourth AAAI conference on artificial intelligence},
+  year      = {2010}
+}
+@article{mitchell2018never,
+  title     = {Never-ending learning},
+  author    = {Mitchell, Tom and Cohen, William and Hruschka, Estevam and Talukdar, Partha and Yang, Bishan and Betteridge, Justin and Carlson, Andrew and Dalvi, Bhavana and Gardner, Matt and Kisiel, Bryan and others},
+  journal   = {Communications of the ACM},
+  volume    = {61},
+  number    = {5},
+  pages     = {103--115},
+  year      = {2018},
+  publisher = {ACM New York, NY, USA}
+}
+
+@article{nakano2021webgpt,
+  title   = {WebGPT: Browser-assisted question-answering with human feedback},
+  author  = {Nakano, Reiichiro and Hilton, Jacob and Balaji, Suchir and Wu, Jeff and Ouyang, Long and Kim, Christina and Hesse, Christopher and Jain, Shantanu and Kosaraju, Vineet and Saunders, William and others},
+  journal = {arXiv preprint arXiv:2112.09332},
+  year    = {2021}
+}
+
+@article{stiennon2020learning,
+  title   = {Learning to summarize with human feedback},
+  author  = {Stiennon, Nisan and Ouyang, Long and Wu, Jeffrey and Ziegler, Daniel and Lowe, Ryan and Voss, Chelsea and Radford, Alec and Amodei, Dario and Christiano, Paul F},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {33},
+  pages   = {3008--3021},
+  year    = {2020}
+}
+@article{ziegler2019fine,
+  title   = {Fine-tuning language models from human preferences},
+  author  = {Ziegler, Daniel M and Stiennon, Nisan and Wu, Jeffrey and Brown, Tom B and Radford, Alec and Amodei, Dario and Christiano, Paul and Irving, Geoffrey},
+  journal = {arXiv preprint arXiv:1909.08593},
+  year    = {2019}
+}
+@article{miller1995wordnet,
+  title     = {WordNet: a lexical database for English},
+  author    = {Miller, George A},
+  journal   = {Communications of the ACM},
+  volume    = {38},
+  number    = {11},
+  pages     = {39--41},
+  year      = {1995},
+  publisher = {ACM New York, NY, USA}
+}
+@inproceedings{radford2021learning,
+  title        = {Learning transferable visual models from natural language supervision},
+  author       = {Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and Sastry, Girish and Askell, Amanda and Mishkin, Pamela and Clark, Jack and others},
+  booktitle    = {International Conference on Machine Learning},
+  pages        = {8748--8763},
+  year         = {2021},
+  organization = {PMLR}
+}
+
+@article{settles2009active,
+  title     = {Active learning literature survey},
+  author    = {Settles, Burr},
+  year      = {2009},
+  publisher = {University of Wisconsin-Madison Department of Computer Sciences}
+}
+
+@article{reimers2019sentence,
+  title   = {Sentence-bert: Sentence embeddings using siamese bert-networks},
+  author  = {Reimers, Nils and Gurevych, Iryna},
+  journal = {arXiv preprint arXiv:1908.10084},
+  year    = {2019}
+}
+@inproceedings{kornblith2019better,
+  title     = {Do better imagenet models transfer better?},
+  author    = {Kornblith, Simon and Shlens, Jonathon and Le, Quoc V},
+  booktitle = {Proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+  pages     = {2661--2671},
+  year      = {2019}
+}
+
+@inproceedings{he2022masked,
+  title     = {Masked autoencoders are scalable vision learners},
+  author    = {He, Kaiming and Chen, Xinlei and Xie, Saining and Li, Yanghao and Doll{\'a}r, Piotr and Girshick, Ross},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages     = {16000--16009},
+  year      = {2022}
+}
+
+@inproceedings{li2022understanding,
+  title        = {Understanding Collapse in Non-Contrastive Siamese Representation Learning},
+  author       = {Li, Alexander C and Efros, Alexei A and Pathak, Deepak},
+  booktitle    = {European Conference on Computer Vision},
+  pages        = {490--505},
+  year         = {2022},
+  organization = {Springer}
+}
+@article{bao2021beit,
+  title   = {Beit: Bert pre-training of image transformers},
+  author  = {Bao, Hangbo and Dong, Li and Wei, Furu},
+  journal = {arXiv preprint arXiv:2106.08254},
+  year    = {2021}
+}
+@inproceedings{caron2021emerging,
+  title     = {Emerging properties in self-supervised vision transformers},
+  author    = {Caron, Mathilde and Touvron, Hugo and Misra, Ishan and J{\'e}gou, Herv{\'e} and Mairal, Julien and Bojanowski, Piotr and Joulin, Armand},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages     = {9650--9660},
+  year      = {2021}
+}
+@misc{Joeclinton1,
+  author       = {Clinton, Joe},
+  title        = {Google Images Download (fork)},
+  year         = {2020},
+  publisher    = {GitHub},
+  journal      = {GitHub repository},
+  howpublished = {\url{https://github.com/Joeclinton1/google-images-download}},
+  commit       = {e91e6a38ad654877f59edc7894822f5319d75df1}
+}
+
+@misc{hardikvasa,
+  author       = {Vasa, Hardik},
+  title        = {Google Images Download},
+  year         = {2015},
+  publisher    = {GitHub},
+  journal      = {GitHub repository},
+  howpublished = {\url{https://github.com/hardikvasa/google-images-download}}
+}
+
+@article{williams1995gaussian,
+  title   = {Gaussian processes for regression},
+  author  = {Williams, Christopher and Rasmussen, Carl},
+  journal = {Advances in neural information processing systems},
+  volume  = {8},
+  year    = {1995}
+}
+
+@article{ilyas2022datamodels,
+  title   = {Datamodels: Predicting predictions from training data},
+  author  = {Ilyas, Andrew and Park, Sung Min and Engstrom, Logan and Leclerc, Guillaume and Madry, Aleksander},
+  journal = {arXiv preprint arXiv:2202.00622},
+  year    = {2022}
+}
+@inproceedings{koh2017understanding,
+  title        = {Understanding black-box predictions via influence functions},
+  author       = {Koh, Pang Wei and Liang, Percy},
+  booktitle    = {International conference on machine learning},
+  pages        = {1885--1894},
+  year         = {2017},
+  organization = {PMLR}
+}
+@article{paul2021deep,
+  title   = {Deep learning on a data diet: Finding important examples early in training},
+  author  = {Paul, Mansheej and Ganguli, Surya and Dziugaite, Gintare Karolina},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {34},
+  pages   = {20596--20607},
+  year    = {2021}
+}
+@article{feldman2020neural,
+  title   = {What neural networks memorize and why: Discovering the long tail via influence estimation},
+  author  = {Feldman, Vitaly and Zhang, Chiyuan},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {33},
+  pages   = {2881--2891},
+  year    = {2020}
+}
+% hard negatives 
+@article{robinson2020contrastive,
+  title   = {Contrastive learning with hard negative samples},
+  author  = {Robinson, Joshua and Chuang, Ching-Yao and Sra, Suvrit and Jegelka, Stefanie},
+  journal = {arXiv preprint arXiv:2010.04592},
+  year    = {2020}
+}
+@inproceedings{schroff2015facenet,
+  title     = {Facenet: A unified embedding for face recognition and clustering},
+  author    = {Schroff, Florian and Kalenichenko, Dmitry and Philbin, James},
+  booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages     = {815--823},
+  year      = {2015}
+}
+@inproceedings{oh2016deep,
+  title     = {Deep metric learning via lifted structured feature embedding},
+  author    = {Oh Song, Hyun and Xiang, Yu and Jegelka, Stefanie and Savarese, Silvio},
+  booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
+  pages     = {4004--4012},
+  year      = {2016}
+}
+@inproceedings{harwood2017smart,
+  title     = {Smart mining for deep metric learning},
+  author    = {Harwood, Ben and Kumar BG, Vijay and Carneiro, Gustavo and Reid, Ian and Drummond, Tom},
+  booktitle = {Proceedings of the IEEE International Conference on Computer Vision},
+  pages     = {2821--2829},
+  year      = {2017}
+}
+@inproceedings{wu2017sampling,
+  title     = {Sampling matters in deep embedding learning},
+  author    = {Wu, Chao-Yuan and Manmatha, R and Smola, Alexander J and Krahenbuhl, Philipp},
+  booktitle = {Proceedings of the IEEE international conference on computer vision},
+  pages     = {2840--2848},
+  year      = {2017}
+}
+@inproceedings{ge2018deep,
+  title     = {Deep metric learning with hierarchical triplet loss},
+  author    = {Ge, Weifeng},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages     = {269--285},
+  year      = {2018}
+}
+@article{jiang2021improving,
+  title   = {Improving contrastive learning on imbalanced data via open-world sampling},
+  author  = {Jiang, Ziyu and Chen, Tianlong and Chen, Ting and Wang, Zhangyang},
+  journal = {Advances in Neural Information Processing Systems},
+  volume  = {34},
+  pages   = {5997--6009},
+  year    = {2021}
+}
+
+@inproceedings{bossard2014food,
+  title        = {Food-101--mining discriminative components with random forests},
+  author       = {Bossard, Lukas and Guillaumin, Matthieu and Gool, Luc Van},
+  booktitle    = {European conference on computer vision},
+  pages        = {446--461},
+  year         = {2014},
+  organization = {Springer}
+}
+@inproceedings{berg2014birdsnap,
+  title     = {Birdsnap: Large-scale fine-grained visual categorization of birds},
+  author    = {Berg, Thomas and Liu, Jiongxin and Woo Lee, Seung and Alexander, Michelle L and Jacobs, David W and Belhumeur, Peter N},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages     = {2011--2018},
+  year      = {2014}
+}
+@inproceedings{parkhi2012cats,
+  title        = {Cats and dogs},
+  author       = {Parkhi, Omkar M and Vedaldi, Andrea and Zisserman, Andrew and Jawahar, CV},
+  booktitle    = {2012 IEEE conference on computer vision and pattern recognition},
+  pages        = {3498--3505},
+  year         = {2012},
+  organization = {IEEE}
+}
+
+@misc{gpt-j,
+  author       = {Wang, Ben and Komatsuzaki, Aran},
+  title        = {{GPT-J-6B: A 6 Billion Parameter Autoregressive Language Model}},
+  howpublished = {\url{https://github.com/kingoflolz/mesh-transformer-jax}},
+  year         = 2021,
+  month        = May
+}
+
+@article{schuhmann2021laion,
+  title   = {Laion-400m: Open dataset of clip-filtered 400 million image-text pairs},
+  author  = {Schuhmann, Christoph and Vencu, Richard and Beaumont, Romain and Kaczmarczyk, Robert and Mullis, Clayton and Katta, Aarush and Coombes, Theo and Jitsev, Jenia and Komatsuzaki, Aran},
+  journal = {arXiv preprint arXiv:2111.02114},
+  year    = {2021}
+}
+@article{mezuman2012learning,
+  title   = {Learning about canonical views from internet image collections},
+  author  = {Mezuman, Elad and Weiss, Yair},
+  journal = {Advances in neural information processing systems},
+  volume  = {25},
+  year    = {2012}
+}
+
+@article{baevski2022data2vec,
+  title   = {Data2vec: A general framework for self-supervised learning in speech, vision and language},
+  author  = {Baevski, Alexei and Hsu, Wei-Ning and Xu, Qiantong and Babu, Arun and Gu, Jiatao and Auli, Michael},
+  journal = {arXiv preprint arXiv:2202.03555},
+  year    = {2022}
+}
+
+@article{assran2022masked,
+  title   = {Masked siamese networks for label-efficient learning},
+  author  = {Assran, Mahmoud and Caron, Mathilde and Misra, Ishan and Bojanowski, Piotr and Bordes, Florian and Vincent, Pascal and Joulin, Armand and Rabbat, Michael and Ballas, Nicolas},
+  journal = {arXiv preprint arXiv:2204.07141},
+  year    = {2022}
+}
+@article{kamath2022webly,
+  title   = {Webly Supervised Concept Expansion for General Purpose Vision Models},
+  author  = {Kamath, Amita and Clark, Christopher and Gupta, Tanmay and Kolve, Eric and Hoiem, Derek and Kembhavi, Aniruddha},
+  journal = {arXiv preprint arXiv:2202.02317},
+  year    = {2022}
+}
+@inproceedings{chen2015webly,
+  title     = {Webly supervised learning of convolutional networks},
+  author    = {Chen, Xinlei and Gupta, Abhinav},
+  booktitle = {Proceedings of the IEEE international conference on computer vision},
+  pages     = {1431--1439},
+  year      = {2015}
+}
+@article{sutton1991dyna,
+  title     = {Dyna, an integrated architecture for learning, planning, and reacting},
+  author    = {Sutton, Richard S},
+  journal   = {ACM Sigart Bulletin},
+  volume    = {2},
+  number    = {4},
+  pages     = {160--163},
+  year      = {1991},
+  publisher = {ACM New York, NY, USA}
+}
+@article{johnson2019billion,
+  title     = {Billion-scale similarity search with {GPUs}},
+  author    = {Johnson, Jeff and Douze, Matthijs and J{\'e}gou, Herv{\'e}},
+  journal   = {IEEE Transactions on Big Data},
+  volume    = {7},
+  number    = {3},
+  pages     = {535--547},
+  year      = {2019},
+  publisher = {IEEE}
+}
+@article{schuhmann2022laion,
+  title   = {LAION-5B: An open large-scale dataset for training next generation image-text models},
+  author  = {Schuhmann, Christoph and Beaumont, Romain and Vencu, Richard and Gordon, Cade and Wightman, Ross and Cherti, Mehdi and Coombes, Theo and Katta, Aarush and Mullis, Clayton and Wortsman, Mitchell and others},
+  journal = {arXiv preprint arXiv:2210.08402},
+  year    = {2022}
+}
+@misc{imagehash,
+  author       = {Buchner, Johannes},
+  title        = {imagehash (fork)},
+  year         = {2021},
+  publisher    = {GitHub},
+  journal      = {GitHub repository},
+  howpublished = {\url{https://github.com/JohannesBuchner/imagehash}},
+  commit       = {71db1d3324ec8344c507f5a89a529ff0c0156678}
+}
+@inproceedings{fmow2018,
+  title     = {Functional Map of the World},
+  author    = {Christie, Gordon and Fendley, Neil and Wilson, James and Mukherjee, Ryan},
+  booktitle = {CVPR},
+  year      = {2018}
+}
+
+
+
+
 @article{adams2011ranking,
   author       = {Adams, Ryan Prescott and Zemel, Richard S},
   date         = {2011},
   journaltitle = {arXiv preprint arXiv:1106.1925},
-  title        = {Ranking via Sinkhorn Propagation},
+  title        = {Ranking via Sinkhorn Propagation}
 }
 
 @article{agrawal2019differentiating,
@@ -15,7 +1544,7 @@
   journaltitle = {arXiv e-prints},
   keywords     = {Mathematics - Optimization and Control},
   pages        = {arXiv:1904.09043},
-  title        = {{Differentiating Through a Conic Program}},
+  title        = {{Differentiating Through a Conic Program}}
 }
 
 @article{alizadeh2003second,
@@ -26,56 +1555,56 @@
   number       = {1},
   pages        = {3--51},
   title        = {Second-order cone programming},
-  volume       = {95},
+  volume       = {95}
 }
 
 @article{arulkumaran2017brief,
   author       = {Arulkumaran, Kai and Deisenroth, Marc Peter and Brundage, Miles and Bharath, Anil Anthony},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1708.05866},
-  title        = {A brief survey of deep reinforcement learning},
+  title        = {A brief survey of deep reinforcement learning}
 }
 
 @article{bahdanau2014neural,
   author       = {Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua},
   date         = {2014},
   journaltitle = {arXiv preprint arXiv:1409.0473},
-  title        = {Neural machine translation by jointly learning to align and translate},
+  title        = {Neural machine translation by jointly learning to align and translate}
 }
 
 @article{balog2016deepcoder,
   author       = {Balog, Matej and Gaunt, Alexander L and Brockschmidt, Marc and Nowozin, Sebastian and Tarlow, Daniel},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1611.01989},
-  title        = {Deepcoder: Learning to write programs},
+  title        = {Deepcoder: Learning to write programs}
 }
 
 @article{bansal2017mbmf,
   author       = {Bansal, Somil and Calandra, Roberto and Levine, Sergey and Tomlin, Claire},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1709.03153},
-  title        = {MBMF: Model-Based Priors for Model-Free Reinforcement Learning},
+  title        = {MBMF: Model-Based Priors for Model-Free Reinforcement Learning}
 }
 
 @article{barratt2018differentiability,
   author       = {Barratt, Shane},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1804.05098},
-  title        = {On the differentiability of the solution to convex optimization problems},
+  title        = {On the differentiability of the solution to convex optimization problems}
 }
 
 @article{barratt2018optimizing,
   author       = {Barratt, Shane and Sharma, Rishi},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1805.07072},
-  title        = {Optimizing for Generalization in Machine Learning with Cross-Validation Gradients},
+  title        = {Optimizing for Generalization in Machine Learning with Cross-Validation Gradients}
 }
 
 @article{barratt2019least,
   author       = {Barratt, Shane and Boyd, Stephen},
   date         = {2019},
   journaltitle = {arXiv preprint arXiv:1904.05460},
-  title        = {Least Squares Auto-Tuning},
+  title        = {Least Squares Auto-Tuning}
 }
 
 @article{barzilai1988two,
@@ -86,21 +1615,21 @@
   number       = {1},
   pages        = {141--148},
   title        = {Two-point step size gradient methods},
-  volume       = {8},
+  volume       = {8}
 }
 
 @article{battaglia2018relational,
   author       = {Battaglia, Peter W and Hamrick, Jessica B and Bapst, Victor and Sanchez-Gonzalez, Alvaro and Zambaldi, Vinicius and Malinowski, Mateusz and Tacchetti, Andrea and Raposo, David and Santoro, Adam and Faulkner, Ryan and others},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1806.01261},
-  title        = {Relational inductive biases, deep learning, and graph networks},
+  title        = {Relational inductive biases, deep learning, and graph networks}
 }
 
 @article{bauschke2017convex,
   author    = {Bauschke, Heinz H and Combettes, Patrick L},
   publisher = {Springer},
   date      = {2017},
-  title     = {Convex Analysis and Monotone Operator Theory in Hilbert Spaces, second edition},
+  title     = {Convex Analysis and Monotone Operator Theory in Hilbert Spaces, second edition}
 }
 
 @article{beck2009fast,
@@ -111,14 +1640,14 @@
   number       = {1},
   pages        = {183--202},
   title        = {A fast iterative shrinkage-thresholding algorithm for linear inverse problems},
-  volume       = {2},
+  volume       = {2}
 }
 
 @article{belanger2015structured,
   author       = {Belanger, David and McCallum, Andrew},
   date         = {2015},
   journaltitle = {arXiv:1511.06350},
-  title        = {Structured Prediction Energy Networks},
+  title        = {Structured Prediction Energy Networks}
 }
 
 @article{bengio-lecun-henderson-94,
@@ -127,7 +1656,7 @@
   date         = {1994},
   journaltitle = {Advances in neural information processing systems},
   pages        = {937--937},
-  title        = {Globally trained handwritten word recognizer using spatial representation, convolutional neural networks, and hidden Markov models},
+  title        = {Globally trained handwritten word recognizer using spatial representation, convolutional neural networks, and hidden Markov models}
 }
 
 @article{bengio2015deep,
@@ -135,14 +1664,14 @@
   publisher    = {Citeseer},
   date         = {2015},
   journaltitle = {An MIT Press book in preparation. Draft chapters available at http://www. iro. umontreal. ca/~ bengioy/dlbook},
-  title        = {Deep learning},
+  title        = {Deep learning}
 }
 
 @article{bertinetto2018meta,
   author       = {Bertinetto, Luca and Henriques, Jo{\~{a}}o F and Torr, Philip HS and Vedaldi, Andrea},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1805.08136},
-  title        = {Meta-learning with differentiable closed-form solvers},
+  title        = {Meta-learning with differentiable closed-form solvers}
 }
 
 @article{bertsekas1982projected,
@@ -153,13 +1682,13 @@
   number       = {2},
   pages        = {221--246},
   title        = {Projected Newton methods for optimization problems with simple constraints},
-  volume       = {20},
+  volume       = {20}
 }
 
 @article{bibi2018deep,
   author = {Bibi, Adel and Ghanem, Bernard and Koltun, Vladlen and Ranftl, Ren{\'{e}}},
   date   = {2018},
-  title  = {Deep Layers as Stochastic Solvers},
+  title  = {Deep Layers as Stochastic Solvers}
 }
 
 @article{birgin2000nonmonotone,
@@ -170,7 +1699,7 @@
   number       = {4},
   pages        = {1196--1211},
   title        = {Nonmonotone spectral projected gradient methods on convex sets},
-  volume       = {10},
+  volume       = {10}
 }
 
 @article{boyd2011distributed,
@@ -181,7 +1710,7 @@
   number       = {1},
   pages        = {1--122},
   title        = {Distributed optimization and statistical learning via the alternating direction method of multipliers},
-  volume       = {3},
+  volume       = {3}
 }
 
 @article{brakel2013training,
@@ -191,14 +1720,14 @@
   number       = {1},
   pages        = {2771--2797},
   title        = {Training energy-based models for time-series imputation.},
-  volume       = {14},
+  volume       = {14}
 }
 
 @article{brockman2016openai,
   author       = {Brockman, Greg and Cheung, Vicki and Pettersson, Ludwig and Schneider, Jonas and Schulman, John and Tang, Jie and Zaremba, Wojciech},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1606.01540},
-  title        = {OpenAI Gym},
+  title        = {OpenAI Gym}
 }
 
 @article{bronstein2017geometric,
@@ -209,42 +1738,42 @@
   number       = {4},
   pages        = {18--42},
   title        = {Geometric deep learning: going beyond euclidean data},
-  volume       = {34},
+  volume       = {34}
 }
 
 @article{brukhim2018predict,
   author       = {Brukhim, Nataly and Globerson, Amir},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1802.04721},
-  title        = {Predict and Constrain: Modeling Cardinality in Deep Structured Prediction},
+  title        = {Predict and Constrain: Modeling Cardinality in Deep Structured Prediction}
 }
 
 @article{bruna2013spectral,
   author       = {Bruna, Joan and Zaremba, Wojciech and Szlam, Arthur and LeCun, Yann},
   date         = {2013},
   journaltitle = {arXiv preprint arXiv:1312.6203},
-  title        = {Spectral networks and locally connected networks on graphs},
+  title        = {Spectral networks and locally connected networks on graphs}
 }
 
 @article{busseti2018solution,
   author       = {Busseti, Enzo and Moursi, W and Boyd, Stephen},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1811.02157},
-  title        = {Solution Refinement at Regular Points of Conic Problems},
+  title        = {Solution Refinement at Regular Points of Conic Problems}
 }
 
 @article{chebotar2017combining,
   author       = {Chebotar, Yevgen and Hausman, Karol and Zhang, Marvin and Sukhatme, Gaurav and Schaal, Stefan and Levine, Sergey},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1703.03078},
-  title        = {Combining Model-Based and Model-Free Updates for Trajectory-Centric Reinforcement Learning},
+  title        = {Combining Model-Based and Model-Free Updates for Trajectory-Centric Reinforcement Learning}
 }
 
 @article{chen2018optimal,
   author       = {Chen, Yize and Shi, Yuanyuan and Zhang, Baosen},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1805.11835},
-  title        = {Optimal Control Via Neural Networks: A Convex Approach},
+  title        = {Optimal Control Via Neural Networks: A Convex Approach}
 }
 
 @article{clarke1975generalized,
@@ -253,21 +1782,21 @@
   journaltitle = {Transactions of the American Mathematical Society},
   pages        = {247--262},
   title        = {Generalized gradients and applications},
-  volume       = {205},
+  volume       = {205}
 }
 
 @article{dalal2018safe,
   author       = {Dalal, Gal and Dvijotham, Krishnamurthy and Vecerik, Matej and Hester, Todd and Paduraru, Cosmin and Tassa, Yuval},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1801.08757},
-  title        = {Safe exploration in continuous action spaces},
+  title        = {Safe exploration in continuous action spaces}
 }
 
 @article{dean2017sample,
   author       = {Dean, Sarah and Mania, Horia and Matni, Nikolai and Recht, Benjamin and Tu, Stephen},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1710.01688},
-  title        = {On the Sample Complexity of the Linear Quadratic Regulator},
+  title        = {On the Sample Complexity of the Linear Quadratic Regulator}
 }
 
 @article{diamond2016cvxpy,
@@ -278,28 +1807,28 @@
   number       = {1},
   pages        = {2909--2913},
   title        = {CVXPY: A Python-embedded modeling language for convex optimization},
-  volume       = {17},
+  volume       = {17}
 }
 
 @article{diamond2017unrolled,
   author       = {Diamond, Steven and Sitzmann, Vincent and Heide, Felix and Wetzstein, Gordon},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1705.08041},
-  title        = {Unrolled optimization with deep priors},
+  title        = {Unrolled optimization with deep priors}
 }
 
 @article{dini1877analisi,
   author       = {Dini, U},
   date         = {1877},
   journaltitle = {Universit{\'{a}} di Pisa (1877/78)},
-  title        = {Analisi infinitesimale, Lezioni dettate nella R},
+  title        = {Analisi infinitesimale, Lezioni dettate nella R}
 }
 
 @article{dontchev2009implicit,
   author       = {Dontchev, Asen L and Rockafellar, R Tyrrell},
   date         = {2009},
   journaltitle = {Springer Monogr. Math.},
-  title        = {Implicit functions and solution mappings},
+  title        = {Implicit functions and solution mappings}
 }
 
 @article{doya2000reinforcement,
@@ -310,7 +1839,7 @@
   number       = {1},
   pages        = {219--245},
   title        = {Reinforcement learning in continuous time and space},
-  volume       = {12},
+  volume       = {12}
 }
 
 @article{duchi2011adaptive,
@@ -320,14 +1849,14 @@
   journaltitle = {The Journal of Machine Learning Research},
   pages        = {2121--2159},
   title        = {Adaptive subgradient methods for online learning and stochastic optimization},
-  volume       = {12},
+  volume       = {12}
 }
 
 @article{farquhar2017treeqn,
   author       = {Farquhar, Gregory and Rockt{\"{a}}schel, Tim and Igl, Maximilian and Whiteson, Shimon},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1710.11417},
-  title        = {TreeQN and ATreeC: Differentiable Tree Planning for Deep Reinforcement Learning},
+  title        = {TreeQN and ATreeC: Differentiable Tree Planning for Deep Reinforcement Learning}
 }
 
 @article{fiacco1990sensitivity,
@@ -338,14 +1867,14 @@
   number       = {1},
   pages        = {215--235},
   title        = {Sensitivity and stability analysis for nonlinear programming},
-  volume       = {27},
+  volume       = {27}
 }
 
 @article{foerster2017learning,
   author       = {Foerster, Jakob N and Chen, Richard Y and Al-Shedivat, Maruan and Whiteson, Shimon and Abbeel, Pieter and Mordatch, Igor},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1709.04326},
-  title        = {Learning with Opponent-Learning Awareness},
+  title        = {Learning with Opponent-Learning Awareness}
 }
 
 @article{forsyth2003modern,
@@ -354,7 +1883,7 @@
   date         = {2003},
   journaltitle = {Computer vision: a modern approach},
   pages        = {88--101},
-  title        = {A modern approach},
+  title        = {A modern approach}
 }
 
 @article{garcia1989model,
@@ -365,21 +1894,21 @@
   number       = {3},
   pages        = {335--348},
   title        = {Model predictive control: theory and practice---a survey},
-  volume       = {25},
+  volume       = {25}
 }
 
 @article{gatys2015neural,
   author       = {Gatys, Leon A and Ecker, Alexander S and Bethge, Matthias},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1508.06576},
-  title        = {A neural algorithm of artistic style},
+  title        = {A neural algorithm of artistic style}
 }
 
 @article{gilmer2017neural,
   author       = {Gilmer, Justin and Schoenholz, Samuel S and Riley, Patrick F and Vinyals, Oriol and Dahl, George E},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1704.01212},
-  title        = {Neural message passing for quantum chemistry},
+  title        = {Neural message passing for quantum chemistry}
 }
 
 @article{gonzalez2011robust,
@@ -390,28 +1919,28 @@
   number       = {10},
   pages        = {711--726},
   title        = {Robust tube-based predictive control for mobile robots in off-road conditions},
-  volume       = {59},
+  volume       = {59}
 }
 
 @article{gould2016differentiating,
   author       = {Gould, Stephen and Fernando, Basura and Cherian, Anoop and Anderson, Peter and Santa Cruz, Rodrigo and Guo, Edison},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1607.05447},
-  title        = {On Differentiating Parameterized Argmin and Argmax Problems with Application to Bi-level Optimization},
+  title        = {On Differentiating Parameterized Argmin and Argmax Problems with Application to Bi-level Optimization}
 }
 
 @article{grathwohl2018ffjord,
   author       = {Grathwohl, Will and Chen, Ricky TQ and Betterncourt, Jesse and Sutskever, Ilya and Duvenaud, David},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1810.01367},
-  title        = {Ffjord: Free-form continuous dynamics for scalable reversible generative models},
+  title        = {Ffjord: Free-form continuous dynamics for scalable reversible generative models}
 }
 
 @article{graves2014neural,
   author       = {Graves, Alex and Wayne, Greg and Danihelka, Ivo},
   date         = {2014},
   journaltitle = {arXiv preprint arXiv:1410.5401},
-  title        = {Neural turing machines},
+  title        = {Neural turing machines}
 }
 
 @article{graves2016hybrid,
@@ -422,21 +1951,21 @@
   number       = {7626},
   pages        = {471},
   title        = {Hybrid computing using a neural network with dynamic external memory},
-  volume       = {538},
+  volume       = {538}
 }
 
 @article{gu2017qprop,
   author       = {Gu, Shixiang and Lillicrap, Timothy and Ghahramani, Zoubin and Turner, Richard E and Levine, Sergey},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1611.02247},
-  title        = {Q-prop: Sample-efficient policy gradient with an off-policy critic},
+  title        = {Q-prop: Sample-efficient policy gradient with an off-policy critic}
 }
 
 @article{gulcehre2018hyperbolic,
   author       = {Gulcehre, Caglar and Denil, Misha and Malinowski, Mateusz and Razavi, Ali and Pascanu, Razvan and Hermann, Karl Moritz and Battaglia, Peter and Bapst, Victor and Raposo, David and Santoro, Adam and others},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1805.09786},
-  title        = {Hyperbolic attention networks},
+  title        = {Hyperbolic attention networks}
 }
 
 @article{gupta2014training,
@@ -447,41 +1976,41 @@
   number       = {1},
   pages        = {1461--1492},
   title        = {Training highly multiclass classifiers},
-  volume       = {15},
+  volume       = {15}
 }
 
 @article{he2015deep,
   author       = {He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1512.03385},
-  title        = {Deep Residual Learning for Image Recognition},
+  title        = {Deep Residual Learning for Image Recognition}
 }
 
 @article{herzig2018mapping,
   author       = {Herzig, Roei and Raboh, Moshiko and Chechik, Gal and Berant, Jonathan and Globerson, Amir},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1802.05451},
-  title        = {Mapping Images to Scene Graphs with Permutation-Invariant Structured Prediction},
+  title        = {Mapping Images to Scene Graphs with Permutation-Invariant Structured Prediction}
 }
 
 @article{hill2015goldilocks,
   author       = {Hill, Felix and Bordes, Antoine and Chopra, Sumit and Weston, Jason},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1511.02301},
-  title        = {The goldilocks principle: Reading children's books with explicit memory representations},
+  title        = {The goldilocks principle: Reading children's books with explicit memory representations}
 }
 
 @article{hinton2018matrix,
   author = {Hinton, Geoffrey E and Sabour, Sara and Frosst, Nicholas},
   date   = {2018},
-  title  = {Matrix capsules with EM routing},
+  title  = {Matrix capsules with EM routing}
 }
 
 @article{huang2016densely,
   author       = {Huang, Gao and Liu, Zhuang and Weinberger, Kilian Q},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1608.06993},
-  title        = {Densely Connected Convolutional Networks},
+  title        = {Densely Connected Convolutional Networks}
 }
 
 @article{hunter2007matplotlib,
@@ -492,33 +2021,33 @@
   number       = {3},
   pages        = {90},
   title        = {Matplotlib: A 2D graphics environment},
-  volume       = {9},
+  volume       = {9}
 }
 
 @article{ingraham2018learning,
   author = {Ingraham, John and Riesselman, Adam and Sander, Chris and Marks, Debora},
   date   = {2018},
-  title  = {Learning Protein Structure with a Differentiable Simulator},
+  title  = {Learning Protein Structure with a Differentiable Simulator}
 }
 
 @article{jones2014scipy,
   author = {Jones, Eric and Oliphant, Travis and Peterson, Pearu},
   date   = {2014},
-  title  = {$\{$SciPy$\}$: Open source scientific tools for $\{$Python$\}$},
+  title  = {$\{$SciPy$\}$: Open source scientific tools for $\{$Python$\}$}
 }
 
 @article{jonschkowski2018differentiable,
   author       = {Jonschkowski, Rico and Rastogi, Divyam and Brock, Oliver},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1805.11122},
-  title        = {Differentiable particle filters: End-to-end learning with algorithmic priors},
+  title        = {Differentiable particle filters: End-to-end learning with algorithmic priors}
 }
 
 @article{karkus2018integrating,
   author       = {Karkus, Peter and Hsu, David and Lee, Wee Sun},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1807.06696},
-  title        = {Integrating Algorithmic Planning and Deep Learning for Partially Observable Navigation},
+  title        = {Integrating Algorithmic Planning and Deep Learning for Partially Observable Navigation}
 }
 
 @article{katakis2008multilabel,
@@ -526,7 +2055,7 @@
   date         = {2008},
   journaltitle = {ECML PKDD discovery challenge},
   title        = {Multilabel text classification for automated tag suggestion},
-  volume       = {75},
+  volume       = {75}
 }
 
 @article{kennedy1988neural,
@@ -537,28 +2066,28 @@
   number       = {5},
   pages        = {554--562},
   title        = {Neural networks for nonlinear programming},
-  volume       = {35},
+  volume       = {35}
 }
 
 @article{kingma2014adam,
   author       = {Kingma, Diederik and Ba, Jimmy},
   date         = {2014},
   journaltitle = {arXiv preprint arXiv:1412.6980},
-  title        = {Adam: A method for stochastic optimization},
+  title        = {Adam: A method for stochastic optimization}
 }
 
 @article{kipf2016semi,
   author       = {Kipf, Thomas N and Welling, Max},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1609.02907},
-  title        = {Semi-supervised classification with graph convolutional networks},
+  title        = {Semi-supervised classification with graph convolutional networks}
 }
 
 @article{koh2017understanding,
   author       = {Koh, Pang Wei and Liang, Percy},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1703.04730},
-  title        = {Understanding black-box predictions via influence functions},
+  title        = {Understanding black-box predictions via influence functions}
 }
 
 @article{krishna2017visual,
@@ -569,7 +2098,7 @@
   number       = {1},
   pages        = {32--73},
   title        = {Visual genome: Connecting language and vision using crowdsourced dense image annotations},
-  volume       = {123},
+  volume       = {123}
 }
 
 @article{kunisch2013bilevel,
@@ -580,13 +2109,13 @@
   number       = {2},
   pages        = {938--983},
   title        = {A bilevel optimization approach for parameter learning in variational models},
-  volume       = {6},
+  volume       = {6}
 }
 
 @article{lafferty2001conditional,
   author = {Lafferty, John and McCallum, Andrew and Pereira, Fernando CN},
   date   = {2001},
-  title  = {Conditional random fields: Probabilistic models for segmenting and labeling sequence data},
+  title  = {Conditional random fields: Probabilistic models for segmenting and labeling sequence data}
 }
 
 @article{lecun1998gradient,
@@ -597,7 +2126,7 @@
   number       = {11},
   pages        = {2278--2324},
   title        = {Gradient-based learning applied to document recognition},
-  volume       = {86},
+  volume       = {86}
 }
 
 @article{lecun2006tutorial,
@@ -605,14 +2134,14 @@
   date         = {2006},
   journaltitle = {Predicting structured data},
   title        = {A tutorial on energy-based learning},
-  volume       = {1},
+  volume       = {1}
 }
 
 @article{lee2019meta,
   author       = {Lee, Kwonjoon and Maji, Subhransu and Ravichandran, Avinash and Soatto, Stefano},
   date         = {2019},
   journaltitle = {arXiv preprint arXiv:1904.03758},
-  title        = {Meta-Learning with Differentiable Convex Optimization},
+  title        = {Meta-Learning with Differentiable Convex Optimization}
 }
 
 @article{levine2016end,
@@ -623,20 +2152,20 @@
   number       = {1},
   pages        = {1334--1373},
   title        = {End-to-end training of deep visuomotor policies},
-  volume       = {17},
+  volume       = {17}
 }
 
 @article{li2018smoothing,
   author = {Li, Xiang and Vilnis, Luke and Zhang, Dongxu and Boratko, Michael and McCallum, Andrew},
   date   = {2018},
-  title  = {Smoothing the Geometry of Probabilistic Box Embeddings},
+  title  = {Smoothing the Geometry of Probabilistic Box Embeddings}
 }
 
 @article{lillicrap2015continuous,
   author       = {Lillicrap, Timothy P and Hunt, Jonathan J and Pritzel, Alexander and Heess, Nicolas and Erez, Tom and Tassa, Yuval and Silver, David and Wierstra, Daan},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1509.02971},
-  title        = {Continuous control with deep reinforcement learning},
+  title        = {Continuous control with deep reinforcement learning}
 }
 
 @article{lillo1993solving,
@@ -647,21 +2176,21 @@
   number       = {6},
   pages        = {931--940},
   title        = {On solving constrained optimization problems with neural networks: A penalty method approach},
-  volume       = {4},
+  volume       = {4}
 }
 
 @article{ling2018game,
   author       = {Ling, Chun Kai and Fang, Fei and Kolter, J. Zico},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1805.02777},
-  title        = {What game are we playing? end-to-end learning in normal and extensive form games},
+  title        = {What game are we playing? end-to-end learning in normal and extensive form games}
 }
 
 @article{liu2015transductive,
   author       = {Liu, Li-Ping and Dietterich, Thomas G and Li, Nan and Zhou, Zhi-Hua},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1510.05976},
-  title        = {Transductive optimization of top k precision},
+  title        = {Transductive optimization of top k precision}
 }
 
 @article{lobo1998applications,
@@ -672,7 +2201,7 @@
   number       = {1-3},
   pages        = {193--228},
   title        = {Applications of second-order cone programming},
-  volume       = {284},
+  volume       = {284}
 }
 
 @article{lotstedt1984numerical,
@@ -683,7 +2212,7 @@
   number       = {2},
   pages        = {370--393},
   title        = {Numerical simulation of time-dependent contact and friction problems in rigid body mechanics},
-  volume       = {5},
+  volume       = {5}
 }
 
 @article{madjarov2012extensive,
@@ -694,7 +2223,7 @@
   number       = {9},
   pages        = {3084--3104},
   title        = {An extensive experimental comparison of methods for multi-label learning},
-  volume       = {45},
+  volume       = {45}
 }
 
 @article{magnani2009convex,
@@ -705,14 +2234,14 @@
   number       = {1},
   pages        = {1--17},
   title        = {Convex piecewise-linear fitting},
-  volume       = {10},
+  volume       = {10}
 }
 
 @article{magnus1988matrix,
   author       = {Magnus, X and Neudecker, Heinz},
   date         = {1988},
   journaltitle = {New York},
-  title        = {Matrix differential calculus},
+  title        = {Matrix differential calculus}
 }
 
 @article{mairal2012task,
@@ -723,7 +2252,7 @@
   number       = {4},
   pages        = {791--804},
   title        = {Task-driven dictionary learning},
-  volume       = {34},
+  volume       = {34}
 }
 
 @article{mattingley2012cvxgen,
@@ -734,35 +2263,35 @@
   number       = {1},
   pages        = {1--27},
   title        = {CVXGEN: A code generator for embedded convex optimization},
-  volume       = {13},
+  volume       = {13}
 }
 
 @article{mena2018learning,
   author       = {Mena, Gonzalo and Belanger, David and Linderman, Scott and Snoek, Jasper},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1802.08665},
-  title        = {Learning Latent Permutations with Gumbel-Sinkhorn Networks},
+  title        = {Learning Latent Permutations with Gumbel-Sinkhorn Networks}
 }
 
 @article{mensch2018differentiable,
   author       = {Mensch, Arthur and Blondel, Mathieu},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1802.03676},
-  title        = {Differentiable dynamic programming for structured prediction and attention},
+  title        = {Differentiable dynamic programming for structured prediction and attention}
 }
 
 @article{metz2016unrolled,
   author       = {Metz, Luke and Poole, Ben and Pfau, David and Sohl-Dickstein, Jascha},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1611.02163},
-  title        = {Unrolled Generative Adversarial Networks},
+  title        = {Unrolled Generative Adversarial Networks}
 }
 
 @article{mnih2013playing,
   author       = {Mnih, Volodymyr and Kavukcuoglu, Koray and Silver, David and Graves, Alex and Antonoglou, Ioannis and Wierstra, Daan and Riedmiller, Martin},
   date         = {2013},
   journaltitle = {arXiv preprint arXiv:1312.5602},
-  title        = {Playing atari with deep reinforcement learning},
+  title        = {Playing atari with deep reinforcement learning}
 }
 
 @article{mnih2015human,
@@ -773,7 +2302,7 @@
   number       = {7540},
   pages        = {529--533},
   title        = {Human-level control through deep reinforcement learning},
-  volume       = {518},
+  volume       = {518}
 }
 
 @article{morari1999model,
@@ -784,7 +2313,7 @@
   number       = {4},
   pages        = {667--682},
   title        = {Model predictive control: past, present and future},
-  volume       = {23},
+  volume       = {23}
 }
 
 @article{moreau1961decomposition,
@@ -793,21 +2322,21 @@
   journaltitle = {Comptes rendus hebdomadaires des s{\'{e}}ances de l'Acad{\'{e}}mie des sciences},
   pages        = {238--240},
   title        = {D{\'{e}}composition orthogonale d'un espace hilbertien selon deux c{\^{o}}nes mutuellement polaires},
-  volume       = {255},
+  volume       = {255}
 }
 
 @article{neelakantan2015neural,
   author       = {Neelakantan, Arvind and Le, Quoc V and Sutskever, Ilya},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1511.04834},
-  title        = {Neural programmer: Inducing latent programs with gradient descent},
+  title        = {Neural programmer: Inducing latent programs with gradient descent}
 }
 
 @article{niculae2018sparsemap,
   author       = {Niculae, Vlad and Martins, Andr{\'{e}} FT and Blondel, Mathieu and Cardie, Claire},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1802.04223},
-  title        = {SparseMAP: Differentiable sparse structured inference},
+  title        = {SparseMAP: Differentiable sparse structured inference}
 }
 
 @article{odonoghue2016conic,
@@ -818,21 +2347,21 @@
   number       = {3},
   pages        = {1042--1068},
   title        = {Conic optimization via operator splitting and homogeneous self-dual embedding},
-  volume       = {169},
+  volume       = {169}
 }
 
 @article{oh2016minecraft,
   author       = {Oh, Junhyuk and Chockalingam, Valliappa and Singh, Satinder and Lee, Honglak},
   date         = {2016},
   journaltitle = {Proceedings of the 33rd International Conference on Machine Learning (ICML)},
-  title        = {Control of Memory, Active Perception, and Action in Minecraft},
+  title        = {Control of Memory, Active Perception, and Action in Minecraft}
 }
 
 @article{okada2017path,
   author       = {Okada, Masashi and Rigazio, Luca and Aoshima, Takenobu},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1706.09597},
-  title        = {Path Integral Networks: End-to-End Differentiable Optimal Control},
+  title        = {Path Integral Networks: End-to-End Differentiable Optimal Control}
 }
 
 @article{oliphant2007python,
@@ -843,7 +2372,7 @@
   number       = {3},
   pages        = {10--20},
   title        = {Python for scientific computing},
-  volume       = {9},
+  volume       = {9}
 }
 
 @article{paige1982lsqr,
@@ -854,42 +2383,42 @@
   number       = {1},
   pages        = {43--71},
   title        = {LSQR: An algorithm for sparse linear equations and sparse least squares},
-  volume       = {8},
+  volume       = {8}
 }
 
 @article{parisotto2016neuro,
   author       = {Parisotto, Emilio and Mohamed, Abdel-rahman and Singh, Rishabh and Li, Lihong and Zhou, Dengyong and Kohli, Pushmeet},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1611.01855},
-  title        = {Neuro-symbolic program synthesis},
+  title        = {Neuro-symbolic program synthesis}
 }
 
 @article{parisotto2017neural,
   author       = {Parisotto, Emilio and Salakhutdinov, Ruslan},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1702.08360},
-  title        = {Neural map: Structured memory for deep reinforcement learning},
+  title        = {Neural map: Structured memory for deep reinforcement learning}
 }
 
 @article{pascanu2017learning,
   author       = {Pascanu, Razvan and Li, Yujia and Vinyals, Oriol and Heess, Nicolas and Buesing, Lars and Racani{\`{e}}re, Sebastien and Reichert, David and Weber, Th{\'{e}}ophane and Wierstra, Daan and Battaglia, Peter},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1707.06170},
-  title        = {Learning model-based planning from scratch},
+  title        = {Learning model-based planning from scratch}
 }
 
 @article{paszke2017automatic,
   author       = {Paszke, Adam and Gross, Sam and Chintala, Soumith and Chanan, Gregory and Yang, Edward and DeVito, Zachary and Lin, Zeming and Desmaison, Alban and Antiga, Luca and Lerer, Adam},
   date         = {2017},
   journaltitle = {NIPS Autodiff Workshop},
-  title        = {Automatic differentiation in PyTorch},
+  title        = {Automatic differentiation in PyTorch}
 }
 
 @article{pathak2018zero,
   author       = {Pathak, Deepak and Mahmoudieh, Parsa and Luo, Guanghao and Agrawal, Pulkit and Chen, Dian and Shentu, Yide and Shelhamer, Evan and Malik, Jitendra and Efros, Alexei A and Darrell, Trevor},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1804.08606},
-  title        = {Zero-shot visual imitation},
+  title        = {Zero-shot visual imitation}
 }
 
 @article{pedregosa2011scikit,
@@ -899,7 +2428,7 @@
   journaltitle = {The Journal of Machine Learning Research},
   pages        = {2825--2830},
   title        = {Scikit-learn: Machine learning in Python},
-  volume       = {12},
+  volume       = {12}
 }
 
 @article{peng1993efficient,
@@ -910,14 +2439,14 @@
   number       = {4},
   pages        = {437--454},
   title        = {Efficient learning and planning within the Dyna framework},
-  volume       = {1},
+  volume       = {1}
 }
 
 @article{pereira2018pinets,
   author       = {Pereira, Marcus and Fan, David D. and An, Gabriel Nakajima and Theodorou, Evangelos},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1802.05803},
-  title        = {MPC-Inspired Neural Network Policies for Sequential Decision Making},
+  title        = {MPC-Inspired Neural Network Policies for Sequential Decision Making}
 }
 
 @article{polyak1964some,
@@ -928,48 +2457,48 @@
   number       = {5},
   pages        = {1--17},
   title        = {Some methods of speeding up the convergence of iteration methods},
-  volume       = {4},
+  volume       = {4}
 }
 
 @article{pong2018temporal,
   author       = {Pong, Vitchyr and Gu, Shixiang and Dalal, Murtaza and Levine, Sergey},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1802.09081},
-  title        = {Temporal Difference Models: Model-Free Deep RL for Model-Based Control},
+  title        = {Temporal Difference Models: Model-Free Deep RL for Model-Based Control}
 }
 
 @article{rakotomamonjy2012sparse,
   author       = {Rakotomamonjy, Alain},
   date         = {2012},
   journaltitle = {arXiv preprint arXiv:1206.6432},
-  title        = {Sparse support vector infinite push},
+  title        = {Sparse support vector infinite push}
 }
 
 @article{raposo2017discovering,
   author       = {Raposo, David and Santoro, Adam and Barrett, David and Pascanu, Razvan and Lillicrap, Timothy and Battaglia, Peter},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1702.05068},
-  title        = {Discovering objects and their relations from entangled scene representations},
+  title        = {Discovering objects and their relations from entangled scene representations}
 }
 
 @article{ravi2016optimization,
   author = {Ravi, Sachin and Larochelle, Hugo},
   date   = {2016},
-  title  = {Optimization as a model for few-shot learning},
+  title  = {Optimization as a model for few-shot learning}
 }
 
 @article{reed2015neural,
   author       = {Reed, Scott and De Freitas, Nando},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1511.06279},
-  title        = {Neural programmer-interpreters},
+  title        = {Neural programmer-interpreters}
 }
 
 @article{rockafellar1970convex,
   author       = {Rockafellar, R Tyrrell},
   date         = {1970},
   journaltitle = {Princeton, NJ},
-  title        = {Convex Analysis Princeton University Press},
+  title        = {Convex Analysis Princeton University Press}
 }
 
 @article{rudin1992nonlinear,
@@ -980,7 +2509,7 @@
   number       = {1-4},
   pages        = {259--268},
   title        = {Nonlinear total variation based noise removal algorithms},
-  volume       = {60},
+  volume       = {60}
 }
 
 @article{rudin2009p,
@@ -990,7 +2519,7 @@
   number       = {Oct},
   pages        = {2233--2271},
   title        = {The p-norm push: A simple convex ranking algorithm that concentrates at the top of the list},
-  volume       = {10},
+  volume       = {10}
 }
 
 @article{rumelhart1988learning,
@@ -1000,7 +2529,7 @@
   number       = {3},
   pages        = {1},
   title        = {Learning representations by back-propagating errors},
-  volume       = {5},
+  volume       = {5}
 }
 
 @article{santa2018visual,
@@ -1008,14 +2537,14 @@
   publisher    = {IEEE},
   date         = {2018},
   journaltitle = {IEEE transactions on pattern analysis and machine intelligence},
-  title        = {Visual permutation learning},
+  title        = {Visual permutation learning}
 }
 
 @article{santoro2017simple,
   author       = {Santoro, Adam and Raposo, David and Barrett, David GT and Malinowski, Mateusz and Pascanu, Razvan and Battaglia, Peter and Lillicrap, Timothy},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1706.01427},
-  title        = {A simple neural network module for relational reasoning},
+  title        = {A simple neural network module for relational reasoning}
 }
 
 @article{satyanarayanan2015edge,
@@ -1026,7 +2555,7 @@
   journaltitle = {IEEE Pervasive Computing},
   number       = {2},
   pages        = {24--31},
-  title        = {Edge Analytics in the Internet of Things},
+  title        = {Edge Analytics in the Internet of Things}
 }
 
 @article{schmidhuber2015deep,
@@ -1036,28 +2565,28 @@
   journaltitle = {Neural networks},
   pages        = {85--117},
   title        = {Deep learning in neural networks: An overview},
-  volume       = {61},
+  volume       = {61}
 }
 
 @article{schulman2016trpogae,
   author       = {Schulman, John and Moritz, Philpp and Levine, Sergey and Jordan, Michael I. and Abbeel, Pieter},
   date         = {2016},
   journaltitle = {International Conference on Learning Representations},
-  title        = {High-Dimensional Continuous Control Using Generalized Advantage Estimation},
+  title        = {High-Dimensional Continuous Control Using Generalized Advantage Estimation}
 }
 
 @article{schulman2017proximal,
   author       = {Schulman, John and Wolski, Filip and Dhariwal, Prafulla and Radford, Alec and Klimov, Oleg},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1707.06347},
-  title        = {Proximal policy optimization algorithms},
+  title        = {Proximal policy optimization algorithms}
 }
 
 @article{shen2018ordered,
   author       = {Shen, Yikang and Tan, Shawn and Sordoni, Alessandro and Courville, Aaron},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1810.09536},
-  title        = {Ordered Neurons: Integrating Tree Structures into Recurrent Neural Networks},
+  title        = {Ordered Neurons: Integrating Tree Structures into Recurrent Neural Networks}
 }
 
 @article{silver2016mastering,
@@ -1068,28 +2597,28 @@
   number       = {7587},
   pages        = {484--489},
   title        = {Mastering the game of Go with deep neural networks and tree search},
-  volume       = {529},
+  volume       = {529}
 }
 
 @article{silver2016predictron,
   author       = {Silver, David and van Hasselt, Hado and Hessel, Matteo and Schaul, Tom and Guez, Arthur and Harley, Tim and Dulac-Arnold, Gabriel and Reichert, David and Rabinowitz, Neil and Barreto, Andre and others},
   date         = {2016},
   journaltitle = {arXiv preprint arXiv:1612.08810},
-  title        = {The predictron: End-to-end learning and planning},
+  title        = {The predictron: End-to-end learning and planning}
 }
 
 @article{simonyan2014very,
   author       = {Simonyan, Karen and Zisserman, Andrew},
   date         = {2014},
   journaltitle = {arXiv preprint arXiv:1409.1556},
-  title        = {Very deep convolutional networks for large-scale image recognition},
+  title        = {Very deep convolutional networks for large-scale image recognition}
 }
 
 @article{srinivas2018universal,
   author       = {Srinivas, Aravind and Jabri, Allan and Abbeel, Pieter and Levine, Sergey and Finn, Chelsea},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1804.00645},
-  title        = {Universal Planning Networks},
+  title        = {Universal Planning Networks}
 }
 
 @article{sutton2012introduction,
@@ -1100,21 +2629,21 @@
   number       = {4},
   pages        = {267--373},
   title        = {An introduction to conditional random fields},
-  volume       = {4},
+  volume       = {4}
 }
 
 @article{tang2018ba,
   author       = {Tang, Chengzhou and Tan, Ping},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1806.04807},
-  title        = {Ba-net: Dense bundle adjustment network},
+  title        = {Ba-net: Dense bundle adjustment network}
 }
 
 @article{tarlow2012fast,
   author       = {Tarlow, Daniel and Swersky, Kevin and Zemel, Richard S and Adams, Ryan Prescott and Frey, Brendan J},
   date         = {2012},
   journaltitle = {arXiv preprint arXiv:1210.4899},
-  title        = {Fast exact inference for recursive cardinality models},
+  title        = {Fast exact inference for recursive cardinality models}
 }
 
 @article{theodorou2010generalized,
@@ -1124,7 +2653,7 @@
   number       = {Nov},
   pages        = {3137--3181},
   title        = {A generalized path integral control approach to reinforcement learning},
-  volume       = {11},
+  volume       = {11}
 }
 
 @article{tieleman2012lecture,
@@ -1134,21 +2663,21 @@
   number       = {2},
   pages        = {26--31},
   title        = {Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude},
-  volume       = {4},
+  volume       = {4}
 }
 
 @article{torvalds2005git,
   author       = {Torvalds, Linus and Hamano, J and others},
   date         = {2005},
   journaltitle = {\url{http://git-scm.com}},
-  title        = {Git},
+  title        = {Git}
 }
 
 @article{tschiatschek2018differentiable,
   author       = {Tschiatschek, Sebastian and Sahin, Aytunc and Krause, Andreas},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1803.01785},
-  title        = {Differentiable submodular maximization},
+  title        = {Differentiable submodular maximization}
 }
 
 @article{tsochantaridis2005large,
@@ -1157,7 +2686,7 @@
   journaltitle = {Journal of Machine Learning Research},
   pages        = {1453--1484},
   title        = {Large margin methods for structured and interdependent output variables},
-  volume       = {6},
+  volume       = {6}
 }
 
 @article{tsoumakas2011mulan,
@@ -1167,7 +2696,7 @@
   number       = {Jul},
   pages        = {2411--2414},
   title        = {Mulan: A java library for multi-label learning},
-  volume       = {12},
+  volume       = {12}
 }
 
 @article{uhlenbeck1930theory,
@@ -1178,7 +2707,7 @@
   number       = {5},
   pages        = {823},
   title        = {On the theory of the Brownian motion},
-  volume       = {36},
+  volume       = {36}
 }
 
 @article{van2011numpy,
@@ -1189,7 +2718,7 @@
   number       = {2},
   pages        = {22},
   title        = {The NumPy array: a structure for efficient numerical computation},
-  volume       = {13},
+  volume       = {13}
 }
 
 @article{wainwright2008graphical,
@@ -1200,7 +2729,7 @@
   number       = {1--2},
   pages        = {1--305},
   title        = {Graphical models, exponential families, and variational inference},
-  volume       = {1},
+  volume       = {1}
 }
 
 @article{wang2008fast,
@@ -1211,14 +2740,14 @@
   number       = {2},
   pages        = {6974--6979},
   title        = {Fast model predictive control using online optimization},
-  volume       = {41},
+  volume       = {41}
 }
 
 @article{weber2017imagination,
   author       = {Weber, Th{\'{e}}ophane and Racani{\`{e}}re, S{\'{e}}bastien and Reichert, David P and Buesing, Lars and Guez, Arthur and Rezende, Danilo Jimenez and Badia, Adria Puigdom{\`{e}}nech and Vinyals, Oriol and Heess, Nicolas and Li, Yujia and others},
   date         = {2017},
   journaltitle = {arXiv preprint arXiv:1707.06203},
-  title        = {Imagination-Augmented Agents for Deep Reinforcement Learning},
+  title        = {Imagination-Augmented Agents for Deep Reinforcement Learning}
 }
 
 @article{williams2017model,
@@ -1229,20 +2758,20 @@
   number       = {2},
   pages        = {344--357},
   title        = {Model predictive path integral control: From theory to parallel computation},
-  volume       = {40},
+  volume       = {40}
 }
 
 @article{xinyi2018capsule,
   author = {Xinyi, Zhang and Chen, Lihui},
   date   = {2018},
-  title  = {Capsule Graph Neural Network},
+  title  = {Capsule Graph Neural Network}
 }
 
 @article{xu2018powerful,
   author       = {Xu, Keyulu and Hu, Weihua and Leskovec, Jure and Jegelka, Stefanie},
   date         = {2018},
   journaltitle = {arXiv preprint arXiv:1810.00826},
-  title        = {How Powerful are Graph Neural Networks?},
+  title        = {How Powerful are Graph Neural Networks?}
 }
 
 @article{yang2017support,
@@ -1252,7 +2781,7 @@
   journaltitle = {ISPRS journal of photogrammetry and remote sensing},
   pages        = {15--25},
   title        = {On support relations and semantic scene graphs},
-  volume       = {131},
+  volume       = {131}
 }
 
 @article{ye1994nl,
@@ -1263,21 +2792,21 @@
   number       = {1},
   pages        = {53--67},
   title        = {An $O(\sqrt{nL})$-iteration homogeneous and self-dual linear programming algorithm},
-  volume       = {19},
+  volume       = {19}
 }
 
 @article{yosinski2015understanding,
   author       = {Yosinski, Jason and Clune, Jeff and Nguyen, Anh and Fuchs, Thomas and Lipson, Hod},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1506.06579},
-  title        = {Understanding neural networks through deep visualization},
+  title        = {Understanding neural networks through deep visualization}
 }
 
 @article{yu2015multi,
   author       = {Yu, Fisher and Koltun, Vladlen},
   date         = {2015},
   journaltitle = {arXiv preprint arXiv:1511.07122},
-  title        = {Multi-scale context aggregation by dilated convolutions},
+  title        = {Multi-scale context aggregation by dilated convolutions}
 }
 
 @book{ben2001lectures,
@@ -1285,14 +2814,14 @@
   publisher = {Siam},
   date      = {2001},
   title     = {Lectures on modern convex optimization: analysis, algorithms, and engineering applications},
-  volume    = {2},
+  volume    = {2}
 }
 
 @book{bertsekas1999nonlinear,
   author    = {Bertsekas, Dimitri P},
   publisher = {Athena scientific Belmont},
   date      = {1999},
-  title     = {Nonlinear programming},
+  title     = {Nonlinear programming}
 }
 
 @book{bertsekas2005dynamic,
@@ -1301,28 +2830,28 @@
   date      = {2005},
   number    = {3},
   title     = {Dynamic programming and optimal control},
-  volume    = {1},
+  volume    = {1}
 }
 
 @book{bishop2007pattern,
   author    = {Bishop, Christopher},
   publisher = {Springer, New York},
   date      = {2007},
-  title     = {Pattern Recognition and Machine Learning (Information Science and Statistics), 1st edn. 2006. corr. 2nd printing edn},
+  title     = {Pattern Recognition and Machine Learning (Information Science and Statistics), 1st edn. 2006. corr. 2nd printing edn}
 }
 
 @book{bonnans2013perturbation,
   author    = {Bonnans, J Fr{\'{e}}d{\'{e}}ric and Shapiro, Alexander},
   publisher = {Springer Science \& Business Media},
   date      = {2013},
-  title     = {Perturbation analysis of optimization problems},
+  title     = {Perturbation analysis of optimization problems}
 }
 
 @book{boyd2004convex,
   author    = {Boyd, Stephen and Vandenberghe, Lieven},
   publisher = {Cambridge university press},
   date      = {2004},
-  title     = {Convex optimization},
+  title     = {Convex optimization}
 }
 
 @book{friedman2001elements,
@@ -1331,7 +2860,7 @@
   date      = {2001},
   number    = {10},
   title     = {The elements of statistical learning},
-  volume    = {1},
+  volume    = {1}
 }
 
 @book{goodfellow2016deep,
@@ -1339,42 +2868,42 @@
   publisher = {MIT press Cambridge},
   date      = {2016},
   title     = {Deep learning},
-  volume    = {1},
+  volume    = {1}
 }
 
 @book{griewank2008evaluating,
   author    = {Griewank, Andreas and Walther, Andrea},
   publisher = {SIAM},
   date      = {2008},
-  title     = {Evaluating derivatives: principles and techniques of algorithmic differentiation},
+  title     = {Evaluating derivatives: principles and techniques of algorithmic differentiation}
 }
 
 @book{koller2009probabilistic,
   author    = {Koller, Daphne and Friedman, Nir},
   publisher = {MIT press},
   date      = {2009},
-  title     = {Probabilistic graphical models: principles and techniques},
+  title     = {Probabilistic graphical models: principles and techniques}
 }
 
 @book{lamport1994latex,
   author    = {Lamport, Leslie},
   publisher = {Addison-wesley},
   date      = {1994},
-  title     = {LATEX: a document preparation system: user's guide and reference manual},
+  title     = {LATEX: a document preparation system: user's guide and reference manual}
 }
 
 @book{mckinney2012python,
   author    = {McKinney, Wes},
   publisher = {" O'Reilly Media, Inc."},
   date      = {2012},
-  title     = {Python for data analysis: Data wrangling with Pandas, NumPy, and IPython},
+  title     = {Python for data analysis: Data wrangling with Pandas, NumPy, and IPython}
 }
 
 @book{nocedal2006sequential,
   author    = {Nocedal, Jorge and Wright, Stephen J},
   publisher = {Springer},
   date      = {2006},
-  title     = {Sequential quadratic programming},
+  title     = {Sequential quadratic programming}
 }
 
 @book{oliphant2006guide,
@@ -1382,7 +2911,7 @@
   publisher = {Trelgol Publishing USA},
   date      = {2006},
   title     = {A guide to NumPy},
-  volume    = {1},
+  volume    = {1}
 }
 
 @book{rockafellar2009variational,
@@ -1390,21 +2919,21 @@
   publisher = {Springer Science \& Business Media},
   date      = {2009},
   title     = {Variational analysis},
-  volume    = {317},
+  volume    = {317}
 }
 
 @book{sastry2011adaptive,
   author    = {Sastry, Shankar and Bodson, Marc},
   publisher = {Courier Corporation},
   date      = {2011},
-  title     = {Adaptive control: stability, convergence and robustness},
+  title     = {Adaptive control: stability, convergence and robustness}
 }
 
 @book{sra2012optimization,
   author    = {Sra, Suvrit and Nowozin, Sebastian and Wright, Stephen J},
   publisher = {Mit Press},
   date      = {2012},
-  title     = {Optimization for machine learning},
+  title     = {Optimization for machine learning}
 }
 
 @book{stallman1981emacs,
@@ -1413,42 +2942,42 @@
   date      = {1981},
   number    = {6},
   title     = {EMACS the extensible, customizable self-documenting display editor},
-  volume    = {16},
+  volume    = {16}
 }
 
 @book{sutton1998reinforcement,
   author    = {Sutton, Richard S and Barto, Andrew G and others},
   publisher = {MIT press},
   date      = {1998},
-  title     = {Reinforcement learning: An introduction},
+  title     = {Reinforcement learning: An introduction}
 }
 
 @book{szeliski2010computer,
   author    = {Szeliski, Richard},
   publisher = {Springer Science \& Business Media},
   date      = {2010},
-  title     = {Computer vision: algorithms and applications},
+  title     = {Computer vision: algorithms and applications}
 }
 
 @book{van1995python,
   author    = {Van Rossum, Guido and Drake Jr, Fred L},
   publisher = {Centrum voor Wiskunde en Informatica Amsterdam},
   date      = {1995},
-  title     = {Python reference manual},
+  title     = {Python reference manual}
 }
 
 @book{wasserman2013all,
   author    = {Wasserman, Larry},
   publisher = {Springer Science \& Business Media},
   date      = {2013},
-  title     = {All of statistics: a concise course in statistical inference},
+  title     = {All of statistics: a concise course in statistical inference}
 }
 
 @book{wright1997primal,
   author    = {Wright, Stephen J},
   publisher = {Siam},
   date      = {1997},
-  title     = {Primal-dual interior-point methods},
+  title     = {Primal-dual interior-point methods}
 }
 
 @incollection{bell2008algorithmic,
@@ -1457,7 +2986,7 @@
   booktitle = {Advances in Automatic Differentiation},
   date      = {2008},
   pages     = {67--77},
-  title     = {Algorithmic differentiation of implicit functions and optimal values},
+  title     = {Algorithmic differentiation of implicit functions and optimal values}
 }
 
 @incollection{grant2006disciplined,
@@ -1466,7 +2995,7 @@
   booktitle = {Global optimization},
   date      = {2006},
   pages     = {155--210},
-  title     = {Disciplined convex programming},
+  title     = {Disciplined convex programming}
 }
 
 @incollection{smola2007bundle,
@@ -1476,7 +3005,7 @@
   booktitle = {Advances in Neural Information Processing Systems 20},
   date      = {2008},
   pages     = {1377--1384},
-  title     = {Bundle Methods for Machine Learning},
+  title     = {Bundle Methods for Machine Learning}
 }
 
 @inproceedings{abadi2016tensorflow,
@@ -1485,7 +3014,7 @@
   date      = {2016},
   pages     = {265--283},
   title     = {Tensorflow: a system for large-scale machine learning.},
-  volume    = {16},
+  volume    = {16}
 }
 
 @inproceedings{abbeel2006using,
@@ -1494,7 +3023,7 @@
   booktitle    = {Proceedings of the 23rd international conference on Machine learning},
   date         = {2006},
   pages        = {1--8},
-  title        = {Using inaccurate models in reinforcement learning},
+  title        = {Using inaccurate models in reinforcement learning}
 }
 
 @inproceedings{agarwal2011infinite,
@@ -1503,7 +3032,7 @@
   booktitle    = {Proceedings of the 2011 SIAM International Conference on Data Mining},
   date         = {2011},
   pages        = {839--850},
-  title        = {The infinite push: A new support vector ranking algorithm that directly optimizes accuracy at the absolute top of the list},
+  title        = {The infinite push: A new support vector ranking algorithm that directly optimizes accuracy at the absolute top of the list}
 }
 
 @inproceedings{alexis2011quadrotor,
@@ -1512,7 +3041,7 @@
   booktitle    = {Control \& Automation (MED), 2011 19th Mediterranean Conference on},
   date         = {2011},
   pages        = {1247--1252},
-  title        = {Model predictive quadrotor indoor position control},
+  title        = {Model predictive quadrotor indoor position control}
 }
 
 @inproceedings{ali2017semismooth,
@@ -1521,21 +3050,21 @@
   booktitle    = {Proceedings of the 34th International Conference on Machine Learning-Volume 70},
   date         = {2017},
   pages        = {70--79},
-  title        = {A semismooth Newton method for fast, generic convex programming},
+  title        = {A semismooth Newton method for fast, generic convex programming}
 }
 
 @inproceedings{amos2017input,
   author    = {Amos, Brandon and Xu, Lei and Kolter, J. Zico},
   booktitle = {Proceedings of the International Conference on Machine Learning},
   date      = {2017},
-  title     = {Input Convex Neural Networks},
+  title     = {Input Convex Neural Networks}
 }
 
 @inproceedings{amos2017optnet,
   author    = {Amos, Brandon and Kolter, J. Zico},
   booktitle = {Proceedings of the International Conference on Machine Learning},
   date      = {2017},
-  title     = {OptNet: Differentiable Optimization as a Layer in Neural Networks},
+  title     = {OptNet: Differentiable Optimization as a Layer in Neural Networks}
 }
 
 @inproceedings{amos2018differentiable,
@@ -1543,7 +3072,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2018},
   pages     = {8299--8310},
-  title     = {Differentiable MPC for End-to-end Planning and Control},
+  title     = {Differentiable MPC for End-to-end Planning and Control}
 }
 
 @inproceedings{amos2018learning,
@@ -1551,14 +3080,14 @@
   author    = {Amos, Brandon and Dinh, Laurent and Cabi, Serkan and Roth{\"{o}}rl, Thomas and Colmenarejo, Sergio G{\'{o}}mez and Muldal, Alistair and Erez, Tom and Tassa, Yuval and de Freitas, Nando and Denil, Misha},
   booktitle = {International Conference on Learning Representations},
   date      = {2018},
-  title     = {Learning Awareness Models},
+  title     = {Learning Awareness Models}
 }
 
 @inproceedings{amos2019lml,
   author       = {Amos, Brandon and Koltun, Vladlen and Kolter, J. Zico},
   date         = {2019},
   journaltitle = {Unpublished},
-  title        = {{The Limited Multi-Label Projection Layer}},
+  title        = {{The Limited Multi-Label Projection Layer}}
 }
 
 @inproceedings{bagnell2001autonomous,
@@ -1568,7 +3097,7 @@
   date         = {2001},
   pages        = {1615--1620},
   title        = {Autonomous helicopter control using reinforcement learning policy search methods},
-  volume       = {2},
+  volume       = {2}
 }
 
 @inproceedings{barron2016fast,
@@ -1577,7 +3106,7 @@
   booktitle    = {European Conference on Computer Vision},
   date         = {2016},
   pages        = {617--632},
-  title        = {The fast bilateral solver},
+  title        = {The fast bilateral solver}
 }
 
 @inproceedings{battaglia2016interaction,
@@ -1585,21 +3114,21 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2016},
   pages     = {4502--4510},
-  title     = {Interaction networks for learning about objects, relations and physics},
+  title     = {Interaction networks for learning about objects, relations and physics}
 }
 
 @inproceedings{belanger2016structured,
   author    = {Belanger, David and McCallum, Andrew},
   booktitle = {Proceedings of the International Conference on Machine Learning},
   date      = {2016},
-  title     = {Structured prediction energy networks},
+  title     = {Structured prediction energy networks}
 }
 
 @inproceedings{belanger2017end,
   author    = {Belanger, David and Yang, Bishan and McCallum, Andrew},
   booktitle = {Proceedings of the International Conference on Machine Learning},
   date      = {2017},
-  title     = {End-to-End Learning for Structured Prediction Energy Networks},
+  title     = {End-to-End Learning for Structured Prediction Energy Networks}
 }
 
 @inproceedings{bengio1994globally,
@@ -1607,28 +3136,28 @@
   booktitle = {Advances in neural information processing systems},
   date      = {1994},
   pages     = {937--944},
-  title     = {Globally trained handwritten word recognizer using spatial representation, convolutional neural networks, and hidden Markov models},
+  title     = {Globally trained handwritten word recognizer using spatial representation, convolutional neural networks, and hidden Markov models}
 }
 
 @inproceedings{berrada2018smooth,
   author    = {Berrada, Leonard and Zisserman, Andrew and Kumar, M Pawan},
   booktitle = {Proceedings of the International Conference on Learning Representations},
   date      = {2018},
-  title     = {Smooth Loss Functions for Deep Top-k Classification},
+  title     = {Smooth Loss Functions for Deep Top-k Classification}
 }
 
 @inproceedings{boedecker2014sparsegps,
   author    = {Boedecker, Joschika and Springenberg, Jost Tobias and Wulfing, Jan and Riedmiller, Martin},
   booktitle = {IEEE Symposium on Adaptive Dynamic Programming and Reinforcement Learning (ADPRL)},
   date      = {2014},
-  title     = {Approximate Real-Time Optimal Control Based on Sparse Gaussian Process Models},
+  title     = {Approximate Real-Time Optimal Control Based on Sparse Gaussian Process Models}
 }
 
 @inproceedings{bouffard2012lbmpc,
   author    = {Bouffard, P. and Aswani, A. and Tomlin, C.},
   booktitle = {IEEE International Conference on Robotics and Automation},
   date      = {2012},
-  title     = {Learning-based model predictive control on a quadrotor: Onboard implementation and experimental results},
+  title     = {Learning-based model predictive control on a quadrotor: Onboard implementation and experimental results}
 }
 
 @inproceedings{boyd2012accuracy,
@@ -1636,7 +3165,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2012},
   pages     = {953--961},
-  title     = {Accuracy at the top},
+  title     = {Accuracy at the top}
 }
 
 @inproceedings{chen2015early,
@@ -1644,14 +3173,14 @@
   author    = {Chen, Zhuo and Jiang, Lu and Hu, Wenlu and Ha, Kiryong and Amos, Brandon and Pillai, Padmanabhan and Hauptmann, Alex and Satyanarayanan, Mahadev},
   booktitle = {WearSys},
   date      = {2015},
-  title     = {{{Early Implementation Experience with Wearable Cognitive Assistance Applications}}},
+  title     = {{{Early Implementation Experience with Wearable Cognitive Assistance Applications}}}
 }
 
 @inproceedings{chen2015learning,
   author    = {Chen, Liang-Chieh and Schwing, Alexander G and Yuille, Alan L and Urtasun, Raquel},
   booktitle = {Proceedings of the International Conference on Machine Learning},
   date      = {2015},
-  title     = {Learning deep structured models},
+  title     = {Learning deep structured models}
 }
 
 @inproceedings{chen2017empirical,
@@ -1660,7 +3189,7 @@
   booktitle    = {Proceedings of the Second ACM/IEEE Symposium on Edge Computing},
   date         = {2017},
   pages        = {12},
-  title        = {An Empirical Study of Latency in an Emerging Class of Edge Computing Applications for Wearable Cognitive Assistance},
+  title        = {An Empirical Study of Latency in an Emerging Class of Edge Computing Applications for Wearable Cognitive Assistance}
 }
 
 @inproceedings{chen2017learning,
@@ -1668,7 +3197,7 @@
   booktitle = {International Conference on Machine Learning},
   date      = {2017},
   pages     = {748--756},
-  title     = {Learning to learn without gradient descent by gradient descent},
+  title     = {Learning to learn without gradient descent by gradient descent}
 }
 
 @inproceedings{chen2018approximating,
@@ -1677,7 +3206,7 @@
   booktitle    = {2018 Annual American Control Conference (ACC)},
   date         = {2018},
   pages        = {1520--1527},
-  title        = {Approximating Explicit Model Predictive Control Using Constrained Neural Networks},
+  title        = {Approximating Explicit Model Predictive Control Using Constrained Neural Networks}
 }
 
 @inproceedings{chen2018neural,
@@ -1685,7 +3214,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2018},
   pages     = {6572--6583},
-  title     = {Neural ordinary differential equations},
+  title     = {Neural ordinary differential equations}
 }
 
 @inproceedings{collobert2011torch7,
@@ -1693,7 +3222,7 @@
   booktitle = {BigLearn, NIPS Workshop},
   date      = {2011},
   number    = {EPFL-CONF-192376},
-  title     = {Torch7: A matlab-like environment for machine learning},
+  title     = {Torch7: A matlab-like environment for machine learning}
 }
 
 @inproceedings{davies2016privacy,
@@ -1701,7 +3230,7 @@
   author    = {Davies, Nigel Andrew Justin and Taft, Nina and Satyanarayanan, Mahadev and Clinch, Sarah and Amos, Brandon},
   booktitle = {HotMobile},
   date      = {2016},
-  title     = {{Privacy mediators: helping IoT cross the chasm}},
+  title     = {{Privacy mediators: helping IoT cross the chasm}}
 }
 
 @inproceedings{de2018end,
@@ -1709,7 +3238,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2018},
   pages     = {7178--7189},
-  title     = {End-to-end differentiable physics for learning and control},
+  title     = {End-to-end differentiable physics for learning and control}
 }
 
 @inproceedings{deisenroth2011pilco,
@@ -1717,7 +3246,7 @@
   booktitle = {Proceedings of the 28th International Conference on machine learning (ICML-11)},
   date      = {2011},
   pages     = {465--472},
-  title     = {PILCO: A model-based and data-efficient approach to policy search},
+  title     = {PILCO: A model-based and data-efficient approach to policy search}
 }
 
 @inproceedings{devlin2017robustfill,
@@ -1726,7 +3255,7 @@
   booktitle    = {Proceedings of the 34th International Conference on Machine Learning-Volume 70},
   date         = {2017},
   pages        = {990--998},
-  title        = {Robustfill: Neural program learning under noisy I/O},
+  title        = {Robustfill: Neural program learning under noisy I/O}
 }
 
 @inproceedings{djolonga2017differentiable,
@@ -1734,7 +3263,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2017},
   pages     = {1013--1023},
-  title     = {Differentiable learning of submodular models},
+  title     = {Differentiable learning of submodular models}
 }
 
 @inproceedings{domahidi2013ecos,
@@ -1743,7 +3272,7 @@
   booktitle    = {Control Conference (ECC), 2013 European},
   date         = {2013},
   pages        = {3071--3076},
-  title        = {ECOS: An SOCP solver for embedded systems},
+  title        = {ECOS: An SOCP solver for embedded systems}
 }
 
 @inproceedings{domke2012generic,
@@ -1752,7 +3281,7 @@
   date      = {2012},
   pages     = {318--326},
   title     = {Generic Methods for Optimization-Based Modeling.},
-  volume    = {22},
+  volume    = {22}
 }
 
 @inproceedings{donti2017task,
@@ -1760,7 +3289,7 @@
   author    = {Donti, Priya L and Amos, Brandon and Kolter, J. Zico},
   booktitle = {NIPS},
   date      = {2017},
-  title     = {Task-based End-to-end Model Learning},
+  title     = {Task-based End-to-end Model Learning}
 }
 
 @inproceedings{duchi2008efficient,
@@ -1768,14 +3297,14 @@
   booktitle = {Proceedings of the 25th international conference on Machine learning},
   date      = {2008},
   pages     = {272--279},
-  title     = {Efficient projections onto the l 1-ball for learning in high dimensions},
+  title     = {Efficient projections onto the l 1-ball for learning in high dimensions}
 }
 
 @inproceedings{erez2012mpc,
   author    = {Erez, T. and Tassa, Y. and Todorov, E.},
   booktitle = {International Conference on Intelligent Robots and Systems},
   date      = {2012},
-  title     = {Synthesis and stabilization of complex behaviors through online trajectory optimization},
+  title     = {Synthesis and stabilization of complex behaviors through online trajectory optimization}
 }
 
 @inproceedings{finn2016guided,
@@ -1783,7 +3312,7 @@
   booktitle = {International Conference on Machine Learning},
   date      = {2016},
   pages     = {49--58},
-  title     = {Guided cost learning: Deep inverse optimal control via policy optimization},
+  title     = {Guided cost learning: Deep inverse optimal control via policy optimization}
 }
 
 @inproceedings{finn2017model,
@@ -1792,7 +3321,7 @@
   booktitle    = {Proceedings of the 34th International Conference on Machine Learning-Volume 70},
   date         = {2017},
   pages        = {1126--1135},
-  title        = {Model-agnostic meta-learning for fast adaptation of deep networks},
+  title        = {Model-agnostic meta-learning for fast adaptation of deep networks}
 }
 
 @inproceedings{foerster2018learning,
@@ -1801,7 +3330,7 @@
   booktitle    = {Proceedings of the 17th International Conference on Autonomous Agents and MultiAgent Systems},
   date         = {2018},
   pages        = {122--130},
-  title        = {Learning with opponent-learning awareness},
+  title        = {Learning with opponent-learning awareness}
 }
 
 @inproceedings{globerson2016collective,
@@ -1810,7 +3339,7 @@
   date      = {2016},
   pages     = {621--631},
   title     = {Collective entity resolution with multi-focal attention},
-  volume    = {1},
+  volume    = {1}
 }
 
 @inproceedings{glorot2011deep,
@@ -1818,7 +3347,7 @@
   booktitle = {Proceedings of the fourteenth international conference on artificial intelligence and statistics},
   date      = {2011},
   pages     = {315--323},
-  title     = {Deep sparse rectifier neural networks},
+  title     = {Deep sparse rectifier neural networks}
 }
 
 @inproceedings{goodfellow2013multi,
@@ -1826,7 +3355,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2013},
   pages     = {548--556},
-  title     = {Multi-prediction deep Boltzmann machines},
+  title     = {Multi-prediction deep Boltzmann machines}
 }
 
 @inproceedings{goodfellow2014generative,
@@ -1834,21 +3363,21 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2014},
   pages     = {2672--2680},
-  title     = {Generative adversarial nets},
+  title     = {Generative adversarial nets}
 }
 
 @inproceedings{goyal2018continuous,
   author    = {Goyal, Kartik and Neubig, Graham and Dyer, Chris and Berg-Kirkpatrick, Taylor},
   booktitle = {Thirty-Second AAAI Conference on Artificial Intelligence},
   date      = {2018},
-  title     = {A continuous relaxation of beam search for end-to-end training of neural sequence models},
+  title     = {A continuous relaxation of beam search for end-to-end training of neural sequence models}
 }
 
 @inproceedings{gu2016continuous,
   author    = {Gu, Shixiang and Lillicrap, Timothy and Sutskever, Ilya and Levine, Sergey},
   booktitle = {Proceedings of the International Conference on Machine Learning},
   date      = {2016},
-  title     = {Continuous Deep Q-Learning with Model-based Acceleration},
+  title     = {Continuous Deep Q-Learning with Model-based Acceleration}
 }
 
 @inproceedings{ha2017you,
@@ -1857,7 +3386,7 @@
   booktitle    = {Proceedings of the Second ACM/IEEE Symposium on Edge Computing},
   date         = {2017},
   pages        = {12},
-  title        = {You can teach elephants to dance: agile VM handoff for edge computing},
+  title        = {You can teach elephants to dance: agile VM handoff for edge computing}
 }
 
 @inproceedings{hamilton2017inductive,
@@ -1865,7 +3394,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2017},
   pages     = {1024--1034},
-  title     = {Inductive representation learning on large graphs},
+  title     = {Inductive representation learning on large graphs}
 }
 
 @inproceedings{heess2015learning,
@@ -1873,14 +3402,14 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2015},
   pages     = {2944--2952},
-  title     = {Learning continuous control policies by stochastic value gradients},
+  title     = {Learning continuous control policies by stochastic value gradients}
 }
 
 @inproceedings{henderson2018deep,
   author    = {Henderson, Peter and Islam, Riashat and Bachman, Philip and Pineau, Joelle and Precup, Doina and Meger, David},
   booktitle = {Thirty-Second AAAI Conference on Artificial Intelligence},
   date      = {2018},
-  title     = {Deep reinforcement learning that matters},
+  title     = {Deep reinforcement learning that matters}
 }
 
 @inproceedings{hu2014case,
@@ -1888,7 +3417,7 @@
   author    = {Hu, Wenlu and Amos, Brandon and Chen, Zhuo and Ha, Kiryong and Richter, Wolfgang and Pillai, Padmanabhan and Gilbert, Benjamin and Harkes, Jan and Satyanarayanan, Mahadev},
   booktitle = {HotMobile},
   date      = {2015},
-  title     = {{{The Case for Offload Shaping}}},
+  title     = {{{The Case for Offload Shaping}}}
 }
 
 @inproceedings{hu2016quantifying,
@@ -1897,7 +3426,7 @@
   booktitle    = {Proceedings of the 7th ACM SIGOPS Asia-Pacific Workshop on Systems},
   date         = {2016},
   pages        = {5},
-  title        = {Quantifying the impact of edge computing on mobile applications},
+  title        = {Quantifying the impact of edge computing on mobile applications}
 }
 
 @inproceedings{huang2017densely,
@@ -1906,7 +3435,7 @@
   booktitle    = {2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
   date         = {2017},
   pages        = {2261--2269},
-  title        = {Densely connected convolutional networks},
+  title        = {Densely connected convolutional networks}
 }
 
 @inproceedings{ioffe2015batch,
@@ -1914,7 +3443,7 @@
   booktitle = {Proceedings of The 32nd International Conference on Machine Learning},
   date      = {2015},
   pages     = {448--456},
-  title     = {Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift},
+  title     = {Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift}
 }
 
 @inproceedings{johnson2015image,
@@ -1922,7 +3451,7 @@
   booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
   date      = {2015},
   pages     = {3668--3678},
-  title     = {Image retrieval using scene graphs},
+  title     = {Image retrieval using scene graphs}
 }
 
 @inproceedings{johnson2016composing,
@@ -1930,7 +3459,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2016},
   pages     = {2946--2954},
-  title     = {Composing graphical models with neural networks for structured representations and fast inference},
+  title     = {Composing graphical models with neural networks for structured representations and fast inference}
 }
 
 @inproceedings{kamel2015multicopter,
@@ -1939,7 +3468,7 @@
   booktitle    = {Control Applications (CCA), 2015 IEEE Conference on},
   date         = {2015},
   pages        = {1160--1166},
-  title        = {Fast nonlinear model predictive control for multicopter attitude tracking on SO (3)},
+  title        = {Fast nonlinear model predictive control for multicopter attitude tracking on SO (3)}
 }
 
 @inproceedings{karkus2017qmdp,
@@ -1947,7 +3476,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2017},
   pages     = {4697--4707},
-  title     = {Qmdp-net: Deep learning for planning under partial observability},
+  title     = {Qmdp-net: Deep learning for planning under partial observability}
 }
 
 @inproceedings{kluyver2016jupyter,
@@ -1955,7 +3484,7 @@
   booktitle = {ELPUB},
   date      = {2016},
   pages     = {87--90},
-  title     = {Jupyter Notebooks-a publishing format for reproducible computational workflows.},
+  title     = {Jupyter Notebooks-a publishing format for reproducible computational workflows.}
 }
 
 @inproceedings{kong2015kinematic,
@@ -1964,7 +3493,7 @@
   booktitle    = {Intelligent Vehicles Symposium (IV), 2015 IEEE},
   date         = {2015},
   pages        = {1094--1099},
-  title        = {Kinematic and dynamic vehicle models for autonomous driving control design},
+  title        = {Kinematic and dynamic vehicle models for autonomous driving control design}
 }
 
 @inproceedings{krizhevsky2012imagenet,
@@ -1972,7 +3501,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2012},
   pages     = {1097--1105},
-  title     = {Imagenet classification with deep convolutional neural networks},
+  title     = {Imagenet classification with deep convolutional neural networks}
 }
 
 @inproceedings{kurutach2018learning,
@@ -1980,7 +3509,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2018},
   pages     = {8733--8744},
-  title     = {Learning plannable representations with causal infogan},
+  title     = {Learning plannable representations with causal infogan}
 }
 
 @inproceedings{lapin2015top,
@@ -1988,7 +3517,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2015},
   pages     = {325--333},
-  title     = {Top-k multiclass SVM},
+  title     = {Top-k multiclass SVM}
 }
 
 @inproceedings{lapin2016loss,
@@ -1996,21 +3525,21 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2016},
   pages     = {1468--1477},
-  title     = {Loss functions for top-k error: Analysis and insights},
+  title     = {Loss functions for top-k error: Analysis and insights}
 }
 
 @inproceedings{Lenc_2015_CVPR,
   author    = {Lenc, Karel and Vedaldi, Andrea},
   booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
   date      = {2015-06},
-  title     = {Understanding Image Representations by Measuring Their Equivariance and Equivalence},
+  title     = {Understanding Image Representations by Measuring Their Equivariance and Equivalence}
 }
 
 @inproceedings{lenz2015deepmpc,
   author    = {Lenz, Ian and Knepper, Ross A and Saxena, Ashutosh},
   booktitle = {Robotics: Science and Systems},
   date      = {2015},
-  title     = {DeepMPC: Learning Deep Latent Features for Model Predictive Control.},
+  title     = {DeepMPC: Learning Deep Latent Features for Model Predictive Control.}
 }
 
 @inproceedings{levine2013guided,
@@ -2018,7 +3547,7 @@
   booktitle = {Proceedings of the 30th International Conference on Machine Learning (ICML-13)},
   date      = {2013},
   pages     = {1--9},
-  title     = {Guided policy search},
+  title     = {Guided policy search}
 }
 
 @inproceedings{levine2014learning,
@@ -2026,7 +3555,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2014},
   pages     = {1071--1079},
-  title     = {Learning neural network policies with guided policy search under unknown dynamics},
+  title     = {Learning neural network policies with guided policy search under unknown dynamics}
 }
 
 @inproceedings{li1994markov,
@@ -2035,13 +3564,13 @@
   booktitle    = {European conference on computer vision},
   date         = {1994},
   pages        = {361--370},
-  title        = {Markov random field models in computer vision},
+  title        = {Markov random field models in computer vision}
 }
 
 @inproceedings{li2004ilqr,
   author = {Li, Weiwei and Todorov, Emanuel},
   date   = {2004},
-  title  = {Iterative Linear Quadratic Regulator Design for Nonlinear Biological Movement Systems},
+  title  = {Iterative Linear Quadratic Regulator Design for Nonlinear Biological Movement Systems}
 }
 
 @inproceedings{li2014top,
@@ -2049,7 +3578,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2014},
   pages     = {1502--1510},
-  title     = {Top rank optimization in linear time},
+  title     = {Top rank optimization in linear time}
 }
 
 @inproceedings{li2018factorizable,
@@ -2058,7 +3587,7 @@
   booktitle    = {European Conference on Computer Vision},
   date         = {2018},
   pages        = {346--363},
-  title        = {Factorizable net: an efficient subgraph-based framework for scene graph generation},
+  title        = {Factorizable net: an efficient subgraph-based framework for scene graph generation}
 }
 
 @inproceedings{liang2017deep,
@@ -2067,7 +3596,7 @@
   booktitle    = {Computer Vision and Pattern Recognition (CVPR), 2017 IEEE Conference on},
   date         = {2017},
   pages        = {4408--4417},
-  title        = {Deep variation-structured reinforcement learning for visual relationship and attribute detection},
+  title        = {Deep variation-structured reinforcement learning for visual relationship and attribute detection}
 }
 
 @inproceedings{liniger2014rccar,
@@ -2076,14 +3605,14 @@
   date      = {2014},
   edition   = {36},
   pages     = {628--647},
-  title     = {Optimization-based autonomous racing of 1:43 scale RC cars},
+  title     = {Optimization-based autonomous racing of 1:43 scale RC cars}
 }
 
 @inproceedings{liting2017driving,
   author    = {Sun, Liting and Peng, Cheng and Zhan, Wei and Tomizuka, Masayoshi},
   booktitle = {arXiv preprint arXiv:1707.02515},
   date      = {2017},
-  title     = {A Fast Integrated Planning and Control Framework for Autonomous Driving via Imitation Learning},
+  title     = {A Fast Integrated Planning and Control Framework for Autonomous Driving via Imitation Learning}
 }
 
 @inproceedings{long2015fully,
@@ -2091,7 +3620,7 @@
   booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
   date      = {2015},
   pages     = {3431--3440},
-  title     = {Fully convolutional networks for semantic segmentation},
+  title     = {Fully convolutional networks for semantic segmentation}
 }
 
 @inproceedings{mahendran2015understanding,
@@ -2099,7 +3628,7 @@
   booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
   date      = {2015},
   pages     = {5188--5196},
-  title     = {Understanding deep image representations by inverting them},
+  title     = {Understanding deep image representations by inverting them}
 }
 
 @inproceedings{martins2016softmax,
@@ -2107,7 +3636,7 @@
   booktitle = {International Conference on Machine Learning},
   date      = {2016},
   pages     = {1614--1623},
-  title     = {From softmax to sparsemax: A sparse model of attention and multi-label classification},
+  title     = {From softmax to sparsemax: A sparse model of attention and multi-label classification}
 }
 
 @inproceedings{mnih2016asynchronous,
@@ -2115,7 +3644,7 @@
   booktitle = {International Conference on Machine Learning},
   date      = {2016},
   pages     = {1928--1937},
-  title     = {Asynchronous methods for deep reinforcement learning},
+  title     = {Asynchronous methods for deep reinforcement learning}
 }
 
 @inproceedings{monti2017geometric,
@@ -2123,14 +3652,14 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2017},
   pages     = {5115--5124},
-  title     = {Geometric deep learning on graphs and manifolds using mixture model cnns},
+  title     = {Geometric deep learning on graphs and manifolds using mixture model cnns}
 }
 
 @inproceedings{nagabandi2017mbmf,
   author    = {Nagabandi, Anusha and Kahn, Gregory and Fearing, Ronald S. and Levine, Sergey},
   booktitle = {arXiv preprint arXiv:1708.02596},
   date      = {2017},
-  title     = {Neural Network Dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning},
+  title     = {Neural Network Dynamics for Model-Based Deep Reinforcement Learning with Model-Free Fine-Tuning}
 }
 
 @inproceedings{nair2010rectified,
@@ -2138,14 +3667,14 @@
   booktitle = {Proceedings of the 27th International Conference on Machine Learning (ICML-10)},
   date      = {2010},
   pages     = {807--814},
-  title     = {Rectified linear units improve restricted boltzmann machines},
+  title     = {Rectified linear units improve restricted boltzmann machines}
 }
 
 @inproceedings{neunert2016slqmpc,
   author    = {Neunert, Michael and de Crousaz, Cedric and Furrer, Fardi and Kamel, Mina and Farshidian, Farbod and Siegwart, Roland and Buchli, Jonas},
   booktitle = {ICRA},
   date      = {2016},
-  title     = {{Fast Nonlinear Model Predictive Control for Unified Trajectory Optimization and Tracking}},
+  title     = {{Fast Nonlinear Model Predictive Control for Unified Trajectory Optimization and Tracking}}
 }
 
 @inproceedings{newell2017pixels,
@@ -2153,7 +3682,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2017},
   pages     = {2171--2180},
-  title     = {Pixels to graphs by associative embedding},
+  title     = {Pixels to graphs by associative embedding}
 }
 
 @inproceedings{ng2000algorithms,
@@ -2162,7 +3691,7 @@
   date      = {2000},
   pages     = {2},
   title     = {Algorithms for inverse reinforcement learning.},
-  volume    = {1},
+  volume    = {1}
 }
 
 @inproceedings{niculae2017regularized,
@@ -2170,7 +3699,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2017},
   pages     = {3338--3348},
-  title     = {A regularized framework for sparse and structured neural attention},
+  title     = {A regularized framework for sparse and structured neural attention}
 }
 
 @inproceedings{oh2017value,
@@ -2178,7 +3707,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2017},
   pages     = {6120--6130},
-  title     = {Value prediction network},
+  title     = {Value prediction network}
 }
 
 @inproceedings{peng2009conditional,
@@ -2186,7 +3715,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2009},
   pages     = {1419--1427},
-  title     = {Conditional neural fields},
+  title     = {Conditional neural fields}
 }
 
 @inproceedings{pham2018optlayer,
@@ -2195,14 +3724,14 @@
   booktitle    = {2018 IEEE International Conference on Robotics and Automation (ICRA)},
   date         = {2018},
   pages        = {6236--6243},
-  title        = {Optlayer-practical constrained optimization for deep reinforcement learning in the real world},
+  title        = {Optlayer-practical constrained optimization for deep reinforcement learning in the real world}
 }
 
 @inproceedings{plummer2017phrase,
   author    = {Plummer, Bryan A and Mallya, Arun and Cervantes, Christopher M and Hockenmaier, Julia and Lazebnik, Svetlana},
   booktitle = {Proc. ICCV},
   date      = {2017},
-  title     = {Phrase localization and visual relationship detection with comprehensive image-language cues},
+  title     = {Phrase localization and visual relationship detection with comprehensive image-language cues}
 }
 
 @inproceedings{poon2011sum,
@@ -2210,7 +3739,7 @@
   booktitle = {{UAI} 2011, Proceedings of the Twenty-Seventh Conference on Uncertainty in Artificial Intelligence, Barcelona, Spain, July 14-17, 2011},
   date      = {2011},
   pages     = {337--346},
-  title     = {Sum-product networks: A new deep architecture},
+  title     = {Sum-product networks: A new deep architecture}
 }
 
 @inproceedings{ratliff2007approximate,
@@ -2218,7 +3747,7 @@
   booktitle = {International Conference on Artificial Intelligence and Statistics},
   date      = {2007},
   pages     = {380--387},
-  title     = {(Approximate) Subgradient Methods for Structured Prediction},
+  title     = {(Approximate) Subgradient Methods for Structured Prediction}
 }
 
 @inproceedings{regin1996generalized,
@@ -2227,7 +3756,7 @@
   booktitle    = {Proceedings of the thirteenth national conference on Artificial intelligence-Volume 1},
   date         = {1996},
   pages        = {209--215},
-  title        = {Generalized arc consistency for global cardinality constraint},
+  title        = {Generalized arc consistency for global cardinality constraint}
 }
 
 @inproceedings{ross2011reduction,
@@ -2235,7 +3764,7 @@
   booktitle = {Proceedings of the fourteenth international conference on artificial intelligence and statistics},
   date      = {2011},
   pages     = {627--635},
-  title     = {A reduction of imitation learning and structured prediction to no-regret online learning},
+  title     = {A reduction of imitation learning and structured prediction to no-regret online learning}
 }
 
 @inproceedings{rothvoss2014matching,
@@ -2244,7 +3773,7 @@
   booktitle    = {Proceedings of the 46th annual ACM symposium on theory of computing},
   date         = {2014},
   pages        = {263--272},
-  title        = {The matching polytope has exponential extension complexity},
+  title        = {The matching polytope has exponential extension complexity}
 }
 
 @inproceedings{sabour2017dynamic,
@@ -2252,7 +3781,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2017},
   pages     = {3856--3866},
-  title     = {Dynamic routing between capsules},
+  title     = {Dynamic routing between capsules}
 }
 
 @inproceedings{samaria1994parameterisation,
@@ -2261,7 +3790,7 @@
   booktitle    = {Applications of Computer Vision, 1994., Proceedings of the Second IEEE Workshop on},
   date         = {1994},
   pages        = {138--142},
-  title        = {Parameterisation of a stochastic model for human face identification},
+  title        = {Parameterisation of a stochastic model for human face identification}
 }
 
 @inproceedings{santa2017deeppermnet,
@@ -2270,7 +3799,7 @@
   booktitle    = {Computer Vision and Pattern Recognition (CVPR), 2017 IEEE Conference on},
   date         = {2017},
   pages        = {6044--6052},
-  title        = {Deeppermnet: Visual permutation learning},
+  title        = {Deeppermnet: Visual permutation learning}
 }
 
 @inproceedings{schmidt2014shrinkage,
@@ -2278,7 +3807,7 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2014},
   pages     = {2774--2781},
-  title     = {Shrinkage fields for effective image restoration},
+  title     = {Shrinkage fields for effective image restoration}
 }
 
 @inproceedings{schneider1997exploiting,
@@ -2286,7 +3815,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {1997},
   pages     = {1047--1053},
-  title     = {Exploiting model uncertainty estimates for safe dynamic control learning},
+  title     = {Exploiting model uncertainty estimates for safe dynamic control learning}
 }
 
 @inproceedings{schroff2015facenet,
@@ -2294,7 +3823,7 @@
   booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
   date      = {2015},
   pages     = {815--823},
-  title     = {Facenet: A unified embedding for face recognition and clustering},
+  title     = {Facenet: A unified embedding for face recognition and clustering}
 }
 
 @inproceedings{schulman2015trust,
@@ -2302,7 +3831,7 @@
   booktitle = {Proceedings of the 32nd International Conference on Machine Learning (ICML-15)},
   date      = {2015},
   pages     = {1889--1897},
-  title     = {Trust region policy optimization},
+  title     = {Trust region policy optimization}
 }
 
 @inproceedings{shah2018airsim,
@@ -2311,7 +3840,7 @@
   booktitle    = {Field and Service Robotics},
   date         = {2018},
   pages        = {621--635},
-  title        = {Airsim: High-fidelity visual and physical simulation for autonomous vehicles},
+  title        = {Airsim: High-fidelity visual and physical simulation for autonomous vehicles}
 }
 
 @inproceedings{silver2014deterministic,
@@ -2319,7 +3848,7 @@
   booktitle = {Proceedings of the International Conference on Machine Learning},
   date      = {2014},
   pages     = {387--395},
-  title     = {Deterministic Policy Gradient Algorithms},
+  title     = {Deterministic Policy Gradient Algorithms}
 }
 
 @inproceedings{simard1991reverse,
@@ -2328,7 +3857,7 @@
   booktitle    = {Advances in Neural Information Processing Systems},
   date         = {1991},
   pages        = {579--588},
-  title        = {Reverse TDNN: an architecture for trajectory generation},
+  title        = {Reverse TDNN: an architecture for trajectory generation}
 }
 
 @inproceedings{stewart2007xmonad,
@@ -2337,7 +3866,7 @@
   booktitle    = {Proceedings of the ACM SIGPLAN workshop on Haskell workshop},
   date         = {2007},
   pages        = {119--119},
-  title        = {Xmonad},
+  title        = {Xmonad}
 }
 
 @inproceedings{stoyanov2011empirical,
@@ -2345,7 +3874,7 @@
   booktitle = {AISTATS},
   date      = {2011},
   pages     = {725--733},
-  title     = {Empirical Risk Minimization of Graphical Model Parameters Given Approximate Inference, Decoding, and Model Structure.},
+  title     = {Empirical Risk Minimization of Graphical Model Parameters Given Approximate Inference, Decoding, and Model Structure.}
 }
 
 @inproceedings{sukhbaatar2015end,
@@ -2353,7 +3882,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2015},
   pages     = {2440--2448},
-  title     = {End-to-end memory networks},
+  title     = {End-to-end memory networks}
 }
 
 @inproceedings{sutton1990integrated,
@@ -2361,7 +3890,7 @@
   booktitle = {Proceedings of the seventh international conference on machine learning},
   date      = {1990},
   pages     = {216--224},
-  title     = {Integrated architectures for learning, planning, and reacting based on approximating dynamic programming},
+  title     = {Integrated architectures for learning, planning, and reacting based on approximating dynamic programming}
 }
 
 @inproceedings{szegedy2015going,
@@ -2369,7 +3898,7 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2015},
   pages     = {1--9},
-  title     = {Going deeper with convolutions},
+  title     = {Going deeper with convolutions}
 }
 
 @inproceedings{taigman2014deepface,
@@ -2377,7 +3906,7 @@
   booktitle = {Proceedings of the IEEE conference on computer vision and pattern recognition},
   date      = {2014},
   pages     = {1701--1708},
-  title     = {Deepface: Closing the gap to human-level performance in face verification},
+  title     = {Deepface: Closing the gap to human-level performance in face verification}
 }
 
 @inproceedings{tamar2016value,
@@ -2385,7 +3914,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2016},
   pages     = {2154--2162},
-  title     = {Value iteration networks},
+  title     = {Value iteration networks}
 }
 
 @inproceedings{tamar2017learning,
@@ -2394,7 +3923,7 @@
   booktitle    = {Robotics and Automation (ICRA), 2017 IEEE International Conference on},
   date         = {2017},
   pages        = {336--343},
-  title        = {Learning from the hindsight plan---Episodic MPC improvement},
+  title        = {Learning from the hindsight plan---Episodic MPC improvement}
 }
 
 @inproceedings{tappen2007learning,
@@ -2403,7 +3932,7 @@
   booktitle    = {Computer Vision and Pattern Recognition, 2007. CVPR'07. IEEE Conference on},
   date         = {2007},
   pages        = {1--8},
-  title        = {Learning gaussian conditional random fields for low-level vision},
+  title        = {Learning gaussian conditional random fields for low-level vision}
 }
 
 @inproceedings{taskar2004max,
@@ -2411,7 +3940,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2004},
   pages     = {25--32},
-  title     = {Max-margin Markov networks},
+  title     = {Max-margin Markov networks}
 }
 
 @inproceedings{taskar2005learning,
@@ -2420,7 +3949,7 @@
   booktitle    = {Proceedings of the 22nd International Conference on Machine Learning},
   date         = {2005},
   pages        = {896--903},
-  title        = {Learning structured prediction models: A large margin approach},
+  title        = {Learning structured prediction models: A large margin approach}
 }
 
 @inproceedings{tassa2014control,
@@ -2429,7 +3958,7 @@
   booktitle    = {Robotics and Automation (ICRA), 2014 IEEE International Conference on},
   date         = {2014},
   pages        = {1168--1175},
-  title        = {Control-limited differential dynamic programming},
+  title        = {Control-limited differential dynamic programming}
 }
 
 @inproceedings{todorov2012mujoco,
@@ -2438,7 +3967,7 @@
   booktitle    = {2012 IEEE/RSJ International Conference on Intelligent Robots and Systems},
   date         = {2012},
   pages        = {5026--5033},
-  title        = {MuJoCo: A physics engine for model-based control},
+  title        = {MuJoCo: A physics engine for model-based control}
 }
 
 @inproceedings{ulyanov2018deep,
@@ -2446,7 +3975,7 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2018},
   pages     = {9446--9454},
-  title     = {Deep image prior},
+  title     = {Deep image prior}
 }
 
 @inproceedings{vaswani2017attention,
@@ -2454,7 +3983,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2017},
   pages     = {5998--6008},
-  title     = {Attention is all you need},
+  title     = {Attention is all you need}
 }
 
 @inproceedings{venkatraman2016improved,
@@ -2463,7 +3992,7 @@
   booktitle    = {International Symposium on Experimental Robotics},
   date         = {2016},
   pages        = {703--713},
-  title        = {Improved learning of dynamics models for control},
+  title        = {Improved learning of dynamics models for control}
 }
 
 @inproceedings{wang2016proximal,
@@ -2471,7 +4000,7 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2016},
   pages     = {865--873},
-  title     = {Proximal deep structured models},
+  title     = {Proximal deep structured models}
 }
 
 @inproceedings{wang2017scalable,
@@ -2480,7 +4009,7 @@
   booktitle    = {Proceedings of the 8th ACM on Multimedia Systems Conference},
   date         = {2017},
   pages        = {38--49},
-  title        = {A Scalable and Privacy-Aware IoT Service for Live Video Analytics},
+  title        = {A Scalable and Privacy-Aware IoT Service for Live Video Analytics}
 }
 
 @inproceedings{wang2018non,
@@ -2488,7 +4017,7 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2018},
   pages     = {7794--7803},
-  title     = {Non-local neural networks},
+  title     = {Non-local neural networks}
 }
 
 @inproceedings{watter2015embed,
@@ -2496,7 +4025,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2015},
   pages     = {2746--2754},
-  title     = {Embed to control: A locally linear latent dynamics model for control from raw images},
+  title     = {Embed to control: A locally linear latent dynamics model for control from raw images}
 }
 
 @inproceedings{williams2016aggressive,
@@ -2505,7 +4034,7 @@
   booktitle    = {Robotics and Automation (ICRA), 2016 IEEE International Conference on},
   date         = {2016},
   pages        = {1433--1440},
-  title        = {Aggressive driving with model predictive path integral control},
+  title        = {Aggressive driving with model predictive path integral control}
 }
 
 @inproceedings{woo2018linknet,
@@ -2513,14 +4042,14 @@
   booktitle = {Advances in Neural Information Processing Systems},
   date      = {2018},
   pages     = {558--568},
-  title     = {LinkNet: Relational Embedding for Scene Graph},
+  title     = {LinkNet: Relational Embedding for Scene Graph}
 }
 
 @inproceedings{xie2017ddp,
   author    = {Xie, Zhaoming and Liu, C. Karen and Hauser, Kris},
   booktitle = {International Conference on Robotics and Automation (ICRA)},
   date      = {2017},
-  title     = {{Differential Dynamic Programming with Nonlinear Constraints}},
+  title     = {{Differential Dynamic Programming with Nonlinear Constraints}}
 }
 
 @inproceedings{xiong2016dynamic,
@@ -2528,7 +4057,7 @@
   booktitle = {International conference on machine learning},
   date      = {2016},
   pages     = {2397--2406},
-  title     = {Dynamic memory networks for visual and textual question answering},
+  title     = {Dynamic memory networks for visual and textual question answering}
 }
 
 @inproceedings{xu2017scene,
@@ -2536,7 +4065,7 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2017},
   title     = {Scene graph generation by iterative message passing},
-  volume    = {2},
+  volume    = {2}
 }
 
 @inproceedings{zaheer2017deep,
@@ -2544,7 +4073,7 @@
   booktitle = {Advances in neural information processing systems},
   date      = {2017},
   pages     = {3391--3401},
-  title     = {Deep sets},
+  title     = {Deep sets}
 }
 
 @inproceedings{zeiler2014visualizing,
@@ -2553,7 +4082,7 @@
   booktitle    = {European conference on computer vision},
   date         = {2014},
   pages        = {818--833},
-  title        = {Visualizing and understanding convolutional networks},
+  title        = {Visualizing and understanding convolutional networks}
 }
 
 @inproceedings{zellers2018neural,
@@ -2561,7 +4090,7 @@
   booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
   date      = {2018},
   pages     = {5831--5840},
-  title     = {Neural Motifs: Scene Graph Parsing with Global Context},
+  title     = {Neural Motifs: Scene Graph Parsing with Global Context}
 }
 
 @inproceedings{zhao2016collapsed,
@@ -2569,7 +4098,7 @@
   author    = {Zhao, Han and Adel, Tameem and Gordon, Geoff and Amos, Brandon},
   booktitle = {ICML},
   date      = {2016},
-  title     = {{{Collapsed Variational Inference for Sum-Product Networks}}},
+  title     = {{{Collapsed Variational Inference for Sum-Product Networks}}}
 }
 
 @inproceedings{zheng2015conditional,
@@ -2577,41 +4106,41 @@
   booktitle = {Proceedings of the IEEE International Conference on Computer Vision},
   date      = {2015},
   pages     = {1529--1537},
-  title     = {Conditional random fields as recurrent neural networks},
+  title     = {Conditional random fields as recurrent neural networks}
 }
 
 @inproceedings{zhu2016generative,
   author    = {Zhu, Jun-Yan and Kr{\"{a}}henb{\"{u}}hl, Philipp and Shechtman, Eli and Efros, Alexei A.},
   booktitle = {Proceedings of European Conference on Computer Vision (ECCV)},
   date      = {2016},
-  title     = {Generative Visual Manipulation on the Natural Image Manifold},
+  title     = {Generative Visual Manipulation on the Natural Image Manifold}
 }
 
 @misc{boyd2008lqr,
   author       = {Boyd, Stephen},
   date         = {2008},
   howpublished = {Stanford EE 363: Linear Dynamical Systems},
-  title        = {LQR via Lagrange multipliers},
+  title        = {LQR via Lagrange multipliers}
 }
 
 @misc{lecun1998mnist,
   author = {LeCun, Yann and Cortes, Corinna and Burges, Christopher JC},
   date   = {1998},
-  title  = {The {MNIST} database of handwritten digits},
+  title  = {The {MNIST} database of handwritten digits}
 }
 
 @misc{levine2017introduction,
   author       = {Levine, Sergey},
   date         = {2017},
   howpublished = {Berkeley CS 294-112: Deep Reinforcement Learning},
-  title        = {Introduction to Reinforcement Learning},
+  title        = {Introduction to Reinforcement Learning}
 }
 
 @misc{levine2017optimal,
   author       = {Levine, Sergey},
   date         = {2017},
   howpublished = {Berkeley CS 294-112: Deep Reinforcement Learning},
-  title        = {Optimal Control and Planning},
+  title        = {Optimal Control and Planning}
 }
 
 @report{amos2016openface,
@@ -2620,7 +4149,7 @@
   institution = {Technical Report CMU-CS-16-118, CMU School of Computer Science},
   date        = {2016},
   title       = {{{OpenFace: A general-purpose face recognition library with mobile applications}}},
-  type        = {techreport},
+  type        = {techreport}
 }
 
 @report{gao2015cloudlets,
@@ -2629,7 +4158,7 @@
   institution = {Technical Report CMU-CS-15-139, CMU School of Computer Science},
   date        = {2015},
   title       = {Are Cloudlets Necessary?},
-  type        = {techreport},
+  type        = {techreport}
 }
 
 @report{ha2015adaptive,
@@ -2638,7 +4167,7 @@
   institution = {Technical Report CMU-CS-15-113, CMU School of Computer Science},
   date        = {2015},
   title       = {Adaptive VM handoff across cloudlets},
-  type        = {techreport},
+  type        = {techreport}
 }
 
 @report{krizhevsky2009learning,
@@ -2646,7 +4175,7 @@
   institution = {Citeseer},
   date        = {2009},
   title       = {Learning multiple layers of features from tiny images},
-  type        = {techreport},
+  type        = {techreport}
 }
 
 @report{lin1993reinforcement,
@@ -2654,7 +4183,7 @@
   institution = {DTIC Document},
   date        = {1993},
   title       = {Reinforcement learning for robots using neural networks},
-  type        = {techreport},
+  type        = {techreport}
 }
 
 @thesis{belanger2017deep,
@@ -2662,14 +4191,14 @@
   institution = {University of Massachusetts Amherst},
   date        = {2017},
   title       = {Deep Energy-Based Models for Structured Prediction},
-  type        = {phdthesis},
+  type        = {phdthesis}
 }
 
 @thesis{jordan2015convex,
   author = {Jordan-Squire, Christopher},
   date   = {2015},
   title  = {Convex Optimization over Probability Measures},
-  type   = {phdthesis},
+  type   = {phdthesis}
 }
 
 @thesis{watkins1989learning,
@@ -2677,6 +4206,6 @@
   institution = {University of Cambridge England},
   date        = {1989},
   title       = {Learning from delayed rewards},
-  type        = {phdthesis},
+  type        = {phdthesis}
 }
 
