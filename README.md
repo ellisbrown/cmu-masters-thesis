@@ -1,10 +1,10 @@
 # Online Representation Learning on the Open Web
 
-+ This repository was created by [Ellis Brown](http://ellisbrown.github.io) and contains the full source code to produce [my master's thesis document](https://github.com/ellisbrown/cmu-masters-thesis/raw/master/thesis.pdf).
++ This repository was created by [Ellis Brown](http://ellisbrown.github.io) and contains the full source code to produce [my master's thesis document](https://github.com/ellisbrown/cmu-masters-thesis/raw/main/thesis.pdf).
 + The slides are available in
-  [pdf](https://github.com/bamos/thesis/raw/master/slides.pdf)
+  [pdf](https://github.com/bamos/thesis/raw/main/slides.pdf)
   and
-  [pptx](https://github.com/bamos/thesis/raw/master/slides.pptx)
+  [pptx](https://github.com/bamos/thesis/raw/main/slides.pptx)
   format.
 
 
