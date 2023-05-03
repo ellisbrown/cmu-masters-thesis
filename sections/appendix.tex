@@ -338,12 +338,16 @@ Internet Explorer uses images that were indexed by a web crawler (Google Images 
 
 % \section{More seeds}
 
-\section{Proof of Lemma 2.1}
+\section{Proof of \cref{lemma:speedup}}
 \label{sec:proof}
-Here, we prove Lemma~\ref{lemma:1} from Section~\ref{subsec:provable_speedup}, which we repeat below: 
-\begin{lemma}[Lemma 2.1]
-Let $T_{base}$ be the expected time to identify every relevant concept without the GPR, and $T_{GPR}$ be the expected time when exploiting the additional knowledge from the GPR. Then, $T_{base} = n H_{cs}$, $T_{GPR} = \frac{nH_{c}}{s}$, and the speedup from GPR is $\frac{T_{base}}{T_{GPR}} \approx s \log s$..
-\end{lemma}
+
+Here, we prove \cref{lemma:speedup} from \cref{subsec:provable_speedup}, which we repeat below:
+
+Assume that our vocabulary of $n$ concepts contains $c \cdot s \ll n $ relevant concepts, which are partitioned into $c$ disjoint clusters of size $s$. We want to discover every relevant concept by sampling concepts uniformly at random (with replacement) to test. Assume that sampling a concept conclusively tells us whether it is relevant. Furthermore, assume that we could optionally use a Gaussian process regression model which, if we've sampled a relevant concept, tells us that all the concepts in its cluster are also relevant.
+\vspace{0.5em}
+
+\lemmaspeedup*
+
 \begin{proof}
 This problem is a variant of the coupon collector problem. Let's first compute $T_{base}$ as the sum of expected times $t_i$ to identify the next relevant concept. 
 \begin{align}
@@ -355,7 +359,7 @@ This problem is a variant of the coupon collector problem. Let's first compute $
 \end{align}
 where $H_{cs}$ is the $cs$th harmonic number. Similarly, we can compute $T_{GPR}$ as the sum of expected times $t_i$ to identify the next relevant cluster.  
 \begin{align}
-    T_{base} &= \sum_{i=1}^{c} t_i \\
+    T_{GPR} &= \sum_{i=1}^{c} t_i \\
              &= \sum_{i=1}^{c} \frac{1}{p_i} \\
              &= \sum_{i=1}^{c} \frac{n}{s (c + 1 - i)} \\
              &= \frac{n}{s} \sum_{i=1}^{c} \frac{1}{c + 1 - i} \\

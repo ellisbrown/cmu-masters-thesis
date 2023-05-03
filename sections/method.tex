@@ -1,9 +1,11 @@
 \chapter{Method}
-This section provides a broad overview of foundational ideas
-and background material relevant to this thesis.
-In most chapters of this thesis, we include a deeper
-discussion of the related literature relevant to
-that material.
+% This section provides a broad overview of foundational ideas
+% and background material relevant to this thesis.
+% In most chapters of this thesis, we include a deeper
+% discussion of the related literature relevant to
+% that material.
+
+
 
 
 \section{Internet Explorer: An Online Agent}
@@ -13,15 +15,6 @@ that material.
 % We aim to improve performance for a known task by autonomously collecting more useful unlabeled data from the Internet. 
 % With a known dataset,
 
-% We focus on the problem of quickly improving performance on an arbitrary task with a corresponding image dataset.
-% \newdelete{
-% We focus on the problem of quickly improving performance on some prespecified task with a corresponding image dataset.
-% We make as few assumptions as possible and assume that we have only unlabeled training data from the target domain, without any labels or information about the dataset.
-% We can apply self-supervised methods directly to the target dataset, but performance quickly saturates---especially if the target dataset is small.
-% We thus prioritize selectively collecting the data that is expected to improve the current model's performance on the target task. 
-% }
-% \newchange{
-% Given a target dataset, we focus on the problem of efficiently querying the Internet for relevant data that improves our learned features for the prespecified dataset. 
 We focus on the problem of efficiently improving representations for some target dataset by acquiring Internet data.
 % improving performance on some prespecified task with a corresponding image dataset.
 We make as few assumptions as possible and assume that we have only unlabeled training data from the target dataset. 
@@ -32,121 +25,18 @@ Successful representation learning in this setting would lead to better performa
 An overview of the Internet Explorer method is depicted in Figure~\ref{fig:method} and described in Algorithm~\ref{alg:internet_explorer}.
 % }
 
-\subsection{Text-to-image Search}
-\label{subsec:text_to_image_search}
-% We would like a straightforward way to discover and download images from the full breadth of the Internet. 
-% One directed approach to finding images online could be to progressively crawl the Web and prioritize which hyperlinks to expand based on some notion of ``usefulness''~\cite{kontogiannis2021tree}.
-% However, this method has several major drawbacks. Ranking low-level hyperlinks (which of these web pages should I visit next) based on high-level semantic commands (I'd like to see pictures of Chihuahuas) is difficult to learn efficiently. Furthermore, each hyperlink expansion likely only yields a few new images, which almost certainly are not relevant to the concepts we care about. 
-We discover and download images from the full breadth of the Internet by querying text-to-image search engines, which return images based on their captions and surrounding text. Text-to-image search is fast, returns diverse images from across the Internet, and enables searches for vastly different queries simultaneously. Note that text-to-image search is noisy and makes use of weak supervision (the image-text pairing on webpages). Thus, we only perform self-supervised training on the downloaded images. We use a public codebase to query Google Images, which can download the top 100 images for each query~\cite{hardikvasa, Joeclinton1}. We also try other search engines in Section~\ref{subsec:search_engine_main}.
-% We turn on SafeSearch, mark preference for photographs, and set the minimum image size to 350, the smallest setting available. 
-% should we show an example of noisy results?
-
-\subsection{Text Query Generation}
-\label{subsec:text_query_generation}
-% TODO: explain why a lot of thought goes into the query model. 
-As text queries are our only input interface with the Internet, it is crucial that we can generate diverse queries that correspond to a variety of visual categories. Specificity is also important. Once a useful visual category is identified, generating fine-grained variants of the query is necessary to obtain data for all visual variations in the category.
-% Language models could potentially be used to produce text queries, and reinforcement learning could be used to adjust their behavior based on the curiosity reward. Previous work found that RL worked well for preference-based training from human feedback~\cite{ziegler2019fine,stiennon2020learning,nakano2021webgpt}. However, we found that models such as BERT~\cite{devlin2018bert} or GPT-2~\cite{radford2019language} preferred generating human-centric phrases and did not generate sufficiently visually diverse queries, even with extensive prompt tuning. Thus, we avoid language models and 
-We construct queries by combining two components: 
-\begin{enumerate}[noitemsep,topsep=0pt]
-    \item \textit{Concepts} specify semantic categories such as people, places, or objects. % Examples: golden retriever, daisy, BMW. 
-    \item \textit{Descriptors} are modifiers that generate variations in appearance. % Examples: big, narrow, red. 
-\end{enumerate}
-
-We draw our concepts from the WordNet hierarchy~\cite{miller1995wordnet}, which consists of $146{,}347$ noun lemmas. Not all of these lemmas are visual, but the vocabulary still covers an incredible range of topics (see examples in \cref{sec:wordnet_lemmas}).
-% For reference, here are 6 randomly sampled concepts:  {\tt {\small `sleep talking', 
-% `beach wagon', `Balearic Islands', `borosilicate', `genus Loranthus', `humpback whale'}}.
-To generate a text query, we first sample a concept from a learned distribution over our vocabulary. This discrete distribution is defined by our estimates of how relevant each concept in the vocabulary is at the current time (see Section \ref{subsec:image_rel_reward} for details on estimating rewards and Section \ref{subsec:tiering} for the distribution).
-Given a sampled concept, we can generate a descriptor by prompting a GPT-J language model~\cite{gpt-j} with examples of descriptor-concept pairs (details in \cref{sec:gptj-descriptors}).
-% \todo{tag supp sections}
-% For reference, here are 7 randomly sampled descriptors for ``labrador retriever'': {\tt {\small `friendly', `short', `long-legged', `big', `fast', `blue-eyed', `handsome'}}.
-Finally, as shown in Step 1 of Figure \ref{fig:method}, we simply concatenate the concept and descriptor. If our concept is ``duck'' and the GPT-generated descriptor is ``baby,'' our search engine query will be ``baby duck.''
-
-
-% , but any broad knowledge database, e.g. , would suffice. 
-% and use 41 descriptors, encompassing size, shape, and color. % These were drawn from a list of the most common English adjectives. 
-
-\subsection{Self-supervised Training}
-\label{subsec:ssl}
-% EB NOTE:
-% this section currently reads as: we use SSL, simsiam didnt work, but we use moco. moco details. we can also use other methods too
-% IMO a potentially stronger stance: SSL is the core of our method, and it is compatible with any SSL algo and across many modalities. we choose images for X reason and moco for Y reason. then moco details
-% \todo{currently: we use SSL, simsiam didnt work, but we use moco. moco details. we can also use other methods too}
-% \todo{potentially stronger: SSL is core, compatible with any SSL algo / across many modalities. why moco? then moco details}
-
-We use self-supervised learning (SSL) to learn useful representations from the unlabeled images that we download from the Internet. 
-% We experimented with using SimSiam~\cite{chen2020exploring} as our base SSL algorithm due to its simplicity (no temperature, EMA rate, or loss weighting terms to tune), but found that it was unstable to train~\cite{li2022understanding}. 
-Internet Explorer is compatible with any SSL algorithm that uses images or image-text pairs, including contrastive~\cite{he2020momentum,chen2020simple}, non-contrastive~\cite{grill2020bootstrap,zbontar2021barlow,bardes2021vicreg,caron2021emerging}, masking-based~\cite{bao2021beit,he2022masked}, or multimodal~\cite{radford2021learning} approaches. 
-For speed and stability reasons, we use the MoCo-v3 algorithm~\cite{chen2021empirical}, which trains encoders $f_q$ and $f_k$ on augmentations $(x_1, x_2)$ of the same image to output vectors $q = f_q(x_1)$ and $k = f_k(x_2)$. $f_q$ is trained to minimize the InfoNCE loss~\cite{oord2018representation}:
-\begin{align}
-    \mathcal L_q = -\log \frac{\exp(q \cdot k^+ / \tau)}{\exp (q \cdot k^+ / \tau) + \sum_{k^-} \exp (q \cdot k^- / \tau) }
-\label{eq:moco_loss}
-\end{align}
-$k^+$ corresponds to $f_k$'s output on the other augmentation of the image used to compute $q$, and the set of negative examples $\{k^-\}$ corresponds to $f_k$'s output on other images in the batch. The temperature $\tau$ is set to $1$ by default. $f_k$ consists of a base encoder, a projection MLP, and a prediction head, whereas $f_q$ is the exponential moving average of the base encoder and projection MLP from $f_k$. By training $q$ and $k^+$ to be similar across image augmentations, MoCo-v3 encourages the network to learn high-level semantic features. 
-
-% In each iteration of our method, we use MoCo-v3 to fine-tune a ResNet-50 model~\cite{he2016deep} on a mixture of newly downloaded, previously downloaded, and target dataset images.
-% Before turning to the Internet, we initialize our model using a MoCo-v3 checkpoint trained offline for 100 epochs on ImageNet and then
-% another X steps on a mixture of ImageNet and the target dataset images. 
-% fine-tuned with MoCo-v3 on the target dataset. Without using labels, we select the starting checkpoint for Internet Explorer by early-stopping on the SSL loss, which highly correlates with target accuracy~\cite{li2022understanding}.
-
-Before turning to the Internet, we initialize a ResNet-50 model~\cite{he2016deep} using a MoCo-v3 checkpoint trained offline for 100 epochs on ImageNet and then fine-tuned on the target dataset. Without using labels, we select the best starting checkpoint by early stopping on the SSL loss, which highly correlates with target accuracy~\cite{li2022understanding}.
-In each iteration of our method, we use MoCo-v3 to fine-tune on a mixture of newly downloaded, previously downloaded, and target dataset images.
-% another X steps on a mixture of ImageNet and the target dataset images. 
-
-
-% Even though we focus on using MoCo-v3, note that Internet Explorer is compatible with any SSL algorithm that uses images or image-text pairs, including contrastive~\cite{he2020momentum,chen2020simple}, non-contrastive~\cite{grill2020bootstrap,zbontar2021barlow,bardes2021vicreg,caron2021emerging}, masking-based~\cite{bao2021beit,he2022masked}, or multimodal~\cite{radford2021learning} approaches. 
-
-\subsection{Image Relevance Reward}
-\label{subsec:image_rel_reward}
-We want to rank newly downloaded images by how much they improve our features for the target dataset. This allows us to (a) prioritize taking gradient steps on useful images, and (b) understand what to search for in subsequent iterations. Unfortunately, it is challenging to directly measure the effect of an individual training example on performance. Numerous techniques have been proposed~\cite{koh2017understanding,feldman2020neural,paul2021deep,ilyas2022datamodels}, but they all require extensive and repeated training on new images to estimate their impact. 
-
-% Instead of trying to precisely measure what is learned from each image, we rank the images by their distance in representation space to the target dataset images. The images most similar to the target dataset induce larger contrastive loss, since each $\exp(q \cdot k^-)$ term in the denominator of Eq.~\ref{eq:moco_loss} is larger when the negative examples $\{k^-\}$ are closer to $q$.
-Instead of trying to precisely measure what is learned from each image, we use its similarity to the target dataset as a proxy for being relevant to training.
-We rank the downloaded images by their similarity in representation space to the target dataset images; those most similar to the target dataset induce larger contrastive loss since each $\exp(q \cdot k^-)$ term in the denominator of Eq.~\ref{eq:moco_loss} is larger when the negative examples $\{k^-\}$ are closer to $q$.
-These ``hard negatives''~\cite{robinson2020contrastive,schroff2015facenet,oh2016deep,harwood2017smart,wu2017sampling,ge2018deep} yield larger and more informative gradients and should result in the biggest improvement in representation quality.
-% The best way to improve performance on the target dataset is by finding data that \textit{looks like the target dataset.} Figure~\ref{fig:in_vs_flowers} shows that self-supervised learning on just 2040 Flowers102 images outperforms self-supervised pre-training on ImageNet, which contains 1.2 million images ($628\times$ as much data). Pre-training on only flower images only requires about 2\% the training time as ImageNet pre-training.
-% Motivated by this, 
-% We heuristically want to find Internet images similar to the ones in the target dataset, in hopes that they most efficiently improve self-supervised training. Thus, we formulate a curiosity reward (higher is better) to prefer images that are most similar in representation space to the target dataset images.
-% We want to find the best Internet images for future self-supervised training. 
-% As shown in Figure~\ref{fig:curiosity_reward}, the curiosity reward for a particular image is its representation's negative distance to its closest neighbor in the target dataset.
-Thus, overloading notation for $k$, we compute the reward for a particular image as its representation's average cosine similarity to its $k$ closest neighbors in the target dataset. Given an image encoder $f_k: \mathbb{R}^{H\times W\times 3} \rightarrow \mathbb{R}^d$, an unlabeled target dataset $\mathcal D = \{ x_i\}_{i=1}^N$, and a new image $y$ to evaluate, the reward is calculated:
-\begin{align}
-    r(f_k, \mathcal D, y) = \max_{\substack{I \subset \{1, ..., N\}; \\ |I| = k}}\frac{1}{k} \sum_{i \in I} S_{\cos}(f_k(x_i), f_k(y))
-\end{align}
-where $S_{\cos}$ is the cosine similarity. A previous metric for identifying relevant data~\cite{jiang2021improving} used $k=1$ nearest neighbors, 
-% but we found that this was too noisy and enabled high rewards for images unrelated to almost all of the target dataset. 
-but we found that this was too noisy and allowed high rewards for outlier target images to distract our search.
-We instead use $k=15$ to improve the accuracy of our relevance estimation.
-In \cref{subsec:reward_analysis}, we compare our reward to alternatives and explore their failure modes. This reward is used for two purposes: determining which of the downloaded images to train on and, subsequently, which concepts would be useful to search for next.
-
-\vspace{-0.06in}
-\paragraph{Which images to train on.}
-Many newly downloaded images are not worth training on, since they come from unrelated queries or are noisy results from the search engine.
-Thus, at the end of each iteration, we rank the newly downloaded images by their reward and save the top $50\%$ to a replay buffer that we maintain across iterations. In subsequent iterations, we continue training on this filtered data.
-
-\vspace{-0.06in}
-\paragraph{Determining which concepts are useful.}
-When we search for a concept and get back $Q$ image results $\{I_i\}_{i=1}^Q$, we take the average of the top 10 image-level rewards $r_i = r(f_k, \mathcal D, I_i)$ and use that as a \textit{concept-level score}. This gives us an accurate measure of the relevance of a particular query and reduces the impact of noisy search results. 
-
-% TODO: put in table that outlines the vocabulary we use 
-% \begin{figure}[t]
-%     \centering
-%     \includegraphics[width=0.45\linewidth]{figures/in_vs_flowers.pdf}
-%     \caption{
-%     % If the target dataset is known, pre-training only on similar images is more efficient than general pre-training. 
-%     Pre-training on the Flowers102 training set yields better Flowers k-NN accuracy with 44x fewer gradient steps than ImageNet pre-training.}
-%     \label{fig:in_vs_flowers}
-% \end{figure}
-
-% \begin{figure}[t]
-%     \centering
-%     \includegraphics[width=0.9\linewidth]{figures/curiosity_reward.pdf}
-%     \caption{\textbf{Schematic for curiosity reward calculation.} Using the current image backbone, we compute representations for the images in the target dataset and the candidate images that we want to evaluate. For each candidate image $x_i$, we find its distance $d_i$ to its nearest neighbor in the target dataset. The curiosity reward $r_i = -d_i$ encourages our algorithm to find images similar to the target dataset, as they tend to be closer in image representation space. In this figure, image $x_1$ is much closer to the target dataset than $x_2$ is, so it receives a higher curiosity reward.}
-%     \label{fig:curiosity_reward}
-% \end{figure}
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/method_fig2.pdf}
+    \caption{\textbf{Overview of Internet Explorer.} Our goal is to efficiently search the Internet for images that improve our performance on a target dataset.
+        In each iteration, we first generate text queries by combining a concept sampled from a learned distribution with a GPT-generated descriptor (\S\ref{subsec:text_query_generation},~\ref{subsec:tiering}). Next, we query search engines with the resulting phrase and download the top 100 image results (\S\ref{subsec:text_to_image_search},~\ref{subsec:search_engine_main}). We add these images to the set of previously downloaded images and perform self-supervised training on the combined dataset (\S\ref{subsec:ssl}). Finally, we evaluate the relevance of the new images and update our concept distribution to increase the likelihood of similar queries if their images were similar to the target dataset (\S\ref{subsec:image_rel_reward},~\ref{subsec:unseen_reward}).
+    }
+    \label{fig:method}
+\end{figure}
 
 \begin{algorithm}[t]
-   \caption{$\texttt{Internet Explorer}$}
-   \label{alg:internet_explorer}
+    \caption{$\texttt{Internet Explorer}$}
+    \label{alg:internet_explorer}
 \begin{algorithmic}[1]
     % \State {\bfseries Input:} target dataset $\mathcal D$, SSL algorithm $\mathbb{A}$, search engine $\texttt{SE}$, encoder $f: \mathbb{R}^{H \times W \times 3} \rightarrow \mathbb{R}^d$, image reward function $r$, vocabulary $\mathcal V = \{c_i\}_{i=1}^C$, $\#$ concepts/itr $M$, $\#$ query results/search $Q$, 
     % GPT-based concept $\rightarrow$ descriptor function $\texttt{GPTDesc}$, 
@@ -184,72 +74,155 @@ When we search for a concept and get back $Q$ image results $\{I_i\}_{i=1}^Q$, w
 \end{algorithmic}
 \end{algorithm}
 
+\subsection{Text-to-image Search}
+\label{subsec:text_to_image_search}
+% We would like a straightforward way to discover and download images from the full breadth of the Internet. 
+% One directed approach to finding images online could be to progressively crawl the Web and prioritize which hyperlinks to expand based on some notion of ``usefulness''~\cite{kontogiannis2021tree}.
+% However, this method has several major drawbacks. Ranking low-level hyperlinks (which of these web pages should I visit next) based on high-level semantic commands (I'd like to see pictures of Chihuahuas) is difficult to learn efficiently. Furthermore, each hyperlink expansion likely only yields a few new images, which almost certainly are not relevant to the concepts we care about. 
+We discover and download images from the full breadth of the Internet by querying text-to-image search engines, which return images based on their captions and surrounding text. Text-to-image search is fast, returns diverse images from across the Internet, and enables searches for vastly different queries simultaneously. Note that text-to-image search is noisy and makes use of weak supervision (the image-text pairing on webpages). Thus, we only perform self-supervised training on the downloaded images. We use a public codebase to query Google Images, which can download the top 100 images for each query~\cite{hardikvasa, Joeclinton1}. We also try other search engines in \cref{subsec:search_engine_main}.
+% We turn on SafeSearch, mark preference for photographs, and set the minimum image size to 350, the smallest setting available. 
+% should we show an example of noisy results?
+
+\subsection{Text Query Generation}
+\label{subsec:text_query_generation}
+% TODO: explain why a lot of thought goes into the query model. 
+As text queries are our only input interface with the Internet, it is crucial that we can generate diverse queries that correspond to a variety of visual categories. Specificity is also important. Once a useful visual category is identified, generating fine-grained variants of the query is necessary to obtain data for all visual variations in the category.
+% Language models could potentially be used to produce text queries, and reinforcement learning could be used to adjust their behavior based on the curiosity reward. Previous work found that RL worked well for preference-based training from human feedback~\cite{ziegler2019fine,stiennon2020learning,nakano2021webgpt}. However, we found that models such as BERT~\cite{devlin2018bert} or GPT-2~\cite{radford2019language} preferred generating human-centric phrases and did not generate sufficiently visually diverse queries, even with extensive prompt tuning. Thus, we avoid language models and 
+We construct queries by combining two components: 
+\begin{enumerate}[noitemsep,topsep=0pt]
+    \item \textit{Concepts} specify semantic categories such as people, places, or objects. % Examples: golden retriever, daisy, BMW. 
+    \item \textit{Descriptors} are modifiers that generate variations in appearance. % Examples: big, narrow, red. 
+\end{enumerate}
+
+We draw our concepts from the WordNet hierarchy~\cite{miller1995wordnet}, which consists of $146{,}347$ noun lemmas. Not all of these lemmas are visual, but the vocabulary still covers an incredible range of topics (see examples in \cref{sec:wordnet_lemmas}).
+To generate a text query, we first sample a concept from a learned distribution over our vocabulary. This discrete distribution is defined by our estimates of how relevant each concept in the vocabulary is at the current time (see \cref{subsec:image_rel_reward} for details on estimating rewards and \cref{subsec:tiering} for the distribution).
+Given a sampled concept, we can generate a descriptor by prompting a GPT-J language model~\cite{gpt-j} with examples of descriptor-concept pairs (details and examples in \cref{sec:gptj-descriptors}).
+Finally, as shown in Step 1 of \cref{fig:method}, we simply concatenate the concept and descriptor. If our concept is ``duck'' and the GPT-generated descriptor is ``baby,'' our search engine query will be ``baby duck''.
+
+
+\subsection{Self-supervised Training}
+\label{subsec:ssl}
+% EB NOTE:
+% this section currently reads as: we use SSL, simsiam didnt work, but we use moco. moco details. we can also use other methods too
+% IMO a potentially stronger stance: SSL is the core of our method, and it is compatible with any SSL algo and across many modalities. we choose images for X reason and moco for Y reason. then moco details
+
+We use self-supervised learning (SSL) to learn useful representations from the unlabeled images that we download from the Internet. 
+% We experimented with using SimSiam~\cite{chen2020exploring} as our base SSL algorithm due to its simplicity (no temperature, EMA rate, or loss weighting terms to tune), but found that it was unstable to train~\cite{li2022understanding}. 
+Internet Explorer is compatible with any SSL algorithm that uses images or image-text pairs, including contrastive~\cite{he2020momentum,chen2020simple}, non-contrastive~\cite{grill2020bootstrap,zbontar2021barlow,bardes2021vicreg,caron2021emerging}, masking-based~\cite{bao2021beit,he2022masked}, or multimodal~\cite{radford2021learning} approaches. 
+For speed and stability reasons, we use the MoCo-v3 algorithm~\cite{chen2021empirical}, which trains encoders $f_q$ and $f_k$ on augmentations $(x_1, x_2)$ of the same image to output vectors $q = f_q(x_1)$ and $k = f_k(x_2)$. $f_q$ is trained to minimize the InfoNCE loss~\cite{oord2018representation}:
+\begin{align}
+    \mathcal L_q = -\log \frac{\exp(q \cdot k^+ / \tau)}{\exp (q \cdot k^+ / \tau) + \sum_{k^-} \exp (q \cdot k^- / \tau) }
+    \label{eq:moco_loss}
+\end{align}
+where $k^+$ corresponds to $f_k$'s output on the other augmentation of the image used to compute $q$, and the set of negative examples $\{k^-\}$ corresponds to $f_k$'s output on other images in the batch. The temperature $\tau$ is set to $1$ by default. $f_k$ consists of a base encoder, a projection MLP, and a prediction head, whereas $f_q$ is the exponential moving average of the base encoder and projection MLP from $f_k$. By training $q$ and $k^+$ to be similar across image augmentations, MoCo-v3 encourages the network to learn high-level semantic features. 
+
+% In each iteration of our method, we use MoCo-v3 to fine-tune a ResNet-50 model~\cite{he2016deep} on a mixture of newly downloaded, previously downloaded, and target dataset images.
+% Before turning to the Internet, we initialize our model using a MoCo-v3 checkpoint trained offline for 100 epochs on ImageNet and then
+% another X steps on a mixture of ImageNet and the target dataset images. 
+% fine-tuned with MoCo-v3 on the target dataset. Without using labels, we select the starting checkpoint for Internet Explorer by early-stopping on the SSL loss, which highly correlates with target accuracy~\cite{li2022understanding}.
+
+Before turning to the Internet, we initialize a ResNet-50 model~\cite{he2016deep} using a MoCo-v3 checkpoint trained offline for 100 epochs on ImageNet and then fine-tuned on the target dataset. Without using labels, we select the best starting checkpoint by early stopping on the SSL loss, which highly correlates with target accuracy~\cite{li2022understanding}.
+In each iteration of our method, we use MoCo-v3 to fine-tune on a mixture of newly downloaded, previously downloaded, and target dataset images.
+% another X steps on a mixture of ImageNet and the target dataset images. 
+
+
+% Even though we focus on using MoCo-v3, note that Internet Explorer is compatible with any SSL algorithm that uses images or image-text pairs, including contrastive~\cite{he2020momentum,chen2020simple}, non-contrastive~\cite{grill2020bootstrap,zbontar2021barlow,bardes2021vicreg,caron2021emerging}, masking-based~\cite{bao2021beit,he2022masked}, or multimodal~\cite{radford2021learning} approaches. 
+
+\subsection{Image Relevance Reward}
+\label{subsec:image_rel_reward}
+We want to rank newly downloaded images by how much they improve our features for the target dataset. This allows us to (a) prioritize taking gradient steps on useful images, and (b) understand what to search for in subsequent iterations. Unfortunately, it is challenging to directly measure the effect of an individual training example on performance. Numerous techniques have been proposed~\cite{koh2017understanding,feldman2020neural,paul2021deep,ilyas2022datamodels}, but they all require extensive and repeated training on new images to estimate their impact. 
+
+% Instead of trying to precisely measure what is learned from each image, we rank the images by their distance in representation space to the target dataset images. The images most similar to the target dataset induce larger contrastive loss, since each $\exp(q \cdot k^-)$ term in the denominator of Eq.~\ref{eq:moco_loss} is larger when the negative examples $\{k^-\}$ are closer to $q$.
+Instead of trying to precisely measure what is learned from each image, we use its similarity to the target dataset as a proxy for being relevant to training.
+We rank the downloaded images by their similarity in representation space to the target dataset images; those most similar to the target dataset induce larger contrastive loss since each $\exp(q \cdot k^-)$ term in the denominator of Eq.~\ref{eq:moco_loss} is larger when the negative examples $\{k^-\}$ are closer to $q$.
+These ``hard negatives''~\cite{robinson2020contrastive,schroff2015facenet,oh2016deep,harwood2017smart,wu2017sampling,ge2018deep} yield larger and more informative gradients and should result in the biggest improvement in representation quality.
+% The best way to improve performance on the target dataset is by finding data that \textit{looks like the target dataset.} Figure~\ref{fig:in_vs_flowers} shows that self-supervised learning on just 2040 Flowers102 images outperforms self-supervised pre-training on ImageNet, which contains 1.2 million images ($628\times$ as much data). Pre-training on only flower images only requires about 2\% the training time as ImageNet pre-training.
+% Motivated by this, 
+% We heuristically want to find Internet images similar to the ones in the target dataset, in hopes that they most efficiently improve self-supervised training. Thus, we formulate a curiosity reward (higher is better) to prefer images that are most similar in representation space to the target dataset images.
+% We want to find the best Internet images for future self-supervised training. 
+% As shown in Figure~\ref{fig:curiosity_reward}, the curiosity reward for a particular image is its representation's negative distance to its closest neighbor in the target dataset.
+Thus, overloading notation for $k$, we compute the reward for a particular image as its representation's average cosine similarity to its $k$ closest neighbors in the target dataset. Given an image encoder $f_k: \mathbb{R}^{H\times W\times 3} \rightarrow \mathbb{R}^d$, an unlabeled target dataset $\mathcal D = \{ x_i \}_{i=1}^N$, and a new image $y$ to evaluate, the reward is calculated:
+\begin{align}
+    r(f_k, \mathcal D, y) =
+        \max_{\substack{I \subset \{1, \ldots, N\}; \\ |I| = k}}
+        \frac{1}{k} \sum_{i \in I} S_{\cos}\left(f_k(x_i), f_k(y)\right)
+\end{align}
+where $S_{\cos}$ is the cosine similarity. A previous metric for identifying relevant data~\cite{jiang2021improving} used $k=1$ nearest neighbors, 
+% but we found that this was too noisy and enabled high rewards for images unrelated to almost all of the target dataset. 
+but we found that this was too noisy and allowed high rewards for outlier target images to distract our search.
+We instead use $k=15$ to improve the accuracy of our relevance estimation.
+In \cref{subsec:reward_analysis}, we compare our reward to alternatives and explore their failure modes. This reward is used for two purposes: determining which of the downloaded images to train on and, subsequently, which concepts would be useful to search for next.
+
+\vspace{-0.06in}
+\paragraph{Which images to train on.}
+Many newly downloaded images are not worth training on, since they come from unrelated queries or are noisy results from the search engine.
+Thus, at the end of each iteration, we rank the newly downloaded images by their reward and save the top $50\%$ to a replay buffer that we maintain across iterations. In subsequent iterations, we continue training on this filtered data.
+
+\vspace{-0.06in}
+\paragraph{Determining which concepts are useful.}
+When we search for a concept and get back $Q$ image results $\{ I_i \}_{i=1}^Q$, we take the average of the top 10 image-level rewards $r_i = r(f_k, \mathcal D, I_i)$ and use that as a \textit{concept-level score}. This gives us an accurate measure of the relevance of a particular query and reduces the impact of noisy search results. 
+
+
+
 \subsection{Estimating Reward for Unseen Concepts}
 \label{subsec:unseen_reward}
-Since our vocabulary contains hundreds of thousands of concepts, it is inefficient to search to test whether a query yields relevant images. Luckily, we can estimate the quality of a query by using the observed rewards of the queries used so far. Humans can do this effortlessly due to our understanding of what each concept means. To us, it is obvious that if querying ``golden retriever'' yielded useful images for this dataset, then ``labrador retriever'' probably should as well. To give our method the same understanding of concept meaning, we embed our $146{,}347$ WordNet concepts into a 384-dimensional space using a pre-trained sentence similarity model~\cite{reimers2019sentence}. We provide relevant context about concepts to the text embedding model using the following template:\\
-{\tt {\small \{lemma\} (\{hypernym\}): \{definition\}}}. E.g.,\\
-{\tt {\small Chihuahua (toy dog): an old breed of tiny short-haired dog with protruding eyes from Mexico held to antedate Aztec civilization.}}
-% \begin{quote}
-% \vspace{-0.07in}
-% {\tt {\small \{lemma\} (\{hypernym\}): \{definition\}}}.
-% \vspace{-0.07in}
-% \end{quote}
-% % TODO: weird spacing
-% For example,
-% \begin{quote}
-% \vspace{-0.07in}
-% {\tt {\small Chihuahua (toy dog): an old breed of tiny short-haired dog with protruding eyes from Mexico held to antedate Aztec civilization.}}
-% \vspace{-0.07in}
-% \end{quote}
 
-% We use Gaussian process regression~\cite{williams1995gaussian} over the text embeddings $\{\mathbf{e}_i\}$ to predict the concept-level reward $r(\mathbf{e}_i)$ for untried concepts
-% to 
-% % Gaussian processes are nonparametric Bayesian models that
-% define a distribution over possible outputs, with jointly Gaussian function outputs at a collection of inputs $\{r(\mathbf{e}_i)\}$. % TODO: rephrase
-% The covariance of $r(\mathbf{e}_i)$ and $r(\mathbf{e}_j)$ is determined by the kernel $k(\mathbf{e}_i, \mathbf{e}_j)$, which we set as the default RBF kernel $k(\mathbf{e}_i, \mathbf{e}_j) = \exp(\frac{-\|\mathbf{e}_i - \mathbf{e}_j\|_2}{2})$. Given observed rewards for a subset of the concepts, the Gaussian process estimates a reward distribution $r(\mathbf{e}_i) \sim \mathcal N (\mu(\mathbf{e}_i), \sigma(\mathbf{e}_i)^2)$ for each unobserved concept. The locality provided by the RBF kernel enables reasonable reward predictions, and having a distribution over rewards instead of a point estimate allows us to explore potentially good concepts. We encourage exploration by setting the score of unobserved concepts to $\mu(\mathbf{e}_i) + \sigma(\mathbf{e}_i)$. 
+\subsubsection{Concept Embeddings}
+Since our vocabulary contains hundreds of thousands of concepts, it would be inefficient to test whether \emph{each} possible query yields relevant images. Luckily, we can estimate the quality of queries by using the observed rewards of the queries searched so far. Humans can do this effortlessly due to our understanding of what each concept means. To us, it is obvious that if querying ``duck'' yielded useful images for this dataset and ``BMW'' did not, then we should search for more images of animals and not cars. We want to give our method the same understanding of concept meaning, so we embed our $146{,}347$ WordNet concepts into a 384-dimensional space using a pre-trained sentence similarity model~\cite{reimers2019sentence}. We provide relevant context about each concept to the text embedding model by using additional information from WordNet in the following template:
 
+\begin{quote}
+    {\tt {\small \{lemma\} (\{hypernym\}): \{definition\}}}
+\end{quote}
+For example, the text that is embedded for the concept ``Chihuahua'' is:
+
+\begin{quote}
+    {\tt {\small Chihuahua (toy dog): an old breed of tiny short-haired dog with protruding eyes from Mexico held to antedate Aztec civilization.}}
+\end{quote}
+
+
+\subsubsection{Predicting Rewards}
+Now that we have a representation of each concept, we can estimate the reward for untried concepts by using the rewards of concepts that we have already searched for.
 We use Gaussian process regression (GPR)~\cite{williams1995gaussian} over the text embeddings $\{\mathbf{e}_i\}$ to predict the concept-level reward $r(\mathbf{e}_i)$ for untried concepts. 
 GPR models the function outputs for any set of inputs $\{r(\mathbf{e}_i)\}$ as jointly Gaussian random variables. 
 The covariance of any two variables $r(\mathbf{e}_i)$ and $r(\mathbf{e}_j)$ is determined by the kernel $k(\mathbf{e}_i, \mathbf{e}_j)$, which we set as the default RBF kernel $k(\mathbf{e}_i, \mathbf{e}_j) = \exp(\frac{-\|\mathbf{e}_i - \mathbf{e}_j\|_2}{2})$. 
-Given the observed rewards for concepts $R_{obs} = \{r(\mathbf e_i)\}$, GPR calculates the posterior distribution over the rewards for an unobserved concept $\mathbf e'$, $P(r(\mathbf e') | \{r(\mathbf{e}_i)\} = R_{obs})$. Given that the joint distribution  $P(\{r(\mathbf{e}_i)\}, r(\mathbf{e}'))$ is Gaussian, the posterior is also Gaussian with mean $\mu(\mathbf e')$ and variance $\sigma(\mathbf e')^2$. The locality provided by the RBF kernel enables reasonable reward predictions, and having a distribution over rewards instead of a point estimate allows us to explore potentially good concepts. We encourage exploration by setting the score of unobserved concepts to $\mu(\mathbf{e}_i) + \sigma(\mathbf{e}_i)$.
+Given the observed rewards for concepts $R_{obs} = \{r(\mathbf e_i)\}$, GPR calculates the posterior distribution over the rewards for an unobserved concept $\mathbf e'$, $P(r(\mathbf e') \mid \{r(\mathbf{e}_i)\} = R_{obs})$. Given that the joint distribution  $P(\{r(\mathbf{e}_i)\}, r(\mathbf{e}'))$ is Gaussian, the posterior is also Gaussian with mean $\mu(\mathbf e')$ and variance $\sigma{(\mathbf e')}^2$. The locality provided by the RBF kernel enables reasonable reward predictions, and having a distribution over rewards instead of a point estimate allows us to explore potentially good concepts. We encourage exploration by setting the score of unobserved concepts to $\mu(\mathbf{e}_i) + \sigma(\mathbf{e}_i)$.
+
+% a practical issue: GPR slows down a ton as the number of points increases. for this reason, after 10 iterations (256 queries * 100 images * 10 iters = 256k points), we switch to a simple ridge regression model. this is a good tradeoff because we have a lot of data by this point, and we don't need to explore as much anymore.
+
+A practical issue is that GPR does not scale well to large numbers of points, and fitting the model after each iteration becomes prohibitively slow. To address this, we use GPR for the first 10 iterations ($256$ queries $\times$ $100$ images $\times$ $10$ iterations $\approx 256{,}000$ points), and then switch to a simple ridge regression model that predicts solely the mean rewards $\mu(\mathbf{e}_i)$---and thus we eliminate the exploration term $\sigma(\mathbf{e}_i)$ from the reward prediction. This is a good tradeoff because we have a lot of data by this point, and we don't need to explore as much anymore.
+The number of iterations at which we switch to ridge regression is a hyperparameter that can be tuned to balance exploration and exploitation + speed. We found that 10 iterations to work well in practice.
+
+
+\subsection{Provable speedup in relevant query identification}
+\label{subsec:provable_speedup}
+We now show that our method can provably speed up the time to identify all relevant concepts in a dataset.
+Assume that our vocabulary of $n$ concepts contains $c \cdot s \ll n $ relevant concepts, which are partitioned into $c$ disjoint clusters of size $s$. We want to discover every relevant concept by sampling concepts uniformly at random (with replacement) to test. Assume that sampling a concept conclusively tells us whether it is relevant. Furthermore, assume that we could optionally use a Gaussian process regression model which, if we've sampled a relevant concept, tells us that all the concepts in its cluster are also relevant.\\
+
+\begin{restatable}{lemma}{lemmaspeedup}
+    \label{lemma:speedup}
+    Let $T_{base}$ be the expected time to identify every relevant concept without the GPR, and $T_{GPR}$ be the expected time when exploiting the additional knowledge from the GPR. Then, $T_{base} = n H_{c \cdot s}$, $T_{GPR} = \frac{nH_{c}}{s}$, and the speedup from GPR is $\frac{T_{base}}{T_{GPR}} \approx s \log s$.
+\end{restatable}
+% \begin{lemma}
+% \label{lemma:speedup}
+% Let $T_{base}$ be the expected time to identify every relevant concept without the GPR, and $T_{GPR}$ be the expected time when exploiting the additional knowledge from the GPR. Then, $T_{base} = n H_{cs}$, $T_{GPR} = \frac{nH_{c}}{s}$, and the speedup from GPR is $\frac{T_{base}}{T_{GPR}} \approx s \log s$.
+% \end{lemma}
+% The proof is in Appendix~\ref{sec:proof}. For our vocabulary and target datasets, $s \approx 100$. This shows that a predictive model like GPR is crucial for quickly identifying all useful concepts. 
+\vspace*{1em}
+We find that in practical settings (e.g., the Pets example analyzed in Fig.~\ref{fig:reward_over_training}), we can accurately predict how many samples are required to discover all useful concepts. If the vocabulary size is $n \approx 150{,}000$, the number of clusters is about $c = 2$ (one for cats and one for dogs), and the size of each cluster is about $150$, then $T_{GPR} = 1500$, which roughly matches the $9 \times 256 = 1792$ queries it took to discover both cats and dogs in the Pets dataset.
+
+\subsection{Query sampling distribution}
+\label{subsec:tiering}
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.7\linewidth]{figures/sampling_dist_shorter.pdf}
-    \caption{\textbf{Learned concept sampling distribution.} Given estimated scores for each of the $146,347$ concepts, we need to choose how often to sample each one in order to balance exploration and exploitation.
+    \caption{\textbf{Learned concept sampling distribution.} Given estimated scores for each of the $146{,}347$ concepts, we need to choose how often to sample each one in order to balance exploration and exploitation.
     \textbf{Top:} we scale our scores to a desired temperature, then take the softmax to obtain a distribution over concepts. Finally, we create tiers so that the top 250 concepts have $80\%$ of the probability mass, and the next 750 have $10\%$. This ensures that we sample enough from the top $1{,}000$ concepts while still exploring other concepts with lower scores.
     \textbf{Bottom:} the top 1000 concepts are only sampled a tiny fraction of the time without tiering.}
     \label{fig:sampling_dist}
     \vspace{-0.12in}
 \end{figure}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\linewidth]{figures/pets_targets.pdf}\\
-\vspace{-0.1in}
-\includegraphics[width=\linewidth]{figures/pets-progression-962-2col-3row.pdf}
-% \includegraphics[width=\linewidth]{figures/pets-progression-962-2col.pdf}
-\vspace{-0.28in}
-\caption{
-% \textbf{Progression of downloaded images over training.} The top row shows the target distribution and the bottom ones show the sets of images queried by our Internet Explorer. As the progression goes on, the image set discovered by the Internet Explorer starts to more closely resemble the target dataset distribution.
-\textbf{Progression of downloaded images across training.} \textbf{Top:} samples of Oxford-IIIT Pets images. \textbf{Bottom:} samples of images queried by Internet Explorer across iterations. As it learns, it makes queries that are progressively more relevant to the target dataset.
-}
-\label{fig:progression}
-\vspace{-0.15in}
-\end{figure*}
-
-\subsection{Provable speedup in relevant query identification}
-\label{subsec:provable_speedup}
-Assume that our vocabulary of $n$ concepts contains $cs \ll n $ relevant concepts, which are partitioned into $c$ disjoint clusters of size $s$. We want to discover every relevant concept by sampling concepts uniformly at random (with replacement) to test. Assume that sampling a concept conclusively tells us whether it is relevant. Furthermore, assume that we could optionally use a Gaussian Process which, if we've sampled a relevant concept, tells us that all the concepts in its cluster are also relevant. 
-\begin{lemma}
-\label{lemma:1}
-Let $T_{base}$ be the expected time to identify every relevant concept without the GPR, and $T_{GPR}$ be the expected time when exploiting the additional knowledge from the GPR. Then, $T_{base} = n H_{cs}$, $T_{GPR} = \frac{nH_{c}}{s}$, and the speedup from GPR is $\frac{T_{base}}{T_{GPR}} \approx s \log s$.
-\end{lemma}
-The proof is in Appendix~\ref{sec:proof}. For our vocabulary and target datasets, $s \approx 100$. This shows that a predictive model like GPR is crucial for quickly identifying all useful concepts. 
-% We find that in practical settings (e.g., the Pets example analyzed in Fig.~\ref{fig:reward_over_training}) , we can accurately predict how many samples are required to discover all useful concepts. If the vocabulary size is $n \approx 150000$, the number of clusters is about $c = 2$ (one for cats and one for dogs), and the size of each cluster is about $150$, then $T_{GPR} = 1500$, which roughly matches the $9 * 256 = 1792$ queries it took to 
-
-\subsection{Query sampling distribution}
-\label{subsec:tiering}
 Once we have estimates for the quality of each concept, how do we determine what to search for next?
 % We have two desiderata: 
     % \begin{enumerate}
@@ -271,14 +244,16 @@ We use a sampling-based approach based on Boltzmann exploration~\cite{sutton1991
 %     p(c_i)  = \frac{\exp(r(c_i)/\tau)}{\sum_j \exp(r(c_j)/\tau)}
 % \end{align}
 $\tau$ is the temperature scaling.
-However, with a large vocabulary (action space) of $146,347$ concepts, it becomes difficult to tune $\tau$ so that we sample the top concepts frequently enough without being too skewed. 
+However, with a large vocabulary (action space) of $146{,}347$ concepts, it becomes difficult to tune $\tau$ so that we sample the top concepts frequently enough without being too skewed. 
 Thus, we define a ``tiering function'' to adjust the probability mass in specified intervals of our distribution. Given a sorted discrete probability distribution $p$, interval boundaries $T_0 =0 < T_1 < \dots < T_n$, and interval masses $\Delta_0, \dots, \Delta_{n-1}$ such that $\sum_i \Delta_i = 1$,  tiering computes a new distribution: 
 \begin{align}
     p_i^{\text{tier}} = \Delta_j \frac{p_i}{\sum_{k=T_j}^{T_{j+1}} p_k} \;\;\; \text{for } j \text{  s.t.  }T_j \leq i < T_{j+1} 
 \end{align}
 $p^{\text{tier}}$ is a new distribution such that $\sum_{k=T_j}^{T_{j+1}} p^{\text{tier}} = \Delta_j$. We use $T_0=0$, $T_1=250$, $T_2=1{,}000$, $T_3=146{,}347$, $\Delta_0=0.8$, $\Delta_1 = 0.1$, and $\Delta_2=0.1$.
 Simply put: we give the highest-ranked $250$ concepts $80\%$ of the probability mass, the next $750$ concepts $10\%$, and all remaining concepts $10\%$.
-Figure~\ref{fig:sampling_dist} shows that tiering the scaled softmax distribution samples frequently enough from the top concepts while a vanilla scaled softmax distribution does not. 
+Figure~\ref{fig:sampling_dist} shows that tiering the scaled softmax distribution samples frequently enough from the top concepts while a vanilla scaled softmax distribution does not.
+Note that the untiered distribution would sample the top $1000$ concepts only $\approx 0.1\%$ of the time, while the tiered distribution samples them $90\%$ of the time.
+
 % Things to mention 
 % \begin{itemize}
 %     \item comparison of different ways of computing the text embeddings. describe just embedding the concepts, vs embedding the concept and the wikipedia summary

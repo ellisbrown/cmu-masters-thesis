@@ -5,7 +5,6 @@ In most chapters of this thesis, we include a deeper
 discussion of the related literature relevant to
 that material.
 
-
 \section{Experimental Setting}
 \subsection{Self-supervised Exploration}
 % explain why this setting is important, and explain the baselines 
@@ -43,7 +42,7 @@ $10\%$ ($14{,}635$ concepts)
 with the largest average top-$k$ similarity to the label set in text embedding space. We set $k$ to a third of the size of the label set to reduce the impact of outliers. Reducing the size of the vocabulary strengthens our baselines by ensuring that they only search for potentially useful concepts. We compare 4 methods:   
 \begin{enumerate}[noitemsep,topsep=0pt]
     \item Labels: only search for labels. 
-    \item Labels + relevant: search for labels \todo{is it worth making ``half'' a param?} half of the time, and random concepts from the pruned vocabulary the other half of the time. 
+    \item Labels + relevant: search for labels half of the time, and random concepts from the pruned vocabulary the other half of the time. 
     \item Ours: sample labels half of the time and sample from our learned concept distribution the other half. 
     \item Ours++: additionally use GPT-generated descriptors.
 \end{enumerate}
@@ -56,7 +55,7 @@ We call this setting ``label set-guided,'' since we have additional supervision 
 We evaluate Internet Explorer on 4 popular small-scale fine-grained classification datasets: Birdsnap~\cite{berg2014birdsnap}, Flowers-102~\cite{nilsback2008automated}, Food101~\cite{bossard2014food}, and Oxford-IIT Pets~\cite{parkhi2012cats}.
 % which are commonly used to evaluate transfer learning for large pre-trained models~\cite{kornblith2019better}. 
 We also evaluate on Pascal VOC 2007 (Cls)~\cite{everingham2010pascal}, a coarse-grained multi-label classification task. Finally, we try fMoW~\cite{fmow2018}, a satellite domain classification task. These small datasets consist of $2{,}040$ to $75{,}750$ training examples, making them ideal for testing whether Internet Explorer can efficiently find relevant useful data.
-\todo{hammer home that we are using a \textit{single} dataset not doing general purpose here?}
+% \todo{hammer home that we are using a \textit{single} dataset not doing general purpose here?}
 We do not target large-scale datasets like ImageNet~\cite{deng2009imagenet} because they already contain over a million human-curated Internet images.
 We compare the representation quality of our model \wrt~its target dataset using two metrics: $k$-nearest neighbors ($k$-NN) accuracy and linear probe accuracy. 
 % $k$-NN accuracy can be computed quickly, so we use this to plot learning curves of model performance after every iteration during training. We report the early-stopped linear probe accuracy in our tables.
