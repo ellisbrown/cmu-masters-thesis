@@ -1,9 +1,3 @@
-\chapter{Experimental Setting}
-This section provides a broad overview of foundational ideas
-and background material relevant to this thesis.
-In most chapters of this thesis, we include a deeper
-discussion of the related literature relevant to
-that material.
 
 \begin{figure*}[t]
     \centering
@@ -117,8 +111,24 @@ We run an ablation on the type of image relevance reward. Instead of calculating
 % \end{table}
 
 
-\begin{wraptable}{r}{0.5\linewidth}
-    \vspace{-0.3in}
+% \begin{wraptable}{r}{0.5\linewidth}
+%     \centering
+%     \begin{tabular}{lcc}
+%         \toprule
+%         Reward Type & Food \\
+%         \midrule
+%         MoCo loss & 81.2 \\
+%         1-NN sim  & 83.2 \\
+%         15-NN sim (ours) & \textbf{84.6} \\
+%         \bottomrule
+%     \end{tabular}
+%     \caption{\textbf{Ablation on type of image reward.}
+%     % We compare LP accuracy of 3 different rewards on Food in the label set-guided setting.
+%     MoCo loss does not identify relevant concepts, and $k=1$ similarity is too noisy to identify useful concepts. }
+%     \label{tab:image_reward}
+% \end{wraptable}
+
+\begin{table}[h]
     \centering
     \begin{tabular}{lcc}
         \toprule
@@ -129,13 +139,11 @@ We run an ablation on the type of image relevance reward. Instead of calculating
         15-NN sim (ours) & \textbf{84.6} \\
         \bottomrule
     \end{tabular}
-    \vspace{-0.06in}
     \caption{\textbf{Ablation on type of image reward.}
     % We compare LP accuracy of 3 different rewards on Food in the label set-guided setting.
     MoCo loss does not identify relevant concepts, and $k=1$ similarity is too noisy to identify useful concepts. }
     \label{tab:image_reward}
-    \vspace{-0.05in}
-\end{wraptable}
+\end{table}
 
 
 %%% Local Variables:
