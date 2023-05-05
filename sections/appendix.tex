@@ -263,35 +263,7 @@ Internet Explorer uses images that were indexed by a web crawler (Google Images 
 
 % \section{More seeds}
 
-\section{Proof of \cref{lemma:speedup}}
-\label{sec:proof}
 
-Here, we prove \cref{lemma:speedup} from \cref{subsec:provable_speedup}, which we repeat below:
-
-Assume that our vocabulary of $n$ concepts contains $c \cdot s \ll n $ relevant concepts, which are partitioned into $c$ disjoint clusters of size $s$. We want to discover every relevant concept by sampling concepts uniformly at random (with replacement) to test. Assume that sampling a concept conclusively tells us whether it is relevant. Furthermore, assume that we could optionally use a Gaussian process regression model which, if we've sampled a relevant concept, tells us that all the concepts in its cluster are also relevant.
-\vspace{0.5em}
-
-\lemmaspeedup*
-
-\begin{proof}
-This problem is a variant of the coupon collector problem. Let's first compute $T_{base}$ as the sum of expected times $t_i$ to identify the next relevant concept. 
-\begin{align}
-    T_{base} &= \sum_{i=1}^{cs} t_i \\
-             &= \sum_{i=1}^{cs} \frac{1}{p_i} \\
-             &= \sum_{i=1}^{cs} \frac{n}{cs + 1 - i} \\
-             &= n \sum_{i=1}^{cs} \frac{1}{cs + 1 - i} \\
-             &= n H_{cs}
-\end{align}
-where $H_{cs}$ is the $cs$th harmonic number. Similarly, we can compute $T_{GPR}$ as the sum of expected times $t_i$ to identify the next relevant cluster.  
-\begin{align}
-    T_{GPR} &= \sum_{i=1}^{c} t_i \\
-             &= \sum_{i=1}^{c} \frac{1}{p_i} \\
-             &= \sum_{i=1}^{c} \frac{n}{s (c + 1 - i)} \\
-             &= \frac{n}{s} \sum_{i=1}^{c} \frac{1}{c + 1 - i} \\
-             &= \frac{nH_{c}}{s}
-\end{align}
-The speedup is then $\displaystyle \frac{T_{base}}{T_{GPR}} = s \frac{H_{cs}}{H_c} \approx s \log s$.
-\end{proof}
 
 \section{Progression of downloaded images}
 \label{sec:progression_downloaded_imgs}

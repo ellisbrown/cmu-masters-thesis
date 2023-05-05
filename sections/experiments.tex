@@ -5,6 +5,11 @@ This section provides an overview of the experimental setting used to evaluate I
 \section{Experimental Setting}
 \subsection{Self-supervised Exploration}
 % explain why this setting is important, and explain the baselines 
+To make Internet Explorer as widely applicable as possible, we first evaluate it in a setting where we assume no prior knowledge of the contents of the images 
+
+
+
+
 We assume that we have an unlabeled target dataset of images for which we would like to learn useful visual features. We compare three methods:
 % EB: we should consider a better abbreviated method name. how about: IE, IE+?
 % \begin{enumerate}[noitemsep,topsep=0pt]
@@ -20,7 +25,7 @@ We assume that we have an unlabeled target dataset of images for which we would 
 \end{enumerate}
 % lack of label knowlege makes this challenging but also generally applicable
 % This setting is challenging because we have to explore to discover what concepts are useful for our target dataset, without any prior knowledge of what those concepts might be. 
-The lack of label knowledge makes this setting challenging, but also widely applicable. Our method is forced to explore the space of concepts to discover what is useful for the target dataset, without any prior knowledge of what might be useful.
+The lack of label knowledge makes this setting challenging, but also very general. Our method is forced to explore the space of concepts to discover what is useful for the target dataset, without any prior knowledge of what might be useful.
 
 \begin{figure*}[t]
     \centering

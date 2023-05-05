@@ -193,23 +193,6 @@ A practical issue is that GPR does not scale well to large numbers of points, an
 The number of iterations at which we switch to ridge regression is a hyperparameter that can be tuned to balance exploration and exploitation + speed. We found that 10 iterations to work well in practice.
 
 
-\subsection{Provable speedup in relevant query identification}
-\label{subsec:provable_speedup}
-We now show that our method can provably speed up the time to identify all relevant concepts in a dataset.
-Assume that our vocabulary of $n$ concepts contains $c \cdot s \ll n $ relevant concepts, which are partitioned into $c$ disjoint clusters of size $s$. We want to discover every relevant concept by sampling concepts uniformly at random (with replacement) to test. Assume that sampling a concept conclusively tells us whether it is relevant. Furthermore, assume that we could optionally use a Gaussian process regression model which, if we've sampled a relevant concept, tells us that all the concepts in its cluster are also relevant.\\
-
-\begin{restatable}{lemma}{lemmaspeedup}
-    \label{lemma:speedup}
-    Let $T_{base}$ be the expected time to identify every relevant concept without the GPR, and $T_{GPR}$ be the expected time when exploiting the additional knowledge from the GPR. Then, $T_{base} = n H_{c \cdot s}$, $T_{GPR} = \frac{nH_{c}}{s}$, and the speedup from GPR is $\frac{T_{base}}{T_{GPR}} \approx s \log s$.
-\end{restatable}
-% \begin{lemma}
-% \label{lemma:speedup}
-% Let $T_{base}$ be the expected time to identify every relevant concept without the GPR, and $T_{GPR}$ be the expected time when exploiting the additional knowledge from the GPR. Then, $T_{base} = n H_{cs}$, $T_{GPR} = \frac{nH_{c}}{s}$, and the speedup from GPR is $\frac{T_{base}}{T_{GPR}} \approx s \log s$.
-% \end{lemma}
-% The proof is in Appendix~\ref{sec:proof}. For our vocabulary and target datasets, $s \approx 100$. This shows that a predictive model like GPR is crucial for quickly identifying all useful concepts. 
-\vspace*{1em}
-We find that in practical settings (e.g., the Pets example analyzed in Fig.~\ref{fig:reward_over_training}), we can accurately predict how many samples are required to discover all useful concepts. If the vocabulary size is $n \approx 150{,}000$, the number of clusters is about $c = 2$ (one for cats and one for dogs), and the size of each cluster is about $150$, then $T_{GPR} = 1500$, which roughly matches the $9 \times 256 = 1792$ queries it took to discover both cats and dogs in the Pets dataset.
-
 \subsection{Query sampling distribution}
 \label{subsec:tiering}
 
@@ -261,6 +244,38 @@ Note that the untiered distribution would sample the top $1000$ concepts only $\
 %     \item ways of purifying the similarity matrix
 %     \item TODO: think about rewarding quality over quantity
 % \end{itemize}
+
+\subsection{Provable speedup in relevant query identification}
+\label{subsec:provable_speedup}
+We now show that our method can provably speed up the time to identify all relevant concepts in a dataset.
+Assume that our vocabulary of $n$ concepts contains $c \cdot s \ll n $ relevant concepts, which are partitioned into $c$ disjoint clusters of size $s$. We want to discover every relevant concept by sampling concepts uniformly at random (with replacement) to test. Assume that sampling a concept conclusively tells us whether it is relevant. Furthermore, assume that we could optionally use a Gaussian process regression model which, if we've sampled a relevant concept, tells us that all the concepts in its cluster are also relevant.\\
+
+\begin{restatable}{lemma}{lemmaspeedup}
+    \label{lemma:speedup}
+    Let $T_{base}$ be the expected time to identify every relevant concept without the GPR, and $T_{GPR}$ be the expected time when exploiting the additional knowledge from the GPR. Then, $T_{base} = n H_{c \cdot s}$, $T_{GPR} = \frac{nH_{c}}{s}$, and the speedup from GPR is $\frac{T_{base}}{T_{GPR}} \approx s \log s$.
+\end{restatable}
+
+\begin{proof}
+    This problem is a variant of the coupon collector problem. Let's first compute $T_{base}$ as the sum of expected times $t_i$ to identify the next relevant concept. 
+    \begin{align}
+        T_{base} &= \sum_{i=1}^{cs} t_i \\
+                 &= \sum_{i=1}^{cs} \frac{1}{p_i} \\
+                 &= \sum_{i=1}^{cs} \frac{n}{cs + 1 - i} \\
+                 &= n \sum_{i=1}^{cs} \frac{1}{cs + 1 - i} \\
+                 &= n H_{cs}
+    \end{align}
+    where $H_{cs}$ is the $cs$th harmonic number. Similarly, we can compute $T_{GPR}$ as the sum of expected times $t_i$ to identify the next relevant cluster.  
+    \begin{align}
+        T_{GPR} &= \sum_{i=1}^{c} t_i \\
+                 &= \sum_{i=1}^{c} \frac{1}{p_i} \\
+                 &= \sum_{i=1}^{c} \frac{n}{s (c + 1 - i)} \\
+                 &= \frac{n}{s} \sum_{i=1}^{c} \frac{1}{c + 1 - i} \\
+                 &= \frac{nH_{c}}{s}
+    \end{align}
+    The speedup is then $\displaystyle \frac{T_{base}}{T_{GPR}} = s \frac{H_{cs}}{H_c} \approx s \log s$.
+\end{proof}
+
+We find that in practical settings (e.g., the Pets example analyzed in Fig.~\ref{fig:reward_over_training}), we can accurately predict how many samples are required to discover all useful concepts. If the vocabulary size is $n \approx 150{,}000$, the number of clusters is about $c = 2$ (one for cats and one for dogs), and the size of each cluster is about $150$, then $T_{GPR} = 1500$, which roughly matches the $9 \times 256 = 1792$ queries it took to discover both cats and dogs in the Pets dataset.
 
 %%% Local Variables:
 %%% coding: utf-8
