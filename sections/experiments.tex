@@ -331,6 +331,16 @@ We run an ablation on the type of image relevance reward. Instead of calculating
     \label{tab:image_reward}
 \end{table}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/reward_ranking.pdf}
+    % \vspace{-0.25in}
+    \caption{\textbf{Top images preferred by different rewards.} We show the top 5 downloaded images ranked by 3 possible image rewards on the Food dataset. 15-NN (ours) prefers a variety of food images, whereas MoCo prefers noisy images out of the training distribution. 1-NN is thrown off by outliers in the Food dataset and thus prefers black images, text, and zebras.}
+    \label{fig:reward_ranking}
+    % \vspace{-0.06in}
+\end{figure}
+
+
 \begin{figure*}
     \centering
     \includegraphics{figures/food-spaghetti.pdf} \\
@@ -377,6 +387,48 @@ We run an ablation on the type of image relevance reward. Instead of calculating
     }
     \label{fig:online_images}
 \end{figure}
+
+% \section{Progression of downloaded images}
+% \label{sec:progression_downloaded_imgs}
+% Just as Fig. 4 in the main paper showed how Internet Explorer progressively discovers useful data when targeting the Pets dataset, \cref{fig:birdsnap_progression}, \cref{fig:flowers_progression}, \cref{fig:food_progression}, and \cref{fig:voc_progression} show the progression of downloaded images when targeting Birdsnap, Flowers, Food, and VOC respectively. Note that this analysis is in the self-supervised setting, without any knowledge of the label set. 
+
+\begin{figure*}
+    \centering
+    \includegraphics{figures/birdsnap_targets.pdf} \\
+    \vspace{-0.8em}
+    \includegraphics{figures/birdsnap-progression-1146-2col.pdf}
+    \caption{\textbf{Progression of downloaded Birdsnap images.} This corresponds to Ours++ without using label set information. }
+    \label{fig:birdsnap_progression}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics{figures/flowers_targets.pdf} \\
+    \vspace{-0.8em}
+    \includegraphics{figures/flowers-progression-1150-2col.pdf}
+    \caption{\textbf{Progression of downloaded Flowers images.} This corresponds to Ours++ without using label set information. }
+    \label{fig:flowers_progression}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics{figures/food_targets.pdf} \\
+    \vspace{-0.8em}
+    \includegraphics{figures/food-progression-1148-2col.pdf}
+    \caption{\textbf{Progression of downloaded Food images.} This corresponds to Ours++ without using label set information. }
+    \label{fig:food_progression}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics{figures/voc_targets.pdf} \\
+    \vspace{-0.8em}
+    \includegraphics{figures/voc-progression-1156-2col.pdf}
+    \caption{\textbf{Progression of downloaded VOC2007 images.} This corresponds to Ours++ without using label set information. }
+    \label{fig:voc_progression}
+\end{figure*}
+
+
 
 %%% Local Variables:
 %%% coding: utf-8
