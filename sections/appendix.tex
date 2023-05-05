@@ -50,34 +50,56 @@ Internet Explorer tends to perform better with Flickr than with LAION, which mak
 
 \section{Are we finding the entire test set online?}
 \label{sec:finding_test_set_online}
-\begin{table*}[t]
+
+\newcommand{\blue}[1]{\textcolor{Cerulean}{#1}}
+\begin{table}[t]
     \centering
-    \begin{tabular}{lccccccccc}
-    \toprule
-        % Model & Flowers102 & Food101 & Stanford Cars & Oxford-IIIT Pets & Total Images & GPU-hours \\
-        Model & Birdsnap & Flowers & Food  & Pets & VOC2007  & Images Downloaded \\
-    \midrule
-    \textit{No exploration} \\
-        \;\;\; Target training set                          &  $1/1849$ &  $5/6142$ & $34/25246$ & $21/3663$ &  $0/4952$ & $-$ \\
-    \midrule
-    % \textit{No label set information} \\
-    \textit{Internet Explorer} \\
-        % \;\;\;Random exploration                     &  ? &  ? &  ? &  ? &  ? \\
-        % \;\;\;Ours                                   &  ? &  ? &  ? &  ? &  ? \\
-        \;\;\;Ours++ (no label set)                         &  $28/1849$ & $11/6142$ & $35/25246$ & $26/3663$ & $1/4952$ & $\approx 10^6$\\
-    % \midrule 
-    % \textit{Use label set information} \\       
-        % \;\;\;Search labels only                      &  ? &  ? &  ? &  ? &  ? \\
-        % \;\;\;Labels + semantically relevant terms    &  ? &  ? &  ? &  ? &  ? \\
-        % \;\;\;Ours                                    &  ? &  ? &  ? &  ? &  ? \\
-        \;\;\;Ours++ (with label set)                       & $57/1849$ & $27/6142$ & $35/25246$ & $43/3663$ & $1/4952$ & $\approx 10^6$ \\
+    % \begin{tabular}{lccccccccc}
+        \begin{adjustbox}{width=1\textwidth}
+        \begin{tabular}{
+            lr@{\hskip 0.12em}
+            rr@{\hskip 0.12em}
+            rr@{\hskip 0.12em}
+            rr@{\hskip 0.12em}
+            rr@{\hskip 0.12em}
+            rc}
+        \toprule
+            % Model & Flowers102 & Food101 & Stanford Cars & Oxford-IIIT Pets & Total Images & GPU-hours \\
+            % Model & Birdsnap & Flowers & Food  & Pets & VOC2007  & Images Downloaded \\
+            &
+            \multicolumn{2}{l}{Birdsnap} & 
+            \multicolumn{2}{l}{Flowers} & 
+            \multicolumn{2}{l}{Food} & 
+            \multicolumn{2}{l}{Pets} & 
+            \multicolumn{2}{l}{VOC2007} & 
+            Images Downloaded \\
+        \midrule
+        Target test set size                          &  \multicolumn{2}{l}{$1849$} &  \multicolumn{2}{l}{$6142$} & \multicolumn{2}{l}{$25246$} &\multicolumn{2}{l}{$3663$} &\multicolumn{2}{l}{$4952$} & $-$ \\ 
+        % Target test set size                          &  \multicolumn{2}{c}{$1849$} &  \multicolumn{2}{c}{$6142$} & \multicolumn{2}{c}{$25246$} &\multicolumn{2}{c}{$3663$} &\multicolumn{2}{c}{$4952$} & $-$ \\ 
+        \midrule
+        \textit{No exploration} \\
+            \;\;\; Target training set overlap                          &  $1$ & \blue{$(0.05\%)$} &  $5$ & \blue{$(0.01\%)$}& $34$ & \blue{$(0.13\%)$} & $21$ & \blue{$(0.57\%)$} &  $0$ & \blue{$(0.00\%)$} & $-$ \\
+        \midrule
+        % \textit{No label set information} \\
+        \textit{Internet Explorer} \\
+            % \;\;\;Random exploration                     &  ? &  ? &  ? &  ? &  ? \\
+            % \;\;\;Ours                                   &  ? &  ? &  ? &  ? &  ? \\
+            % \;\;\;Ours++ (no label set)                         &  $28/1849$ & & $11/6142$ & & $35/25246$ & & $26/3663$ & & $1/4952$ & & $\approx 10^6$\\
+            \;\;\;Ours++ (no label set)                         &  $28$ & \blue{$(+1.46\%)$} & $11$ & \blue{$(+0.01\%)$} & $35$ & \blue{$(+0.00\%)$} & $26$ & \blue{$(+0.14\%)$}& $1$ & \blue{$(+0.02\%)$} & $\approx 10^6$\\
+        % \midrule 
+        % \textit{Use label set information} \\       
+            % \;\;\;Search labels only                      &  ? &  ? &  ? &  ? &  ? \\
+            % \;\;\;Labels + semantically relevant terms    &  ? &  ? &  ? &  ? &  ? \\
+            % \;\;\;Ours                                    &  ? &  ? &  ? &  ? &  ? \\
+            \;\;\;Ours++ (with label set)                       & $57$ & \blue{$(+3.03\%)$} & $27$ & \blue{$(+0.36\%)$}& $35$ &\blue{$(+0.00\%)$} & $43$ &\blue{$(+0.60\%)$} & $1$ &\blue{$(+0.02 \%)$} & $\approx 10^6$ \\
     \bottomrule
     \end{tabular}
+    \end{adjustbox}
     \caption{\textbf{Number of leaked test set images}. We use image hashing to compute the fraction of test images present in the set of images downloaded by Internet Explorer.  We show (number of leaked images)$/$(number of unique test images). Surprisingly, the training sets of these datasets already leak a small fraction of the test sets. Leakage numbers for our methods include this train-test leakage, since our methods use the target dataset's training set. Internet Explorer only finds a tiny fraction of test set images online, and it only uses them for self-supervised training, so there is no \textit{label leakage}. Overall, Internet Explorer's increase in accuracy cannot be explained by test set leakage, so it must be improving performance through better feature learning and generalization.
     }
     \label{tab:leakage}
-\end{table*}
-One may be concerned that Internet Explorer improves performance mainly by finding a significant portion of the test set images online. We address this concern by checking how much test data Internet Explorer has downloaded. We use difference hashing (dHash)~\cite{imagehash} to compute hashes for the target dataset's training set, its test set, and the downloaded Internet data. We compare hashes to determine how many test images were leaked, and we report the number of collisions in \cref{tab:leakage}. Across all five datasets, Internet Explorer finds very few test images. On Birdsnap, Internet Explorer finds 56 additional test set images that were not leaked in the training set, which is roughly $3\%$ of the test set. On the other datasets, the amount leaked ranges from $0.003\%$ to $0.6\%$ of the test set. Additionally, we only perform self-supervised training on downloaded images, so it is much harder for our model to cheat with the leaked images. Overall, given that Internet Explorer outperforms its starting checkpoint by between 5 to 30 percentage points, we conclude that its performance cannot be explained by cheating. 
+\end{table}
+One may be concerned that Internet Explorer improves performance mainly by finding a significant portion of the test set images online. We address this concern by checking how much test data Internet Explorer has downloaded. We use difference hashing (dHash)~\cite{imagehash} to compute hashes for the target dataset's training set, its test set, and the $\approx 10^6$ images that Internet Explorer has downloaded. We compare hashes to determine how many test images were leaked, and we report the number of collisions in \cref{tab:leakage}. Across all five datasets, Internet Explorer finds very few test images. On Birdsnap, Internet Explorer finds 56 additional test set images that were not leaked in the training set, which is roughly $3\%$ of the test set. On the other datasets, the amount leaked ranges from $0.003\%$ to $0.6\%$ of the test set. Additionally, we only perform self-supervised training on downloaded images, so it is much harder for our model to cheat with the leaked images. Overall, given that Internet Explorer outperforms its starting checkpoint by between 5 to 30 percentage points, we conclude that its performance cannot be explained by cheating. 
 
 \section{Method Details}
 
