@@ -1,7 +1,6 @@
 \chapter{Conclusions and Future Directions}
 \label{sec:conclusions}
 
-% \section{Conclusion}
 % We propose Internet Explorer, an unsupervised system that autonomously collects image data from the Internet in order to improve performance on a target visual task. Internet Explorer performs self-supervised learning on relevant images it adaptively finds with Google Image Search. This enables it to match or surpass the performance of models trained for much longer on much more data. 
 % This relies on a nearest-neighbors curiosity reward that encourages new images to be close to the target dataset images in representation space. Internet Explorer also uses text similarity to predict how unseen queries will perform. We show that this is an efficient training method that can approach or even surpass the performance of models trained for much longer and on much more data. 
 % There are quite a few avenues for future work. 
@@ -9,12 +8,11 @@
 
 We show that interactively exploring the Internet is an efficient source of highly relevant training data---if one knows how to search for it. In just 30--40 hours of training on a single GPU, Internet Explorer either significantly outperforms or closely matches the performance of compute-heavy \textit{oracle} models like CLIP~\cite{radford2021learning} trained on static datasets, as well as strong baselines that search the Internet in an undirected manner.
 
+% What’s next on the open web?
+% ● Scale to larger / more diverse datasets like ImageNet
+% ● Apply to more challenging vision tasks, videos, and robotics
+% ● Finetune a CLIP model online using captions + search terms!
 
-
-% Our approach is also general. In the supplementary material, we show that Internet Explorer does not have to rely on Google to find useful data. We use Internet Explorer to select relevant training data from a large, uncurated image-text corpus (LAION-400M~\cite{schuhmann2021laion}) by using a pre-trained text embedding model. This approach significantly improves performance compared to training on all of the data. 
-
-% Finally, our work highlights several shortcomings of current SSL methods. SSL algorithms learn poorly from noisy web data, like images with text or watermarks. Continually training these models to learn quickly from a stream of data while avoiding forgetting of old knowledge is also a major challenge. 
-% Finally, we need better estimates of sample importance
 
 %%% Local Variables:
 %%% coding: utf-8

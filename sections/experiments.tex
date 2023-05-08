@@ -146,17 +146,18 @@ To compute the linear probe accuracy, we first select the best-performing model 
 
 \section{Results and Analysis}
 \subsection{Self-supervised Results}
-Figure~\ref{fig:learning_curves} shows how Internet Explorer improves the $k$-NN accuracy more efficiently than sampling queries uniformly at random from the concept vocabulary. In fact, random sampling occasionally decreases accuracy, likely due to the fact that Internet images can generally be unsuitable for pre-training due to issues such as watermarks, images containing text, and overly photogenic images~\cite{mezuman2012learning,chen2015webly}. Table~\ref{tab:main_results} shows that our method significantly improves on the starting MoCo-v3 (ImageNet + target) checkpoint and can outperform a CLIP~\cite{radford2021learning} model of the same size while using much less compute and data. This is impressive as CLIP can be thought of as an oracle, since its training set contains up to 20k Bing image search results for each WordNet lemma (in addition to other queries).
+\cref{fig:learning_curves} shows how Internet Explorer improves the $k$-NN accuracy more efficiently than sampling queries uniformly at random from the concept vocabulary. In fact, random sampling occasionally decreases accuracy, likely due to the fact that Internet images can generally be unsuitable for pre-training due to issues such as watermarks, images containing text, and overly photogenic images~\cite{mezuman2012learning,chen2015webly}. \cref{tab:main_results} shows that our method significantly improves on the starting MoCo-v3 (ImageNet + target) checkpoint and can outperform a CLIP~\cite{radford2021learning} model of the same size while using much less compute and data. This is impressive as CLIP can be thought of as an oracle, since its training set contains up to 20k Bing image search results for each WordNet lemma (in addition to other queries).
 Using GPT-generated descriptors in ``Ours++'' also significantly improves performance by enabling Internet Explorer to generate diverse views of the most useful concepts. 
 % We show example image results with and without descriptors in the supplementary. 
 
 \subsection{Self-supervised Exploration Behavior}
-Figure~\ref{fig:reward_over_training} shows the progression of Internet Explorer (Ours++) behavior on the Pets dataset in the self-supervised setting. Since Pets consists of cat and dog breeds, to analyze the results, we use the WordNet hierarchy to divide concepts in our vocabulary into 5 meaningful categories: cats, dogs, non-cat felines (e.g., lion), non-dog canines (e.g., wolf), and other. This categorization is only done for this post hoc analysis and is not provided during training. Figure~\ref{fig:reward_over_training} (top) shows that
+\label{sec:exploration_behavior}
+\cref{fig:reward_over_training} shows the progression of Internet Explorer (Ours++) behavior on the Pets dataset in the self-supervised setting. Since Pets consists of cat and dog breeds, to analyze the results, we use the WordNet hierarchy to divide concepts in our vocabulary into 5 meaningful categories: cats, dogs, non-cat felines (e.g., lion), non-dog canines (e.g., wolf), and other. This categorization is only done for this post hoc analysis and is not provided during training. \cref{fig:reward_over_training} (top) shows that
 % the average estimated reward within each category across the first 20 iterations of training, and the bottom one shows how much probability mass each category has. 
 Internet Explorer rapidly identifies the roughly $0.3\%$ of concepts that are useful for Pets. During the first two iterations, the average estimated reward for each category is roughly the same. However, after the first dog concept is searched in iteration $\#2$, the estimated reward and probability mass for dogs and other canines rapidly increases. The same happens for cats after the first cat is searched in iteration $\#4$. Interestingly, while ``other felines'' and ``other canines''  have higher average reward than the ``other'' category, they still have much lower reward than cats and dogs. This indicates that our model understands that other felines and canines (mostly large, wild predators) are only moderately relevant for house pet cats and dogs. 
 
-Figure~\ref{fig:progression} shows how Internet Explorer downloads progressively more useful images over time. It shows 8 random images that were downloaded in iteration $\#0$, $\#1$, $\#3$, $\#6$, $\#10$, and $\#15$. Iteration $\#0$ contains mostly useless data, like graphics or screenshots, but Pets-relevant images already make up most of the downloads by iteration $\#3$. 
-
+\cref{fig:progression} shows how Internet Explorer downloads progressively more useful images over time. It shows 8 random images that were downloaded in iteration $\#0$, $\#1$, $\#3$, $\#6$, $\#10$, and $\#15$. Iteration $\#0$ contains mostly useless data, like graphics or screenshots, but Pets-relevant images already make up most of the downloads by iteration $\#3$. 
+Results for other datasets are shown in \cref{sec:progression_continued}.
 
 \subsection{Label Set-guided Results}
 % As discussed earlier, we now make use of the label set of the target dataset without knowing the exact image-label mapping. 
@@ -209,15 +210,24 @@ Google Images is an exceptionally useful data source for Internet Explorer. It o
     \label{tab:search_engine}
 \end{table*}
 
+\begin{figure*}[p]
+    \centering
+    \includegraphics{figures/food-spaghetti.pdf} \\
+    \includegraphics{figures/google-spaghetti.pdf} \\
+    \includegraphics{figures/flickr-spaghetti.pdf} \\
+    \includegraphics{figures/laion5b-spaghetti.pdf} 
+    \caption{\textbf{Comparison of different search engines.} We show images for the ``spaghetti bolognese'' class in the Food101 dataset, as well as 20 search results for ``spaghetti bolognese'' from Google Images, Flickr, and LAION5B. Google images are typically well-lit, aesthetic food blog pictures. In comparison, Flickr images are messier, darker, and capture a wider variety of real-world conditions. LAION-5B images lie somewhere in the middle, but contain text overlays much more frequently. Duplicate image results are also common.}
+    \label{fig:data_comparison}
+\end{figure*}
 
 \begin{wrapfigure}{R}{0.4\textwidth}
 \centering
-    \vspace{-1.5em}
+    \vspace{-2em}
     \includegraphics[width=\linewidth]{figures/laion_search_engine.pdf}
     \vspace{-1em}
-    \caption{\textbf{Our custom LAION-5B search engine.} We build a custom text-to-image search engine that finds images within the LAION-5B dataset by doing nearest neighbor search in text embedding space. This uses no image features whatsoever.}
+    \caption{\textbf{Custom LAION-5B search engine.} We build a custom text-to-image search engine that finds images within the LAION-5B dataset by doing nearest neighbor search in text embedding space---using no image features whatsoever.}
     \label{fig:laion_search_engine}
-    \vspace{-3em}
+    \vspace{-4em}
 \end{wrapfigure}
 
 To test Internet Explorer in the most minimal setting, we build a custom search engine that finds images solely using their accompanying text, without using any pre-trained visual features whatsoever. We use the LAION-5B dataset~\cite{schuhmann2022laion}, which consists of 5.85 billion noisy image-caption pairs. We filter the dataset to only include samples with English captions and images with at least $512^2$ pixels. This leaves us with about 600M text-image pairs. To find image results for a query, we find the 100 captions closest to the query in text representation space, then return the associated images.
@@ -308,51 +318,8 @@ In fact, we view it as a positive that Internet Explorer finds some test set ima
 But beyond test set images, Internet Explorer finds a lot of internet images that are very relevant to the dataset. We visualize the top-10 most similar images for 5 randomly selected test set images from the Flowers, Food, and Pets datasets in \cref{fig:online_images}.  We use CLIP ViT-L/14 to compute the representations of the test set images, as well as the downloaded images. We then find the top-10 most similar online images given a test set image (from the downloaded images using Ours++ (with label set)).
 We see that Internet Explorer finds several images that are very similar but not identical to the test set images.
 
-
-
-\subsection{Effect of image reward type}
-\label{subsec:reward_analysis}
-We run an ablation on the type of image relevance reward. Instead of calculating the image reward based on the average similarity to the $k=15$ nearest neighbors in representation space (as in \cref{subsec:ssl}), we also try using $k=1$ or the MoCo contrastive loss as the reward. Table~\ref{tab:image_reward} compares these three metrics in the label set-guided setting and shows that $k=15$ does best. We explain this result by qualitatively comparing the behavior of various metrics on Food101 in \cref{fig:reward_ranking} in the appendix. The MoCo loss does not identify relevant concepts, instead preferring images that are difficult to align across augmentations. Representation similarity with $k=1$ also fails, as it prefers images of zebras and text because these images are highly similar to a few outlier images in Food101. Our proposed reward with $k=15$ eliminates the influence of outliers and avoids this problem.
-
-\begin{table}[h]
-    \centering
-    \begin{tabular}{lcc}
-        \toprule
-        Reward Type & Food \\
-        \midrule
-        MoCo loss & 81.2 \\
-        1-NN sim  & 83.2 \\
-        15-NN sim (ours) & \textbf{84.6} \\
-        \bottomrule
-    \end{tabular}
-    \caption{\textbf{Ablation on type of image reward.}
-    % We compare LP accuracy of 3 different rewards on Food in the label set-guided setting.
-    MoCo loss does not identify relevant concepts, and $k=1$ similarity is too noisy to identify useful concepts. }
-    \label{tab:image_reward}
-\end{table}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\linewidth]{figures/reward_ranking.pdf}
-    % \vspace{-0.25in}
-    \caption{\textbf{Top images preferred by different rewards.} We show the top 5 downloaded images ranked by 3 possible image rewards on the Food dataset. 15-NN (ours) prefers a variety of food images, whereas MoCo prefers noisy images out of the training distribution. 1-NN is thrown off by outliers in the Food dataset and thus prefers black images, text, and zebras.}
-    \label{fig:reward_ranking}
-    % \vspace{-0.06in}
-\end{figure}
-
-
-\begin{figure*}
-    \centering
-    \includegraphics{figures/food-spaghetti.pdf} \\
-    \includegraphics{figures/google-spaghetti.pdf} \\
-    \includegraphics{figures/flickr-spaghetti.pdf} \\
-    \includegraphics{figures/laion5b-spaghetti.pdf} 
-    \caption{\textbf{Comparison of different search engines.} We show images for the ``spaghetti bolognese'' class in the Food101 dataset, as well as 20 search results for ``spaghetti bolognese'' from Google Images, Flickr, and LAION5B. Google images are typically well-lit, aesthetic food blog pictures. In comparison, Flickr images are messier, darker, and capture a wider variety of real-world conditions. LAION-5B images lie somewhere in the middle, but contain text overlays much more frequently. Duplicate image results are also common.}
-    \label{fig:data_comparison}
-\end{figure*}
-
 % figures/internet-nns/flowers.png figures/internet-nns/food.png figures/internet-nns/pets.png figures/internet-nns/voc.png
-\begin{figure}
+\begin{figure}[p]
     \centering
     
     \begin{subfigure}{\textwidth}
@@ -388,9 +355,39 @@ We run an ablation on the type of image relevance reward. Instead of calculating
     \label{fig:online_images}
 \end{figure}
 
-% \section{Progression of downloaded images}
-% \label{sec:progression_downloaded_imgs}
-% Just as Fig. 4 in the main paper showed how Internet Explorer progressively discovers useful data when targeting the Pets dataset, \cref{fig:birdsnap_progression}, \cref{fig:flowers_progression}, \cref{fig:food_progression}, and \cref{fig:voc_progression} show the progression of downloaded images when targeting Birdsnap, Flowers, Food, and VOC respectively. Note that this analysis is in the self-supervised setting, without any knowledge of the label set. 
+\subsection{Effect of image reward type}
+\label{subsec:reward_analysis}
+We run an ablation on the type of image relevance reward. Instead of calculating the image reward based on the average similarity to the $k=15$ nearest neighbors in representation space (as in \cref{subsec:ssl}), we also try using $k=1$ or the MoCo contrastive loss as the reward. Table~\ref{tab:image_reward} compares these three metrics in the label set-guided setting and shows that $k=15$ does best. We explain this result by qualitatively comparing the behavior of various metrics on Food101 in \cref{fig:reward_ranking} in the appendix. The MoCo loss does not identify relevant concepts, instead preferring images that are difficult to align across augmentations. Representation similarity with $k=1$ also fails, as it prefers images of zebras and text because these images are highly similar to a few outlier images in Food101. Our proposed reward with $k=15$ eliminates the influence of outliers and avoids this problem.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        Reward Type & Food \\
+        \midrule
+        MoCo loss & 81.2 \\
+        1-NN sim  & 83.2 \\
+        15-NN sim (ours) & \textbf{84.6} \\
+        \bottomrule
+    \end{tabular}
+    \caption{\textbf{Ablation on type of image reward.}
+    % We compare LP accuracy of 3 different rewards on Food in the label set-guided setting.
+    MoCo loss does not identify relevant concepts, and $k=1$ similarity is too noisy to identify useful concepts. }
+    \label{tab:image_reward}
+\end{table}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/reward_ranking.pdf}
+    % \vspace{-0.25in}
+    \caption{\textbf{Top images preferred by different rewards.} We show the top 5 downloaded images ranked by 3 possible image rewards on the Food dataset. 15-NN (ours) prefers a variety of food images, whereas MoCo prefers noisy images out of the training distribution. 1-NN is thrown off by outliers in the Food dataset and thus prefers black images, text, and zebras.}
+    \label{fig:reward_ranking}
+    % \vspace{-0.06in}
+\end{figure}
+
+\subsection{Self-supervised Exploration Behavior on Other Datasets} 
+\label{sec:progression_continued}
+Just as \cref{fig:progression} in \cref{sec:exploration_behavior} showed how Internet Explorer progressively discovers useful data when targeting the Pets dataset, \cref{fig:birdsnap_progression}, \cref{fig:flowers_progression}, \cref{fig:food_progression}, and \cref{fig:voc_progression} show the progression of downloaded images when targeting Birdsnap, Flowers, Food, and VOC 2007 respectively. Note that this analysis is in the self-supervised setting, without any knowledge of the label set. 
 
 \begin{figure*}
     \centering

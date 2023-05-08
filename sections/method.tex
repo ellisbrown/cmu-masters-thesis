@@ -25,7 +25,7 @@ Successful representation learning in this setting would lead to better performa
 An overview of the Internet Explorer method is depicted in Figure~\ref{fig:method} and described in Algorithm~\ref{alg:internet_explorer}.
 % }
 
-\begin{figure}[t]
+\begin{figure}[!b]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/method_fig2.pdf}
     \caption{\textbf{Overview of Internet Explorer.} Our goal is to efficiently search the Internet for images that improve our performance on a target dataset.
@@ -33,46 +33,6 @@ An overview of the Internet Explorer method is depicted in Figure~\ref{fig:metho
     }
     \label{fig:method}
 \end{figure}
-
-\begin{algorithm}[t]
-    \caption{$\texttt{Internet Explorer}$}
-    \label{alg:internet_explorer}
-\begin{algorithmic}[1]
-    % \State {\bfseries Input:} target dataset $\mathcal D$, SSL algorithm $\mathbb{A}$, search engine $\texttt{SE}$, encoder $f: \mathbb{R}^{H \times W \times 3} \rightarrow \mathbb{R}^d$, image reward function $r$, vocabulary $\mathcal V = \{c_i\}_{i=1}^C$, $\#$ concepts/itr $M$, $\#$ query results/search $Q$, 
-    % GPT-based concept $\rightarrow$ descriptor function $\texttt{GPTDesc}$, 
-    % concept distribution function $\texttt{CalcProb}$
-    \State {\bfseries Input:}
-    \Statex \quad target dataset $\mathcal D$
-    \Statex \quad SSL algorithm $\mathbb{A}$
-    \Statex \quad search engine $\texttt{SE}$
-    \Statex \quad encoder $f: \mathbb{R}^{H \times W \times 3} \rightarrow \mathbb{R}^d$
-    \Statex \quad image reward function $r$
-    \Statex \quad vocabulary $\mathcal V = \{c_i\}_{i=1}^C$, where $C$ is $\#$ concepts
-    \Statex \quad $\#$ concepts/itr $M$
-    \Statex \quad $\#$ query results/search $Q$
-    \Statex \quad GPT-based concept $\rightarrow$ descriptor function $\texttt{GPTDesc}$
-    \Statex \quad concept distribution function $\texttt{CalcProb}$
-    \State Initialize replay buffer $\mathcal{B} \leftarrow \emptyset$
-    \State Initialize concept distribution $p = \text{Uniform}\{1, C\}$
-    \For{iteration $=1, 2, \dots$}
-        \For{$i = 1, \dots, M$}
-            \State Sample concept $c_i \sim p(\mathcal{V})$ \hfill (\S\ref{subsec:text_query_generation})
-            \State Sample descriptor $d_i \gets \texttt{GPTDesc}(c_i)$ \hfill (\S\ref{sec:gptj-descriptors})
-            \State Image search $\{I_j^i\}_{j=1}^Q  \leftarrow \texttt{SE}(d_i + c_i, Q)$ \hfill (\S\ref{subsec:text_to_image_search})
-            % \State Calculate image rewards $r(f, \mathcal D, I_j^i)$
-            % \State Calculate concept reward from image rewards
-            % \State Calc.\ image rewards $\{r_{\text{img},j}^i\}_{j=1}^Q \gets r(f, \mathcal D, I_j^i)$
-            % \State Calc.\ concept reward $r^i_{\text{concept}} \gets \frac 1 Q \sum_{j=1}^Q r_{\text{img},j}^i$
-            \State Calc.\ reward $r_{c_i} \gets \frac 1 Q \sum_{j=1}^Q r(f, \mathcal D, I_j^i)$ \hfill (\S\ref{subsec:image_rel_reward})
-        \EndFor
-        \State $\mathcal B_{\text{new}} = \{I_j^1\}_{j=1}^Q \cup \dots \cup \{I_j^M\}_{j=1}^Q$
-        \State SSL training: $\mathbb{A}(f, \mathcal D \cup \mathcal B \cup \mathcal B_{\text{new}})$ \hfill (\S\ref{subsec:ssl})
-        \State Add to buffer: $\mathcal{B} \leftarrow \mathcal{B} \cup \texttt{Top50\%}(\mathcal B_{\text{new}}, r)$  % need to align r / r_concept to r_{c_i} above
-        \State Predict all concept rewards $\mathbf{r}_{\text{concept}}$ from $\{r_{c_i}\}$ \hfill (\S\ref{subsec:unseen_reward})
-        \State Update concept dist $p \leftarrow \texttt{CalcProb}(\mathbf{r}_{\text{concept}})$ \hfill (\S\ref{subsec:tiering})
-    \EndFor
-\end{algorithmic}
-\end{algorithm}
 
 \subsection{Text-to-image Search}
 \label{subsec:text_to_image_search}
@@ -127,6 +87,46 @@ In each iteration of our method, we use MoCo-v3 to fine-tune on a mixture of new
 
 
 % Even though we focus on using MoCo-v3, note that Internet Explorer is compatible with any SSL algorithm that uses images or image-text pairs, including contrastive~\cite{he2020momentum,chen2020simple}, non-contrastive~\cite{grill2020bootstrap,zbontar2021barlow,bardes2021vicreg,caron2021emerging}, masking-based~\cite{bao2021beit,he2022masked}, or multimodal~\cite{radford2021learning} approaches. 
+
+\begin{algorithm}[t]
+    \caption{$\texttt{Internet Explorer}$}
+    \label{alg:internet_explorer}
+\begin{algorithmic}[1]
+    % \State {\bfseries Input:} target dataset $\mathcal D$, SSL algorithm $\mathbb{A}$, search engine $\texttt{SE}$, encoder $f: \mathbb{R}^{H \times W \times 3} \rightarrow \mathbb{R}^d$, image reward function $r$, vocabulary $\mathcal V = \{c_i\}_{i=1}^C$, $\#$ concepts/itr $M$, $\#$ query results/search $Q$, 
+    % GPT-based concept $\rightarrow$ descriptor function $\texttt{GPTDesc}$, 
+    % concept distribution function $\texttt{CalcProb}$
+    \State {\bfseries Input:}
+    \Statex \quad target dataset $\mathcal D$
+    \Statex \quad SSL algorithm $\mathbb{A}$
+    \Statex \quad search engine $\texttt{SE}$
+    \Statex \quad encoder $f: \mathbb{R}^{H \times W \times 3} \rightarrow \mathbb{R}^d$
+    \Statex \quad image reward function $r$
+    \Statex \quad vocabulary $\mathcal V = \{c_i\}_{i=1}^C$, where $C$ is $\#$ concepts
+    \Statex \quad $\#$ concepts/itr $M$
+    \Statex \quad $\#$ query results/search $Q$
+    \Statex \quad GPT-based concept $\rightarrow$ descriptor function $\texttt{GPTDesc}$
+    \Statex \quad concept distribution function $\texttt{CalcProb}$
+    \State Initialize replay buffer $\mathcal{B} \leftarrow \emptyset$
+    \State Initialize concept distribution $p = \text{Uniform}\{1, C\}$
+    \For{iteration $=1, 2, \dots$}
+        \For{$i = 1, \dots, M$}
+            \State Sample concept $c_i \sim p(\mathcal{V})$ \hfill (\S\ref{subsec:text_query_generation})
+            \State Sample descriptor $d_i \gets \texttt{GPTDesc}(c_i)$ \hfill (\S\ref{sec:gptj-descriptors})
+            \State Image search $\{I_j^i\}_{j=1}^Q  \leftarrow \texttt{SE}(d_i + c_i, Q)$ \hfill (\S\ref{subsec:text_to_image_search})
+            % \State Calculate image rewards $r(f, \mathcal D, I_j^i)$
+            % \State Calculate concept reward from image rewards
+            % \State Calc.\ image rewards $\{r_{\text{img},j}^i\}_{j=1}^Q \gets r(f, \mathcal D, I_j^i)$
+            % \State Calc.\ concept reward $r^i_{\text{concept}} \gets \frac 1 Q \sum_{j=1}^Q r_{\text{img},j}^i$
+            \State Calc.\ reward $r_{c_i} \gets \frac 1 Q \sum_{j=1}^Q r(f, \mathcal D, I_j^i)$ \hfill (\S\ref{subsec:image_rel_reward})
+        \EndFor
+        \State $\mathcal B_{\text{new}} = \{I_j^1\}_{j=1}^Q \cup \dots \cup \{I_j^M\}_{j=1}^Q$
+        \State SSL training: $\mathbb{A}(f, \mathcal D \cup \mathcal B \cup \mathcal B_{\text{new}})$ \hfill (\S\ref{subsec:ssl})
+        \State Add to buffer: $\mathcal{B} \leftarrow \mathcal{B} \cup \texttt{Top50\%}(\mathcal B_{\text{new}}, r)$  % need to align r / r_concept to r_{c_i} above
+        \State Predict all concept rewards $\mathbf{r}_{\text{concept}}$ from $\{r_{c_i}\}$ \hfill (\S\ref{subsec:unseen_reward})
+        \State Update concept dist $p \leftarrow \texttt{CalcProb}(\mathbf{r}_{\text{concept}})$ \hfill (\S\ref{subsec:tiering})
+    \EndFor
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Image Relevance Reward}
 \label{subsec:image_rel_reward}
