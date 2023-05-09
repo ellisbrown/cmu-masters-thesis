@@ -1,7 +1,8 @@
 \PassOptionsToPackage{svgnames,dvipsnames}{xcolor}
 
 %% add the masters option to print master of science
-\documentclass[12pt,masters]{cmuthesis}
+%% add openany to remove blank pages between chapters
+\documentclass[12pt,masters,openany]{cmuthesis}
 
 \usepackage[Lenny]{fncychap}
 \ChNameVar{\Large}
@@ -60,7 +61,8 @@
 \listoffigures
 \addtocontents{lof}{\vspace*{-2cm}}
 \listoftables
-\listofalgorithms
+{\let\clearpage\relax\listofalgorithms}
+% \listofalgorithms
 
 \mainmatter
 

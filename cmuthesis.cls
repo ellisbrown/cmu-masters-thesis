@@ -129,16 +129,19 @@
     \clearpage
     \thispagestyle{empty}
     \@ifundefined{@keywords}{}{\vspace*{\fill} {\bf Keywords:} \@keywords}
-    \cleardoublepage
+    \clearpage
+    % \cleardoublepage
 }
 
 \newenvironment{dedication}
-{\cleardoublepage \thispagestyle{empty} \vspace*{\stretch{1}} \begin{center} \em}
+% {\cleardoublepage \thispagestyle{empty} \vspace*{\stretch{1}} \begin{center} \em}
+{\clearpage \thispagestyle{empty} \vspace*{\stretch{1}} \begin{center} \em}
         {\end{center} \vspace*{\stretch{3}} \clearpage}
 
 
 \newenvironment{psuedochapter}[1]
-{\cleardoublepage
+% {\cleardoublepage
+{\clearpage
     \thispagestyle{empty}
     % \vspace*{\stretch{1}} 
     \begin{center} \large {\bf #1} \end{center}
@@ -266,7 +269,8 @@
 % mainmatter is ignoring openany, fix
 \renewcommand\mainmatter{%
     \if@openright
-        \cleardoublepage
+        % \cleardoublepage
+        \clearpage
     \else
         \clearpage
     \fi
