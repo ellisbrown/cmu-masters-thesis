@@ -1,11 +1,7 @@
 # Online Representation Learning on the Open Web
 
-+ This repository was created by [Ellis Brown](http://ellisbrown.github.io) and contains the full source code to produce [my master's thesis document](https://github.com/ellisbrown/cmu-masters-thesis/raw/main/thesis.pdf).
-+ The slides are available in
-  [pdf](https://github.com/bamos/thesis/raw/main/slides.pdf)
-  and
-  [pptx](https://github.com/bamos/thesis/raw/main/slides.pptx)
-  format.
++ This repository was created by [Ellis Brown](http://ellisbrown.github.io) and contains the full source code to produce [my master's thesis document](https://ellisbrown.github.io/assets/pdf/papers/2023_CMU_Masters_Thesis.pdf).
++ The thesis defense can be viewed on [YouTube](https://youtu.be/haT48f2TPxs). Slides are available [here](https://ellisbrown.github.io/assets/pdf/presentations/2023_CMU_Masters_Defense.pdf).
 
 
 ## Publications behind this thesis
@@ -70,7 +66,7 @@ The BibTeX for this document is:
 ```bibtex
 @mastersthesis{brown2023online,
   author       = {Ellis Brown},
-  title        = {{Online Representation Learning on the Open Web}},
+  title        = {Online Representation Learning on the Open Web},
   school       = {Carnegie Mellon University},
   year         = 2023,
   month        = May,
